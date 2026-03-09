@@ -14,10 +14,10 @@ type LandingPageProps = {
 
 export default function LandingPage({ content, locale }: LandingPageProps) {
   return (
-    <div className="relative overflow-x-clip bg-bg text-text" lang={locale}>
+    <div className="relative isolate overflow-x-clip bg-bg text-text" lang={locale}>
       <BackgroundAura />
       <Header content={content} locale={locale} />
-      <main>
+      <main className="relative z-10">
         <Hero content={content} />
         <CoreValues content={content} />
         <Features content={content} />
@@ -28,7 +28,9 @@ export default function LandingPage({ content, locale }: LandingPageProps) {
         <CTA content={content} />
         <Contact locale={locale} title={content.footer.links[4]} />
       </main>
-      <Footer content={content} locale={locale} />
+      <div className="relative z-10">
+        <Footer content={content} locale={locale} />
+      </div>
     </div>
   );
 }
@@ -246,7 +248,7 @@ function CTA({ content }: Pick<LandingPageProps, "content">) {
     <section className="pb-section pt-8">
       <div className="mx-auto w-container">
         <Reveal>
-          <div className="rounded-xxl border border-brand/25 bg-brand p-9 text-white sm:p-12">
+          <div className="rounded-xxl border border-brand/20 bg-gradient-to-br from-[#4f89d9] via-[#5b93dd] to-[#4a84d3] p-9 text-white sm:p-12 dark:from-[#2d5f9f] dark:via-[#3569aa] dark:to-[#2b5b98]">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{content.cta.title}</h2>
             <p className="mt-4 max-w-2xl text-white/85">{content.cta.description}</p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -323,9 +325,11 @@ function Footer({ content, locale }: LandingPageProps) {
 
 function BackgroundAura() {
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-      <div className="absolute left-1/2 top-0 h-[28rem] w-[58rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,var(--brand-soft),transparent_65%)] opacity-60 blur-3xl" />
-      <div className="absolute -left-24 top-[36%] h-72 w-72 rounded-full bg-[radial-gradient(circle_at_center,var(--accent),transparent_70%)] opacity-35 blur-3xl" />
+    <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-sky-300/35 via-transparent to-emerald-300/25 dark:from-sky-500/18 dark:to-emerald-400/14" />
+      <div className="absolute left-1/2 top-[-10rem] h-[34rem] w-[72rem] -translate-x-1/2 rounded-full bg-sky-300/45 blur-3xl dark:bg-sky-500/20" />
+      <div className="absolute -left-20 top-[30%] h-96 w-96 rounded-full bg-emerald-300/35 blur-3xl dark:bg-emerald-500/18" />
+      <div className="absolute bottom-[-4rem] right-[-4rem] h-[30rem] w-[44rem] rounded-full bg-blue-400/32 blur-2xl dark:bg-blue-500/18" />
     </div>
   );
 }

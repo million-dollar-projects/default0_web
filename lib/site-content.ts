@@ -126,7 +126,9 @@ const zhCN: SiteContent = {
   testimonials: [
     { quote: "以前切设备最怕声音突然外放。现在交给 Default0，开会前心里更踏实。", name: "陈宁", role: "产品经理" },
     { quote: "我在共享办公区工作，误触一次就社死。这个工具基本帮我把风险清空。", name: "李岚", role: "独立设计师" },
-    { quote: "不用盯着菜单栏音量了。规则开好后，它像一个很安静的安全网。", name: "赵铭", role: "前端工程师" }
+    { quote: "不用盯着菜单栏音量了。规则开好后，它像一个很安静的安全网。", name: "赵铭", role: "前端工程师" },
+    { quote: "我经常在会议和剪辑软件之间切换，Default0 让我几乎不再担心误外放。", name: "周珂", role: "视频创作者" },
+    { quote: "以前每次解锁都要先看音量，现在可以直接进入工作状态。", name: "袁柏", role: "运营负责人" }
   ],
   faqs: [
     { question: "Default0 会一直占用很多资源吗？", answer: "不会。它是为菜单栏常驻设计的轻量工具，日常低打扰。" },
@@ -254,6 +256,16 @@ const en: SiteContent = {
       quote: "I no longer stare at the volume icon. Once rules are set, it feels like a quiet safety net.",
       name: "Ming Zhao",
       role: "Frontend Engineer"
+    },
+    {
+      quote: "I switch between calls and editing tools all day. Default0 removed that accidental speaker anxiety.",
+      name: "Ethan Wu",
+      role: "Content Creator"
+    },
+    {
+      quote: "I used to check volume every unlock. Now I just get back to work.",
+      name: "Ava Lin",
+      role: "Operations Lead"
     }
   ],
   faqs: [
@@ -351,7 +363,9 @@ const ko: SiteContent = {
   testimonials: [
     { quote: "장치 전환 때 갑자기 소리가 나올까 늘 불안했는데, 이제는 회의 전에 훨씬 안심됩니다.", name: "민서", role: "프로덕트 매니저" },
     { quote: "공유 오피스에서 일하는데 실수 재생 위험이 거의 사라졌어요.", name: "지훈", role: "디자이너" },
-    { quote: "이제 볼륨 아이콘을 계속 확인하지 않아도 됩니다. 조용한 안전망 같아요.", name: "서윤", role: "프런트엔드 엔지니어" }
+    { quote: "이제 볼륨 아이콘을 계속 확인하지 않아도 됩니다. 조용한 안전망 같아요.", name: "서윤", role: "프런트엔드 엔지니어" },
+    { quote: "회의 앱과 편집 앱을 자주 오가는데, 실수 재생에 대한 불안이 거의 없어졌습니다.", name: "가람", role: "콘텐츠 크리에이터" },
+    { quote: "잠금 해제할 때마다 볼륨부터 확인하던 습관이 사라졌어요.", name: "하린", role: "마케팅 매니저" }
   ],
   faqs: [
     { question: "Default0는 리소스를 많이 사용하나요?", answer: "아니요. 메뉴 막대 상주를 전제로 만든 경량 도구라 일상 사용 부담이 작습니다." },
@@ -430,7 +444,9 @@ const ja: SiteContent = {
   testimonials: [
     { quote: "デバイス切替時の不安がほぼなくなりました。会議前でも安心感があります。", name: "高橋 直子", role: "プロダクトマネージャー" },
     { quote: "コワーキングで働いていますが、うっかり外部再生のリスクがかなり減りました。", name: "伊藤 亮", role: "デザイナー" },
-    { quote: "音量アイコンを監視しなくてよくなりました。静かなセーフティネットです。", name: "佐藤 美咲", role: "フロントエンドエンジニア" }
+    { quote: "音量アイコンを監視しなくてよくなりました。静かなセーフティネットです。", name: "佐藤 美咲", role: "フロントエンドエンジニア" },
+    { quote: "会議アプリと編集ツールを行き来する日でも、急な外部再生の心配が減りました。", name: "中村 健", role: "コンテンツクリエイター" },
+    { quote: "以前はロック解除のたびに音量確認していましたが、今はその手間がありません。", name: "山本 彩", role: "オペレーション担当" }
   ],
   faqs: [
     { question: "Default0 はリソースを多く使いますか？", answer: "いいえ。メニューバー常駐向けに最適化された軽量ツールです。" },
@@ -509,7 +525,9 @@ const de: SiteContent = {
   testimonials: [
     { quote: "Gerätewechsel war früher mein größtes Risiko. Mit Default0 starte ich deutlich entspannter in Meetings.", name: "Nina Weber", role: "Produktmanagerin" },
     { quote: "Im Coworking reicht ein einziger Fehler. Mit Default0 ist dieses Risiko praktisch verschwunden.", name: "Lukas Brandt", role: "Designer" },
-    { quote: "Ich muss das Lautstärke-Icon nicht mehr ständig kontrollieren. Es fühlt sich wie ein stilles Sicherheitsnetz an.", name: "Mara Klein", role: "Frontend Engineer" }
+    { quote: "Ich muss das Lautstärke-Icon nicht mehr ständig kontrollieren. Es fühlt sich wie ein stilles Sicherheitsnetz an.", name: "Mara Klein", role: "Frontend Engineer" },
+    { quote: "Zwischen Meetings und Schnitt-Tools zu wechseln war kritisch. Jetzt bleibt es einfach ruhig.", name: "Jonas Reiter", role: "Content Creator" },
+    { quote: "Früher habe ich nach jedem Entsperren erst die Lautstärke geprüft. Das fällt jetzt weg.", name: "Lea Hofmann", role: "Operations Managerin" }
   ],
   faqs: [
     { question: "Verbraucht Default0 viele Ressourcen?", answer: "Nein. Es ist als schlankes Menüleisten-Tool mit geringem Laufzeitaufwand ausgelegt." },
@@ -588,7 +606,9 @@ const es: SiteContent = {
   testimonials: [
     { quote: "Cambiar de dispositivo era mi mayor dolor de cabeza. Ahora entro a reuniones con mucha más tranquilidad.", name: "Carla Moreno", role: "Product Manager" },
     { quote: "Trabajo en espacios compartidos y el riesgo de audio accidental prácticamente desapareció.", name: "Diego León", role: "Diseñador" },
-    { quote: "Ya no vivo pendiente del icono de volumen. Se siente como una red de seguridad silenciosa.", name: "Lucía Vega", role: "Ingeniera Frontend" }
+    { quote: "Ya no vivo pendiente del icono de volumen. Se siente como una red de seguridad silenciosa.", name: "Lucía Vega", role: "Ingeniera Frontend" },
+    { quote: "Paso del software de reuniones al de edición todo el día y ahora casi no temo una reproducción accidental.", name: "Mateo Ríos", role: "Creador de contenido" },
+    { quote: "Antes revisaba el volumen cada vez que desbloqueaba. Ahora vuelvo al trabajo sin pensar en eso.", name: "Elena Cruz", role: "Responsable de operaciones" }
   ],
   faqs: [
     { question: "¿Default0 consume muchos recursos?", answer: "No. Es una utilidad ligera para barra de menús con bajo impacto diario." },
