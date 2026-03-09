@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Locale, localeNames, locales } from "@/lib/site-content";
@@ -13,6 +13,7 @@ type LanguageSwitcherProps = {
 export default function LanguageSwitcher({ currentLocale, label }: LanguageSwitcherProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const restPath = useMemo(() => {
     if (!pathname) return "";
@@ -24,12 +25,35 @@ export default function LanguageSwitcher({ currentLocale, label }: LanguageSwitc
     return parts.join("/");
   }, [pathname]);
 
+  useEffect(() => {
+    const onPointerDown = (event: MouseEvent) => {
+      if (!open) return;
+      if (!rootRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
   return (
-    <div className="relative">
+    <div ref={rootRef} className="relative">
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-surface px-4 text-sm font-medium text-muted transition hover:border-brand hover:text-text"
+        className="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-bg/55 px-4 text-sm font-medium text-muted backdrop-blur transition hover:border-brand hover:text-text"
         aria-expanded={open}
         aria-label={label}
       >

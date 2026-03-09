@@ -40,7 +40,9 @@ function Header({ content, locale }: LandingPageProps) {
     <header className="sticky top-0 z-30 border-b border-transparent backdrop-blur supports-[backdrop-filter]:bg-bg/75">
       <div className="mx-auto flex w-container items-center justify-between py-5">
         <Link href={`/${locale}`} className="text-xl font-semibold tracking-tight">
-          {content.brand}
+          <span className="text-[2rem] font-extrabold tracking-[-0.03em] text-transparent bg-gradient-to-r from-text via-brand-strong to-text bg-clip-text drop-shadow-[0_1px_0_rgba(255,255,255,0.25)] dark:drop-shadow-[0_1px_0_rgba(0,0,0,0.25)]">
+            {content.brand}
+          </span>
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted md:flex">
           <Link href="#features" className="transition hover:text-text">
