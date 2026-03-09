@@ -147,7 +147,7 @@ const zhCN: SiteContent = {
   },
   footer: {
     tagline: "Default0，自动静音守护。",
-    links: ["功能", "更新日志", "常见问题", "隐私说明", "联系我们"],
+    links: ["功能", "提交反馈", "更新日志", "常见问题", "隐私说明", "联系我们"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };
@@ -303,7 +303,7 @@ const en: SiteContent = {
   },
   footer: {
     tagline: "Default0, automatic mute protection.",
-    links: ["Features", "Changelog", "FAQ", "Privacy", "Contact"],
+    links: ["Features", "Feedback", "Changelog", "FAQ", "Privacy", "Contact"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };
@@ -384,7 +384,7 @@ const ko: SiteContent = {
   },
   footer: {
     tagline: "Default0, 자동 음소거 보호.",
-    links: ["기능", "업데이트 내역", "FAQ", "개인정보", "문의"],
+    links: ["기능", "피드백", "업데이트 내역", "FAQ", "개인정보", "문의"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };
@@ -465,7 +465,7 @@ const ja: SiteContent = {
   },
   footer: {
     tagline: "Default0、自動ミュート保護。",
-    links: ["機能", "更新履歴", "FAQ", "プライバシー", "お問い合わせ"],
+    links: ["機能", "フィードバック", "更新履歴", "FAQ", "プライバシー", "お問い合わせ"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };
@@ -546,7 +546,7 @@ const de: SiteContent = {
   },
   footer: {
     tagline: "Default0, automatischer Stummschutz.",
-    links: ["Funktionen", "Changelog", "FAQ", "Datenschutz", "Kontakt"],
+    links: ["Funktionen", "Feedback", "Changelog", "FAQ", "Datenschutz", "Kontakt"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };
@@ -627,7 +627,7 @@ const es: SiteContent = {
   },
   footer: {
     tagline: "Default0, protección automática de silencio.",
-    links: ["Funciones", "Registro de cambios", "FAQ", "Privacidad", "Contacto"],
+    links: ["Funciones", "Feedback", "Registro de cambios", "FAQ", "Privacidad", "Contacto"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };

@@ -26,7 +26,7 @@ export default function LandingPage({ content, locale }: LandingPageProps) {
         <Testimonials content={content} />
         <FAQ content={content} />
         <CTA content={content} />
-        <Contact locale={locale} title={content.footer.links[4]} />
+        <Contact locale={locale} title={content.footer.links[5]} feedbackLabel={content.footer.links[1]} />
       </main>
       <div className="relative z-10">
         <Footer content={content} locale={locale} />
@@ -265,7 +265,7 @@ function CTA({ content }: Pick<LandingPageProps, "content">) {
   );
 }
 
-function Contact({ locale, title }: { locale: Locale; title: string }) {
+function Contact({ locale, title, feedbackLabel }: { locale: Locale; title: string; feedbackLabel: string }) {
   const descriptionByLocale: Record<Locale, string> = {
     en: "Need help or business contact? Reach us by email.",
     "zh-CN": "如需支持或商务沟通，请发送邮件联系我们。",
@@ -285,6 +285,12 @@ function Contact({ locale, title }: { locale: Locale; title: string }) {
             <a href="mailto:help@default0.com" className="mt-5 inline-flex text-lg font-semibold text-brand transition hover:text-brand-strong">
               help@default0.com
             </a>
+            <Link
+              href={`/${locale}/feedback`}
+              className="ml-5 inline-flex h-10 items-center rounded-full border border-line bg-bg/60 px-4 text-sm font-medium text-muted transition hover:border-brand hover:text-text"
+            >
+              {feedbackLabel}
+            </Link>
           </div>
         </Reveal>
       </div>
@@ -295,10 +301,11 @@ function Contact({ locale, title }: { locale: Locale; title: string }) {
 function Footer({ content, locale }: LandingPageProps) {
   const getHref = (index: number): string => {
     if (index === 0) return "#features";
-    if (index === 1) return "#";
-    if (index === 2) return "#faq";
-    if (index === 3) return `/${locale}/privacy`;
-    if (index === 4) return "#contact";
+    if (index === 1) return `/${locale}/feedback`;
+    if (index === 2) return "#";
+    if (index === 3) return "#faq";
+    if (index === 4) return `/${locale}/privacy`;
+    if (index === 5) return "#contact";
     return "#";
   };
 
