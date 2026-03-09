@@ -1,0 +1,27 @@
+<svg width="1120" height="780" viewBox="0 0 1120 780" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1120" y2="780" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D5AB1"/>
+      <stop offset="1" stop-color="#5FB5FF"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#F2F8FF" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="1120" height="780" rx="28" fill="url(#bg)"/>
+  <circle cx="170" cy="620" r="250" fill="#BDE5FF" fill-opacity="0.6"/>
+  <circle cx="980" cy="120" r="210" fill="#B6F0DF" fill-opacity="0.48"/>
+  <rect x="600" y="110" width="420" height="560" rx="22" fill="#111D2D" fill-opacity="0.72" stroke="#A7C8E6" stroke-opacity="0.35"/>
+  <rect x="626" y="146" width="368" height="58" rx="12" fill="url(#card)"/>
+  <rect x="626" y="228" width="170" height="112" rx="14" fill="#F8FBFF" fill-opacity="0.94"/>
+  <rect x="824" y="228" width="170" height="112" rx="14" fill="#F8FBFF" fill-opacity="0.94"/>
+  <rect x="626" y="358" width="368" height="16" rx="8" fill="#CEE6FF"/>
+  <rect x="626" y="390" width="368" height="16" rx="8" fill="#CAE2FA"/>
+  <rect x="626" y="422" width="368" height="16" rx="8" fill="#C5DCF2"/>
+  <rect x="626" y="454" width="368" height="16" rx="8" fill="#BFD6EB"/>
+  <rect x="626" y="512" width="240" height="46" rx="23" fill="#2C7FEA"/>
+  <text x="190" y="180" fill="#F8FDFF" font-family="Arial, sans-serif" font-size="44" font-weight="700">Default0</text>
+  <text x="190" y="230" fill="#E3F2FF" font-family="Arial, sans-serif" font-size="26">Focus on your work.</text>
+  <text x="190" y="266" fill="#E3F2FF" font-family="Arial, sans-serif" font-size="26">We handle the noise risk.</text>
+</svg>

@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --text: #102033;
+  --muted: #53657a;
+  --line: #d8e0ea;
+  --brand: #1769c6;
+  --brand-soft: #89d1ff;
+  --brand-strong: #0c4b9b;
+  --accent: #86e2c4;
+}
+
+.dark {
+  --bg: #0c1118;
+  --surface: #111927;
+  --text: #ebf3ff;
+  --muted: #9ab0ca;
+  --line: #263548;
+  --brand: #57a1ff;
+  --brand-soft: #2662ad;
+  --brand-strong: #2f89ff;
+  --accent: #1b7f6f;
+}
+
+* {
+  border-color: var(--line);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  min-height: 100dvh;
+  font-family: var(--font-body), "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+summary,
+button,
+a {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--brand) 30%, white);
+  color: var(--text);
+}
