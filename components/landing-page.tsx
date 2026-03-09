@@ -211,8 +211,7 @@ function Testimonials({ content }: Pick<LandingPageProps, "content">) {
               <figure className="h-full rounded-xxl border border-line bg-surface p-7">
                 <blockquote className="text-base leading-relaxed text-text">“{item.quote}”</blockquote>
                 <figcaption className="mt-5 text-sm text-muted">
-                  <span className="font-medium text-text">{item.name}</span>
-                  <span> · {item.role}</span>
+                  <span>{item.role}</span>
                 </figcaption>
               </figure>
             </Reveal>
@@ -256,9 +255,6 @@ function CTA({ content }: Pick<LandingPageProps, "content">) {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="#" className="inline-flex h-12 items-center rounded-full bg-white px-6 text-sm font-semibold text-brand-strong transition hover:bg-white/90">
                 {content.cta.primary}
-              </Link>
-              <Link href="#" className="inline-flex h-12 items-center rounded-full border border-white/45 px-6 text-sm font-semibold text-white transition hover:border-white">
-                {content.cta.secondary}
               </Link>
             </div>
             <p className="mt-4 text-sm text-white/75">{content.cta.helper}</p>

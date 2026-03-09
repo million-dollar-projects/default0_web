@@ -86,7 +86,7 @@ const zhCN: SiteContent = {
   labels: { testimonials: "用户评价", faq: "FAQ", language: "语言" },
   hero: {
     badge: "macOS 菜单栏自动静音工具",
-    title: "在声音出事前，先把尴尬静音。",
+    title: "自动静音，让突发外放不再让你尴尬。",
     description:
       "Default0 会在最容易外放翻车的瞬间先一步把系统音量拉到 0，帮你在会议、工位、图书馆和深夜环境里，稳住每一次开声风险。",
     helper: "轻量常驻菜单栏｜开机自启｜本地运行",
@@ -158,7 +158,7 @@ const en: SiteContent = {
   labels: { testimonials: "Testimonials", faq: "FAQ", language: "Language" },
   hero: {
     badge: "macOS menu bar auto-mute utility",
-    title: "Mute the awkward moment before it happens.",
+    title: "Auto-mute, so sudden speaker playback never catches you off guard.",
     description:
       "Default0 automatically sets your system volume to zero in high-risk moments, so meetings, offices, libraries, and late nights stay interruption-free.",
     helper: "Lightweight menu bar app | Auto launch | Local runtime",
@@ -314,7 +314,7 @@ const ko: SiteContent = {
   labels: { testimonials: "사용자 후기", faq: "FAQ", language: "언어" },
   hero: {
     badge: "macOS 메뉴 막대 자동 음소거 도구",
-    title: "사고 나기 전에 먼저 음소거하세요.",
+    title: "자동 음소거로, 갑작스러운 외부 재생도 더 이상 당신을 난처하게 만들지 않습니다.",
     description:
       "Default0는 위험한 순간에 시스템 볼륨을 먼저 0으로 내려 회의실, 사무실, 도서관, 늦은 밤 환경에서 갑작스러운 외부 출력 실수를 막아줍니다.",
     helper: "가벼운 메뉴 막대 상주 | 자동 시작 | 로컬 실행",
@@ -395,7 +395,7 @@ const ja: SiteContent = {
   labels: { testimonials: "ユーザーの声", faq: "FAQ", language: "言語" },
   hero: {
     badge: "macOS メニューバー自動ミュートツール",
-    title: "音が漏れる前に、先にミュート。",
+    title: "自動ミュートで、突然の外部再生でももう気まずくなりません。",
     description:
       "Default0 はリスクが高い瞬間にシステム音量を自動で 0 にし、会議中、オフィス、図書館、深夜環境での突然の外部再生を防ぎます。",
     helper: "軽量メニューバー常駐 | 自動起動 | ローカル実行",
@@ -476,7 +476,7 @@ const de: SiteContent = {
   labels: { testimonials: "Stimmen", faq: "FAQ", language: "Sprache" },
   hero: {
     badge: "Automatische Stummschaltung für die macOS-Menüleiste",
-    title: "Stumm, bevor es unangenehm wird.",
+    title: "Automatische Stummschaltung, damit dich plötzliche Lautsprecher-Ausgabe nicht mehr in peinliche Situationen bringt.",
     description:
       "Default0 setzt die Systemlautstärke in heiklen Momenten automatisch auf 0 und verhindert so ungewollte Lautsprecher-Wiedergabe im Meeting, im Büro, in der Bibliothek oder spät abends.",
     helper: "Leichtgewichtig in der Menüleiste | Autostart | Läuft lokal",
@@ -557,7 +557,7 @@ const es: SiteContent = {
   labels: { testimonials: "Testimonios", faq: "FAQ", language: "Idioma" },
   hero: {
     badge: "Auto-silencio inteligente para la barra de menús de macOS",
-    title: "Silencio antes de pasar vergüenza.",
+    title: "Silencio automático para que una reproducción inesperada no vuelva a ponerte en una situación incómoda.",
     description:
       "Default0 baja el volumen del sistema a 0 justo en los momentos de mayor riesgo y evita salidas inesperadas por altavoz en reuniones, oficina, biblioteca o de noche.",
     helper: "Ligero en barra de menús | Inicio automático | Funciona en local",

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   keywords: ["Default0", "macOS", "自动静音", "菜单栏工具", "音量管理", "会议工具"],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Default0 | 在声音出事前，先把尴尬静音",
+    title: "Default0 | 自动静音，让突发外放不再让你尴尬",
     description: "关键时刻自动静音，降低突发外放风险。",
     url: "https://default0.app",
     siteName: "Default0",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Default0 | 在声音出事前，先把尴尬静音",
+    title: "Default0 | 自动静音，让突发外放不再让你尴尬",
     description: "macOS 菜单栏自动静音工具",
     images: ["/og-default0.svg"]
   },
