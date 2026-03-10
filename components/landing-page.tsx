@@ -6,6 +6,7 @@ import LanguageSwitcher from "@/components/language-switcher";
 import { Locale, SiteContent } from "@/lib/site-content";
 
 const sectionTitle = "mb-10 text-3xl font-semibold tracking-tight text-text sm:text-4xl";
+const DOWNLOAD_URL = "https://github.com/million-dollar-projects/default0_web/releases/download/v1.0.0/default0.dmg";
 
 type LandingPageProps = {
   content: SiteContent;
@@ -73,7 +74,7 @@ function Hero({ content }: Pick<LandingPageProps, "content">) {
           <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">{content.hero.title}</h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{content.hero.description}</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link href="#" className="inline-flex h-12 items-center rounded-full bg-brand px-6 text-sm font-semibold text-white transition hover:bg-brand-strong">
+            <Link href={DOWNLOAD_URL} className="inline-flex h-12 items-center rounded-full bg-brand px-6 text-sm font-semibold text-white transition hover:bg-brand-strong">
               {content.hero.primaryCta}
             </Link>
             <Link href="#features" className="inline-flex h-12 items-center rounded-full border border-line bg-surface px-6 text-sm font-semibold text-text transition hover:border-brand">
@@ -253,7 +254,7 @@ function CTA({ content }: Pick<LandingPageProps, "content">) {
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{content.cta.title}</h2>
             <p className="mt-4 max-w-2xl text-white/85">{content.cta.description}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="#" className="inline-flex h-12 items-center rounded-full bg-white px-6 text-sm font-semibold text-brand-strong transition hover:bg-white/90">
+              <Link href={DOWNLOAD_URL} className="inline-flex h-12 items-center rounded-full bg-white px-6 text-sm font-semibold text-brand-strong transition hover:bg-white/90">
                 {content.cta.primary}
               </Link>
             </div>
