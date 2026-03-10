@@ -1,0 +1,22 @@
+{
+  "app": "default0",
+  "channel": "stable",
+  "latest": {
+    "version": "1.0.0",
+    "build": 1,
+    "releasedAt": "2026-03-10T00:00:00Z",
+    "downloadURL": "https://www.default0.com",
+    "releaseNotes": "Initial public release.",
+    "mandatory": false
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "build": 1,
+      "releasedAt": "2026-03-10T00:00:00Z",
+      "downloadURL": "https://www.default0.com",
+      "releaseNotes": "Initial public release.",
+      "mandatory": false
+    }
+  ]
+}
