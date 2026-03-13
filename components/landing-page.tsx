@@ -4,9 +4,11 @@ import ThemeToggle from "@/components/theme-toggle";
 import { FloatIn, Reveal } from "@/components/motion";
 import LanguageSwitcher from "@/components/language-switcher";
 import { Locale, SiteContent } from "@/lib/site-content";
+import versionData from "@/public/version.json";
 
 const sectionTitle = "mb-10 text-3xl font-semibold tracking-tight text-text sm:text-4xl";
-const DOWNLOAD_URL = "https://github.com/million-dollar-projects/default0_web/releases/download/v1.0.0/default0.dmg";
+const latestVersion = String(versionData.latest.version).replace(/^v/, "");
+const DOWNLOAD_URL = `https://github.com/million-dollar-projects/default0_web/releases/download/v${latestVersion}/default0-v${latestVersion}.dmg`;
 
 type LandingPageProps = {
   content: SiteContent;

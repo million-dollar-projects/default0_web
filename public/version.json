@@ -2,19 +2,35 @@
   "app": "default0",
   "channel": "stable",
   "latest": {
-    "version": "1.0.0",
-    "build": 1,
-    "releasedAt": "2026-03-10T00:00:00Z",
-    "downloadURL": "https://www.default0.com",
-    "releaseNotes": "Initial public release.",
+    "version": "1.0.2",
+    "build": 4,
+    "releasedAt": "2026-03-13T09:26:54Z",
+    "downloadURL": "https://www.default0.com/download/1.0.2",
+    "releaseNotes": "Release 1.0.2",
     "mandatory": false
   },
   "history": [
     {
+      "version": "1.0.2",
+      "build": 4,
+      "releasedAt": "2026-03-13T09:26:54Z",
+      "downloadURL": "https://www.default0.com/download/1.0.2",
+      "releaseNotes": "Release 1.0.2",
+      "mandatory": false
+    },
+    {
+      "version": "1.0.2",
+      "build": 3,
+      "releasedAt": "2026-03-13T09:21:08Z",
+      "downloadURL": "https://www.default0.com/download/1.0.2",
+      "releaseNotes": "Release 1.0.2",
+      "mandatory": false
+    },
+    {
       "version": "1.0.0",
       "build": 1,
       "releasedAt": "2026-03-10T00:00:00Z",
-      "downloadURL": "https://www.default0.com",
+      "downloadURL": "https://www.default0.com/download/1.0.0",
       "releaseNotes": "Initial public release.",
       "mandatory": false
     }
