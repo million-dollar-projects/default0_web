@@ -59,6 +59,12 @@ tag="v$version"
 dmg_path="${2:-/Users/yangzie/www/mac/default0/build/default0-v${version}.dmg}"
 title="${3:-$tag}"
 notes="${4:-Initial public release.}"
+current_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [[ "$current_branch" == "HEAD" ]]; then
+  echo "Error: detached HEAD is not supported for release."
+  exit 1
+fi
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 source_version_json="/Users/yangzie/www/mac/default0/version/${version}.json"
@@ -106,11 +112,29 @@ if ! confirm "Confirm create and publish git tag $tag?"; then
   exit 1
 fi
 
+current_commit="$(git rev-parse HEAD)"
+
 if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
-  echo "Tag already exists locally, skip creating tag: $tag"
+  tag_commit="$(git rev-list -n 1 "$tag")"
+  if [[ "$tag_commit" != "$current_commit" ]]; then
+    echo "Error: tag $tag already exists but points to a different commit."
+    echo "Tag commit:     $tag_commit"
+    echo "Current commit: $current_commit"
+    echo "Please use a new version, or move/delete the existing tag before retry."
+    exit 1
+  fi
+  echo "Tag already exists and points to current commit: $tag"
 else
   echo "Creating tag: $tag"
   git tag "$tag"
+fi
+
+echo "Pushing branch: $current_branch"
+if ! git push origin "$current_branch"; then
+  echo "Failed to push branch to origin."
+  echo "Please fix remote access, then run:"
+  echo "  git push origin $current_branch"
+  exit 1
 fi
 
 echo "Pushing tag: $tag"
