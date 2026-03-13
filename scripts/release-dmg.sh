@@ -37,6 +37,14 @@ confirm() {
   [[ "$answer" =~ ^[Yy]$ ]]
 }
 
+if ! git ls-remote --exit-code origin >/dev/null 2>&1; then
+  echo "Cannot access git remote 'origin'."
+  echo "Please check SSH/network/auth first, then retry."
+  echo "Hint: current origin is SSH; if port 22 is blocked, switch to HTTPS:"
+  echo "  git remote set-url origin https://github.com/million-dollar-projects/default0_web.git"
+  exit 1
+fi
+
 read -r -p "Enter version (e.g. 1.0.2): " input_version
 version="${input_version#"${input_version%%[![:space:]]*}"}"
 version="${version%"${version##*[![:space:]]}"}"
@@ -106,7 +114,16 @@ else
 fi
 
 echo "Pushing tag: $tag"
-git push origin "$tag"
+if ! git push origin "$tag"; then
+  echo "Failed to push tag to origin."
+  echo "Local commit/tag are kept:"
+  echo "  - commit on current branch"
+  echo "  - tag: $tag"
+  echo "After fixing remote access, run:"
+  echo "  git push origin main"
+  echo "  git push origin $tag"
+  exit 1
+fi
 
 echo "Creating GitHub release and uploading DMG..."
 gh release create "$tag" \
