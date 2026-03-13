@@ -113,17 +113,19 @@ if ! confirm "Confirm create and publish git tag $tag?"; then
 fi
 
 current_commit="$(git rev-parse HEAD)"
+skip_tag_release=false
 
 if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
   tag_commit="$(git rev-list -n 1 "$tag")"
   if [[ "$tag_commit" != "$current_commit" ]]; then
-    echo "Error: tag $tag already exists but points to a different commit."
+    echo "Warning: tag $tag already exists but points to a different commit."
     echo "Tag commit:     $tag_commit"
     echo "Current commit: $current_commit"
-    echo "Please use a new version, or move/delete the existing tag before retry."
-    exit 1
+    echo "Skip tag push and release create for this version."
+    skip_tag_release=true
+  else
+    echo "Tag already exists and points to current commit: $tag"
   fi
-  echo "Tag already exists and points to current commit: $tag"
 else
   echo "Creating tag: $tag"
   git tag "$tag"
@@ -137,22 +139,36 @@ if ! git push origin "$current_branch"; then
   exit 1
 fi
 
-echo "Pushing tag: $tag"
-if ! git push origin "$tag"; then
-  echo "Failed to push tag to origin."
-  echo "Local commit/tag are kept:"
-  echo "  - commit on current branch"
-  echo "  - tag: $tag"
-  echo "After fixing remote access, run:"
-  echo "  git push origin main"
-  echo "  git push origin $tag"
-  exit 1
+if [[ "$skip_tag_release" == "true" ]]; then
+  echo "Release flow skipped because tag already exists on a different commit."
+  echo "Done: branch pushed."
+  exit 0
 fi
 
-echo "Creating GitHub release and uploading DMG..."
-gh release create "$tag" \
-  "$dmg_path" \
-  --title "$title" \
-  --notes "$notes"
+echo "Pushing tag: $tag"
+if ! git push origin "$tag"; then
+  if git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null 2>&1; then
+    echo "Tag already exists on origin, skip pushing tag: $tag"
+  else
+    echo "Failed to push tag to origin."
+    echo "Local commit/tag are kept:"
+    echo "  - commit on current branch"
+    echo "  - tag: $tag"
+    echo "After fixing remote access, run:"
+    echo "  git push origin main"
+    echo "  git push origin $tag"
+    exit 1
+  fi
+fi
+
+if gh release view "$tag" >/dev/null 2>&1; then
+  echo "GitHub release already exists, skip creating release: $tag"
+else
+  echo "Creating GitHub release and uploading DMG..."
+  gh release create "$tag" \
+    "$dmg_path" \
+    --title "$title" \
+    --notes "$notes"
+fi
 
 echo "Release completed: $tag"
