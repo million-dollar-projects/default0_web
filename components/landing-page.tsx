@@ -15,13 +15,22 @@ type LandingPageProps = {
   locale: Locale;
 };
 
+const heroImageByLocale: Record<Locale, string> = {
+  en: "/home_en.png",
+  "zh-CN": "/home_zh-CN.png",
+  ko: "/home_ko.png",
+  ja: "/home_ja.png",
+  de: "/home_de.png",
+  es: "/home_es.png"
+};
+
 export default function LandingPage({ content, locale }: LandingPageProps) {
   return (
     <div className="relative isolate overflow-x-clip bg-bg text-text" lang={locale}>
       <BackgroundAura />
       <Header content={content} locale={locale} />
       <main className="relative z-10">
-        <Hero content={content} />
+        <Hero content={content} locale={locale} />
         <CoreValues content={content} />
         <Features content={content} />
         <Scenarios content={content} />
@@ -67,7 +76,9 @@ function Header({ content, locale }: LandingPageProps) {
   );
 }
 
-function Hero({ content }: Pick<LandingPageProps, "content">) {
+function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">) {
+  const heroImageSrc = heroImageByLocale[locale] ?? heroImageByLocale.en;
+
   return (
     <section className="relative pt-16 sm:pt-24">
       <div className="mx-auto grid w-container gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -93,7 +104,7 @@ function Hero({ content }: Pick<LandingPageProps, "content">) {
               <div className="overflow-hidden rounded-[1.4rem] border border-line/70">
                 <div className="relative aspect-[16/10] w-full">
                   <Image
-                    src="/hero-mock.png"
+                    src={heroImageSrc}
                     alt="Default0 preview"
                     fill
                     priority
