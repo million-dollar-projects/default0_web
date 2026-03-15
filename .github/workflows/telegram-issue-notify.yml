@@ -1,0 +1,33 @@
+name: Telegram Issue Notification
+
+on:
+  issues:
+    types: [opened]  # 仅在新 issue 创建时触发
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Telegram Notification
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+          ISSUE_URL="${{ github.event.issue.html_url }}"
+          ISSUE_USER="${{ github.event.issue.user.login }}"
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
+          REPO="${{ github.repository }}"
+
+          MESSAGE="🐛 *新 Issue 来了！*
+          
+          📌 *标题：* ${ISSUE_TITLE}
+          🔢 *编号：* \#${ISSUE_NUMBER}
+          👤 *提交者：* ${ISSUE_USER}
+          📦 *仓库：* ${REPO}
+          🔗 *链接：* ${ISSUE_URL}"
+
+          curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+            -d chat_id="${CHAT_ID}" \
+            -d parse_mode="Markdown" \
+            -d text="${MESSAGE}"
