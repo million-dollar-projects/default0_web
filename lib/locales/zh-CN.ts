@@ -2,7 +2,14 @@ import type { SiteContent } from "@/lib/locales/types";
 export const zhCN: SiteContent = {
   brand: "Default0",
   nav: { features: "功能", scenarios: "场景", faq: "FAQ" },
-  labels: { testimonials: "用户评价", faq: "FAQ", language: "语言" },
+  labels: {
+    testimonials: "用户评价",
+    faq: "FAQ",
+    language: "语言",
+    blog: "博客",
+    blogEmpty: "暂时还没有已发布文章。",
+    backToBlog: "返回博客"
+  },
   hero: {
     badge: "macOS 菜单栏自动静音工具",
     title: "自动静音，让突发外放不再让你尴尬。",
@@ -70,4 +77,3 @@ export const zhCN: SiteContent = {
     copyright: "© 2026 Default0. All rights reserved."
   }
 };
-

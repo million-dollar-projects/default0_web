@@ -1,0 +1,61 @@
+---
+title: "Macのロック解除直後に自動ミュートする設定ガイド"
+description: "Default0 の Mute on Unlock を有効にして、会議前や公共スペースでの突然の外部再生リスクを減らす手順を解説します。"
+date: "2026-03-16"
+slug: "mac-mute-on-unlock"
+locale: "ja"
+keywords: ["mac ロック解除 自動ミュート", "mac 外部再生 防止", "default0 mute on unlock"]
+tags: ["default0", "mac", "自動ミュート"]
+draft: false
+---
+
+Macを解除した直後に、意図せずスピーカーから音が出る。これは会議前ほど起きやすいです。
+
+## なぜロック解除直後が危険か
+
+- 前回の音量状態が残っている
+- 出力先変更に気づくのが遅れる
+- 次の作業に急いでいて確認を飛ばす
+
+## Default0 で `Mute on Unlock` を有効化
+
+`Mute on Unlock` は解除直後に音量を先に 0 にする基本機能です。
+
+### 手順 1
+- Default0 を起動
+- メニューバー常駐を確認
+
+### 手順 2
+- 設定を開く
+- `Mute on Unlock` をオン
+
+### 手順 3
+- ロック→解除でテスト
+- 自動ミュートを確認
+
+## 併用推奨ルール
+
+- `Mute on Output Change`
+- `Mute on Bluetooth Disconnect`
+
+## FAQ
+
+### 無料で使えますか？
+はい、基本機能です。
+
+### ずっと無音のままになりますか？
+いいえ。トリガー時に先にミュートされるだけで、手動で戻せます。
+
+### 特定アプリだけ自動ミュートできますか？
+Pro の `Mute When App Opens` で可能です。
+
+## CTA
+
+1. まず Default0 を導入して `Mute on Unlock` をオンにしてください。
+2. 会議アプリ利用が多い場合は Pro を解放して `Mute When App Opens` も追加してください。
+
+## 関連記事
+
+- [Bluetooth切断時の自動ミュート](/blog/mac-mute-on-bluetooth-disconnect)
+- [出力切替時の自動ミュート](/blog/mac-mute-on-output-change)
+- [会議アプリ起動時の自動ミュート（Pro）](/blog/mac-mute-when-app-opens)

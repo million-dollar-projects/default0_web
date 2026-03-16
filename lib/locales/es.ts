@@ -2,7 +2,14 @@ import type { SiteContent } from "@/lib/locales/types";
 export const es: SiteContent = {
   brand: "Default0",
   nav: { features: "Funciones", scenarios: "Escenarios", faq: "FAQ" },
-  labels: { testimonials: "Testimonios", faq: "FAQ", language: "Idioma" },
+  labels: {
+    testimonials: "Testimonios",
+    faq: "FAQ",
+    language: "Idioma",
+    blog: "Blog",
+    blogEmpty: "Todavía no hay artículos publicados.",
+    backToBlog: "Volver al blog"
+  },
   hero: {
     badge: "Auto-silencio inteligente para la barra de menús de macOS",
     title: "Silencio automático para que una reproducción inesperada no vuelva a ponerte en una situación incómoda.",

@@ -42,6 +42,9 @@ export type SiteContent = {
     testimonials: string;
     faq: string;
     language: string;
+    blog: string;
+    blogEmpty: string;
+    backToBlog: string;
   };
   hero: {
     badge: string;

@@ -2,7 +2,14 @@ import type { SiteContent } from "@/lib/locales/types";
 export const ja: SiteContent = {
   brand: "Default0",
   nav: { features: "機能", scenarios: "利用シーン", faq: "FAQ" },
-  labels: { testimonials: "ユーザーの声", faq: "FAQ", language: "言語" },
+  labels: {
+    testimonials: "ユーザーの声",
+    faq: "FAQ",
+    language: "言語",
+    blog: "ブログ",
+    blogEmpty: "公開済みの記事はまだありません。",
+    backToBlog: "ブログに戻る"
+  },
   hero: {
     badge: "macOS メニューバー自動ミュートツール",
     title: "自動ミュートで、突然の外部再生でももう気まずくなりません。",

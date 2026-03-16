@@ -1,0 +1,70 @@
+---
+title: "How to Auto-Mute on Mac Unlock to Prevent Accidental Speaker Output"
+description: "Set up Default0 on macOS to mute automatically right after unlock and reduce accidental speaker playback in meetings and shared spaces."
+date: "2026-03-16"
+slug: "mac-mute-on-unlock"
+locale: "en"
+keywords: ["mac auto mute on unlock", "prevent accidental speaker output mac", "default0 mute on unlock"]
+tags: ["default0", "mac", "auto-mute"]
+draft: false
+---
+
+You unlock your Mac for two seconds, and sound suddenly blasts from the speaker. It happens fast, and always at the worst time.
+
+## Why unlock is a risky moment
+
+Common reasons:
+
+- previous volume state carries over
+- audio output changed but you did not notice yet
+- you are rushing into the next meeting
+
+## Turn on `Mute on Unlock` in Default0
+
+`Mute on Unlock` is a core Default0 rule. After unlock, system volume is set to 0 first, so you regain control before any accidental playback.
+
+### Step 1: Open Default0
+
+- Launch Default0 from the menu bar
+- Confirm it is running
+
+### Step 2: Enable the rule
+
+- Open settings
+- Find `Mute on Unlock`
+- Turn it on
+
+### Step 3: Validate once
+
+- Lock screen, then unlock
+- Confirm volume is muted
+- Restore volume when needed
+
+## Add two rules for better coverage
+
+- `Mute on Output Change`
+- `Mute on Bluetooth Disconnect`
+
+These reduce risks during device switching and unstable headset connections.
+
+## FAQ
+
+### Is `Mute on Unlock` free?
+Yes. It is part of Default0 core features.
+
+### Will it keep me muted forever?
+No. It mutes at trigger time; you can unmute anytime.
+
+### Can I mute only for specific apps?
+Yes, with Pro: `Mute When App Opens`.
+
+## CTA
+
+1. Download Default0 and enable `Mute on Unlock` today.
+2. If meetings are frequent, unlock Pro for `Mute When App Opens`.
+
+## Related posts
+
+- [Auto-mute on Bluetooth disconnect](/blog/mac-mute-on-bluetooth-disconnect)
+- [Auto-mute on output change](/blog/mac-mute-on-output-change)
+- [Mute when meeting apps open (Pro)](/blog/mac-mute-when-app-opens)

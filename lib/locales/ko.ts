@@ -2,7 +2,14 @@ import type { SiteContent } from "@/lib/locales/types";
 export const ko: SiteContent = {
   brand: "Default0",
   nav: { features: "기능", scenarios: "사용 사례", faq: "FAQ" },
-  labels: { testimonials: "사용자 후기", faq: "FAQ", language: "언어" },
+  labels: {
+    testimonials: "사용자 후기",
+    faq: "FAQ",
+    language: "언어",
+    blog: "블로그",
+    blogEmpty: "아직 게시된 글이 없습니다.",
+    backToBlog: "블로그로 돌아가기"
+  },
   hero: {
     badge: "macOS 메뉴 막대 자동 음소거 도구",
     title: "자동 음소거로, 갑작스러운 외부 재생도 더 이상 당신을 난처하게 만들지 않습니다.",

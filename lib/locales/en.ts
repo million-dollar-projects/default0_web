@@ -2,7 +2,14 @@ import type { SiteContent } from "@/lib/locales/types";
 export const en: SiteContent = {
   brand: "Default0",
   nav: { features: "Features", scenarios: "Scenarios", faq: "FAQ" },
-  labels: { testimonials: "Testimonials", faq: "FAQ", language: "Language" },
+  labels: {
+    testimonials: "Testimonials",
+    faq: "FAQ",
+    language: "Language",
+    blog: "Blog",
+    blogEmpty: "No articles published yet.",
+    backToBlog: "Back to Blog"
+  },
   hero: {
     badge: "macOS menu bar auto-mute utility",
     title: "Auto-mute, so sudden speaker playback never catches you off guard.",
@@ -154,4 +161,3 @@ export const en: SiteContent = {
     copyright: "© 2026 Default0. All rights reserved."
   }
 };
-

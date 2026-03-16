@@ -2,7 +2,14 @@ import type { SiteContent } from "@/lib/locales/types";
 export const de: SiteContent = {
   brand: "Default0",
   nav: { features: "Funktionen", scenarios: "Szenarien", faq: "FAQ" },
-  labels: { testimonials: "Stimmen", faq: "FAQ", language: "Sprache" },
+  labels: {
+    testimonials: "Stimmen",
+    faq: "FAQ",
+    language: "Sprache",
+    blog: "Blog",
+    blogEmpty: "Noch keine veröffentlichten Artikel.",
+    backToBlog: "Zurück zum Blog"
+  },
   hero: {
     badge: "Automatische Stummschaltung für die macOS-Menüleiste",
     title: "Automatische Stummschaltung, damit dich plötzliche Lautsprecher-Ausgabe nicht mehr in peinliche Situationen bringt.",
