@@ -4,24 +4,16 @@ import ThemeToggle from "@/components/theme-toggle";
 import { FloatIn, Reveal } from "@/components/motion";
 import LanguageSwitcher from "@/components/language-switcher";
 import { Locale, SiteContent } from "@/lib/site-content";
+import { compatibilityNoteByLocale, heroImageAltByLocale, heroImageByLocale } from "@/lib/locales/hero-assets";
 import versionData from "@/public/version.json";
 
-const sectionTitle = "mb-10 text-3xl font-semibold tracking-tight text-text sm:text-4xl";
+const sectionTitle = "mb-10 break-words text-3xl font-semibold tracking-tight text-text [overflow-wrap:anywhere] sm:text-4xl";
 const latestVersion = String(versionData.latest.version).replace(/^v/, "");
 const DOWNLOAD_URL = `https://github.com/million-dollar-projects/default0_web/releases/download/v${latestVersion}/default0-v${latestVersion}.dmg`;
 
 type LandingPageProps = {
   content: SiteContent;
   locale: Locale;
-};
-
-const heroImageByLocale: Record<Locale, string> = {
-  en: "/home_en.png",
-  "zh-CN": "/home_zh-CN.png",
-  ko: "/home_ko.png",
-  ja: "/home_ja.png",
-  de: "/home_de.png",
-  es: "/home_es.png"
 };
 
 export default function LandingPage({ content, locale }: LandingPageProps) {
@@ -78,23 +70,32 @@ function Header({ content, locale }: LandingPageProps) {
 
 function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">) {
   const heroImageSrc = heroImageByLocale[locale] ?? heroImageByLocale.en;
+  const heroImageAlt = heroImageAltByLocale[locale] ?? heroImageAltByLocale.en;
+  const compatibilityNote = compatibilityNoteByLocale[locale] ?? compatibilityNoteByLocale.en;
 
   return (
     <section className="relative pt-16 sm:pt-24">
       <div className="mx-auto grid w-container gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <FloatIn>
-          <p className="mb-5 inline-flex rounded-full border border-line bg-surface px-4 py-2 text-xs text-muted">{content.hero.badge}</p>
-          <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">{content.hero.title}</h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{content.hero.description}</p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link href={DOWNLOAD_URL} className="inline-flex h-12 items-center rounded-full bg-brand px-6 text-sm font-semibold text-white transition hover:bg-brand-strong">
+        <FloatIn className="min-w-0">
+          <p className="mb-5 inline-flex max-w-full break-words rounded-full border border-line bg-surface px-4 py-2 text-xs text-muted [overflow-wrap:anywhere]">{content.hero.badge}</p>
+          <h1 className="max-w-2xl break-words text-4xl font-semibold leading-tight tracking-tight [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl">{content.hero.title}</h1>
+          <p className="mt-6 max-w-xl break-words text-base leading-relaxed text-muted [overflow-wrap:anywhere] sm:text-lg">{content.hero.description}</p>
+          <div className="mt-8 flex flex-wrap items-stretch gap-3 sm:items-center">
+            <Link
+              href={DOWNLOAD_URL}
+              className="inline-flex min-h-12 max-w-full items-center justify-center rounded-full bg-brand px-6 py-3 text-center text-sm font-semibold leading-tight text-white transition hover:bg-brand-strong"
+            >
               {content.hero.primaryCta}
             </Link>
-            <Link href="#features" className="inline-flex h-12 items-center rounded-full border border-line bg-surface px-6 text-sm font-semibold text-text transition hover:border-brand">
+            <Link
+              href="#features"
+              className="inline-flex min-h-12 max-w-full items-center justify-center rounded-full border border-line bg-surface px-6 py-3 text-center text-sm font-semibold leading-tight text-text transition hover:border-brand"
+            >
               {content.hero.secondaryCta}
             </Link>
           </div>
-          <p className="mt-4 text-sm text-muted">{content.hero.helper}</p>
+          <p className="mt-4 break-words text-sm text-muted [overflow-wrap:anywhere]">{content.hero.helper}</p>
+          <p className="mt-2 break-words text-xs leading-relaxed text-muted/90 [overflow-wrap:anywhere]">{compatibilityNote}</p>
         </FloatIn>
 
         <Reveal>
@@ -105,7 +106,7 @@ function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">)
                 <div className="relative aspect-[16/10] w-full">
                   <Image
                     src={heroImageSrc}
-                    alt="Default0 preview"
+                    alt={heroImageAlt}
                     fill
                     priority
                     sizes="(max-width: 1024px) 92vw, 760px"
@@ -131,9 +132,9 @@ function CoreValues({ content }: Pick<LandingPageProps, "content">) {
         <div className="grid gap-5 md:grid-cols-3">
           {content.values.items.map((item, index) => (
             <Reveal key={item.title} delay={index * 0.06}>
-              <article className="h-full rounded-xxl border border-line bg-surface p-7 shadow-panel">
-                <h3 className="text-xl font-semibold tracking-tight">{item.title}</h3>
-                <p className="mt-3 leading-relaxed text-muted">{item.description}</p>
+              <article className="h-full min-w-0 rounded-xxl border border-line bg-surface p-7 shadow-panel">
+                <h3 className="break-words text-xl font-semibold tracking-tight [overflow-wrap:anywhere]">{item.title}</h3>
+                <p className="mt-3 break-words leading-relaxed text-muted [overflow-wrap:anywhere]">{item.description}</p>
               </article>
             </Reveal>
           ))}
@@ -153,9 +154,9 @@ function Features({ content }: Pick<LandingPageProps, "content">) {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {content.features.map((feature, index) => (
             <Reveal key={feature.title} delay={index * 0.035}>
-              <article className="h-full rounded-xl2 border border-line bg-bg/70 p-6">
-                <h3 className="font-semibold text-text">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{feature.description}</p>
+              <article className="h-full min-w-0 rounded-xl2 border border-line bg-bg/70 p-6">
+                <h3 className="break-words font-semibold text-text [overflow-wrap:anywhere]">{feature.title}</h3>
+                <p className="mt-2 break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">{feature.description}</p>
               </article>
             </Reveal>
           ))}
@@ -175,9 +176,9 @@ function Scenarios({ content }: Pick<LandingPageProps, "content">) {
         <div className="grid gap-4 md:grid-cols-2">
           {content.scenarios.map((scenario, index) => (
             <Reveal key={scenario.title} delay={index * 0.08}>
-              <article className="rounded-xl2 border border-line/70 bg-bg p-6">
-                <h3 className="font-semibold">{scenario.title}</h3>
-                <p className="mt-2 text-muted">{scenario.description}</p>
+              <article className="min-w-0 rounded-xl2 border border-line/70 bg-bg p-6">
+                <h3 className="break-words font-semibold [overflow-wrap:anywhere]">{scenario.title}</h3>
+                <p className="mt-2 break-words text-muted [overflow-wrap:anywhere]">{scenario.description}</p>
               </article>
             </Reveal>
           ))}
@@ -200,11 +201,11 @@ function Comparison({ content }: Pick<LandingPageProps, "content">) {
               {content.comparison.items.map((item) => (
                 <li key={item} className="flex gap-3">
                   <span className="mt-1 inline-block size-2 shrink-0 rounded-full bg-brand" aria-hidden />
-                  <span>{item}</span>
+                  <span className="break-words [overflow-wrap:anywhere]">{item}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-8 border-t border-line pt-6 text-lg font-semibold sm:text-xl">{content.comparison.conclusion}</p>
+            <p className="mt-8 break-words border-t border-line pt-6 text-lg font-semibold [overflow-wrap:anywhere] sm:text-xl">{content.comparison.conclusion}</p>
           </div>
         </Reveal>
       </div>
@@ -222,10 +223,10 @@ function Testimonials({ content }: Pick<LandingPageProps, "content">) {
         <div className="grid gap-5 md:grid-cols-3">
           {content.testimonials.map((item, index) => (
             <Reveal key={item.name} delay={index * 0.08}>
-              <figure className="h-full rounded-xxl border border-line bg-surface p-7">
-                <blockquote className="text-base leading-relaxed text-text">“{item.quote}”</blockquote>
+              <figure className="h-full min-w-0 rounded-xxl border border-line bg-surface p-7">
+                <blockquote className="break-words text-base leading-relaxed text-text [overflow-wrap:anywhere]">“{item.quote}”</blockquote>
                 <figcaption className="mt-5 text-sm text-muted">
-                  <span>{item.role}</span>
+                  <span className="break-words [overflow-wrap:anywhere]">{item.role}</span>
                 </figcaption>
               </figure>
             </Reveal>
@@ -246,9 +247,9 @@ function FAQ({ content }: Pick<LandingPageProps, "content">) {
         <div className="grid gap-4 md:grid-cols-2">
           {content.faqs.map((faq, index) => (
             <Reveal key={faq.question} delay={index * 0.05}>
-              <details className="group rounded-xl2 border border-line bg-surface p-6 open:border-brand/45">
-                <summary className="cursor-pointer list-none font-semibold marker:hidden">{faq.question}</summary>
-                <p className="mt-3 text-muted">{faq.answer}</p>
+              <details className="group min-w-0 rounded-xl2 border border-line bg-surface p-6 open:border-brand/45">
+                <summary className="cursor-pointer list-none break-words font-semibold marker:hidden [overflow-wrap:anywhere]">{faq.question}</summary>
+                <p className="mt-3 break-words text-muted [overflow-wrap:anywhere]">{faq.answer}</p>
               </details>
             </Reveal>
           ))}
@@ -263,15 +264,18 @@ function CTA({ content }: Pick<LandingPageProps, "content">) {
     <section className="pb-section pt-8">
       <div className="mx-auto w-container">
         <Reveal>
-          <div className="rounded-xxl border border-brand/20 bg-gradient-to-br from-[#4f89d9] via-[#5b93dd] to-[#4a84d3] p-9 text-white sm:p-12 dark:from-[#2d5f9f] dark:via-[#3569aa] dark:to-[#2b5b98]">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{content.cta.title}</h2>
-            <p className="mt-4 max-w-2xl text-white/85">{content.cta.description}</p>
+          <div className="min-w-0 rounded-xxl border border-brand/20 bg-gradient-to-br from-[#4f89d9] via-[#5b93dd] to-[#4a84d3] p-9 text-white sm:p-12 dark:from-[#2d5f9f] dark:via-[#3569aa] dark:to-[#2b5b98]">
+            <h2 className="break-words text-3xl font-semibold tracking-tight [overflow-wrap:anywhere] sm:text-4xl">{content.cta.title}</h2>
+            <p className="mt-4 max-w-2xl break-words text-white/85 [overflow-wrap:anywhere]">{content.cta.description}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href={DOWNLOAD_URL} className="inline-flex h-12 items-center rounded-full bg-white px-6 text-sm font-semibold text-brand-strong transition hover:bg-white/90">
+              <Link
+                href={DOWNLOAD_URL}
+                className="inline-flex min-h-12 max-w-full items-center justify-center rounded-full bg-white px-6 py-3 text-center text-sm font-semibold leading-tight text-brand-strong transition hover:bg-white/90"
+              >
                 {content.cta.primary}
               </Link>
             </div>
-            <p className="mt-4 text-sm text-white/75">{content.cta.helper}</p>
+            <p className="mt-4 break-words text-sm text-white/75 [overflow-wrap:anywhere]">{content.cta.helper}</p>
           </div>
         </Reveal>
       </div>
@@ -293,15 +297,15 @@ function Contact({ locale, title, feedbackLabel }: { locale: Locale; title: stri
     <section id="contact" className="pb-section pt-4">
       <div className="mx-auto w-container">
         <Reveal>
-          <div className="rounded-xxl border border-line bg-surface p-8 sm:p-10">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
-            <p className="mt-3 text-muted">{descriptionByLocale[locale]}</p>
-            <a href="mailto:help@default0.com" className="mt-5 inline-flex text-lg font-semibold text-brand transition hover:text-brand-strong">
+          <div className="min-w-0 rounded-xxl border border-line bg-surface p-8 sm:p-10">
+            <h2 className="break-words text-2xl font-semibold tracking-tight [overflow-wrap:anywhere] sm:text-3xl">{title}</h2>
+            <p className="mt-3 break-words text-muted [overflow-wrap:anywhere]">{descriptionByLocale[locale]}</p>
+            <a href="mailto:help@default0.com" className="mt-5 inline-flex break-all text-lg font-semibold text-brand transition hover:text-brand-strong">
               help@default0.com
             </a>
             <Link
               href={`/${locale}/feedback`}
-              className="ml-5 inline-flex h-10 items-center rounded-full border border-line bg-bg/60 px-4 text-sm font-medium text-muted transition hover:border-brand hover:text-text"
+              className="ml-5 inline-flex min-h-10 max-w-full items-center justify-center rounded-full border border-line bg-bg/60 px-4 py-2 text-center text-sm font-medium leading-tight text-muted transition hover:border-brand hover:text-text"
             >
               {feedbackLabel}
             </Link>
@@ -326,13 +330,13 @@ function Footer({ content, locale }: LandingPageProps) {
   return (
     <footer className="border-t border-line py-10">
       <div className="mx-auto flex w-container flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
-        <div>
-          <p className="font-semibold">{content.footer.tagline}</p>
-          <p className="mt-2 text-sm text-muted">{content.footer.copyright}</p>
+        <div className="min-w-0">
+          <p className="break-words font-semibold [overflow-wrap:anywhere]">{content.footer.tagline}</p>
+          <p className="mt-2 break-words text-sm text-muted [overflow-wrap:anywhere]">{content.footer.copyright}</p>
         </div>
-        <div className="flex flex-wrap gap-4 text-sm text-muted">
+        <div className="flex min-w-0 flex-wrap gap-4 text-sm text-muted">
           {content.footer.links.map((link, index) => (
-            <Link key={link} href={getHref(index)} className="transition hover:text-text">
+            <Link key={link} href={getHref(index)} className="break-words transition [overflow-wrap:anywhere] hover:text-text">
               {link}
             </Link>
           ))}
