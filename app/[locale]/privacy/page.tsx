@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Locale, isLocale, locales } from "@/lib/site-content";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 type PageProps = {
   params: { locale: string };
@@ -100,7 +101,10 @@ export function generateMetadata({ params }: PageProps): Metadata {
   return {
     title: `${c.title} | Default0`,
     description: c.intro,
-    alternates: { canonical: `/${params.locale}/privacy` }
+    alternates: {
+      canonical: `/${params.locale}/privacy`,
+      languages: buildLanguageAlternates((locale) => `/${locale}/privacy`)
+    }
   };
 }
 

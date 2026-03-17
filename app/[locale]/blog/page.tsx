@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getBlogPosts } from "@/lib/blog";
 import { getSiteContent, isLocale } from "@/lib/site-content";
 import SiteChrome from "@/components/site-chrome";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 type PageProps = {
   params: { locale: string };
@@ -12,9 +13,26 @@ type PageProps = {
 export function generateMetadata({ params }: PageProps): Metadata {
   if (!isLocale(params.locale)) return {};
   const content = getSiteContent(params.locale);
+  const canonicalPath = `/${params.locale}/blog`;
   return {
     title: `${content.brand} | ${content.labels.blog}`,
-    description: content.hero.description
+    description: content.hero.description,
+    alternates: {
+      canonical: canonicalPath,
+      languages: buildLanguageAlternates((locale) => `/${locale}/blog`)
+    },
+    openGraph: {
+      title: `${content.brand} | ${content.labels.blog}`,
+      description: content.hero.description,
+      url: canonicalPath,
+      images: [{ url: "/og-default0.svg", width: 1200, height: 630, alt: `${content.brand} preview` }]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${content.brand} | ${content.labels.blog}`,
+      description: content.hero.description,
+      images: ["/og-default0.svg"]
+    }
   };
 }
 

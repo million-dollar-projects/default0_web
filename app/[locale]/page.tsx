@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import LandingPage from "@/components/landing-page";
 import { getSiteContent, isLocale, Locale, locales } from "@/lib/site-content";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 type PageProps = {
   params: { locale: string };
@@ -22,7 +23,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
     title: `${content.brand} | ${content.hero.title}`,
     description: content.hero.description,
     alternates: {
-      canonical: `/${params.locale}`
+      canonical: `/${params.locale}`,
+      languages: buildLanguageAlternates((locale) => `/${locale}`)
     },
     openGraph: {
       title: `${content.brand} | ${content.hero.title}`,

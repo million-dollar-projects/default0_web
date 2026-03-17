@@ -59,7 +59,7 @@ function Footer({ content, locale, sectionPrefix }: { content: SiteContent; loca
   const getHref = (index: number): string => {
     if (index === 0) return `${sectionPrefix}#features`;
     if (index === 1) return `/${locale}/feedback`;
-    if (index === 2) return "#";
+    if (index === 2) return "https://github.com/million-dollar-projects/default0_web/releases";
     if (index === 3) return `${sectionPrefix}#faq`;
     if (index === 4) return `/${locale}/privacy`;
     if (index === 5) return `${sectionPrefix}#contact`;
@@ -77,11 +77,30 @@ function Footer({ content, locale, sectionPrefix }: { content: SiteContent; loca
           <Link href={`/${locale}/blog`} className="break-words transition [overflow-wrap:anywhere] hover:text-text">
             {content.labels.blog}
           </Link>
-          {content.footer.links.map((link, index) => (
-            <Link key={link} href={getHref(index)} className="break-words transition [overflow-wrap:anywhere] hover:text-text">
-              {link}
-            </Link>
-          ))}
+          {content.footer.links.map((link, index) => {
+            const href = getHref(index);
+            const isExternal = href.startsWith("http");
+
+            if (isExternal) {
+              return (
+                <a
+                  key={link}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="break-words transition [overflow-wrap:anywhere] hover:text-text"
+                >
+                  {link}
+                </a>
+              );
+            }
+
+            return (
+              <Link key={link} href={href} className="break-words transition [overflow-wrap:anywhere] hover:text-text">
+                {link}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </footer>

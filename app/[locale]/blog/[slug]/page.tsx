@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getBlogPostBySlug } from "@/lib/blog";
 import SiteChrome from "@/components/site-chrome";
 import { Locale, getSiteContent, isLocale } from "@/lib/site-content";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 type PageProps = {
   params: { locale: string; slug: string };
@@ -13,9 +14,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!isLocale(params.locale)) return {};
   const post = await getBlogPostBySlug(params.locale, params.slug);
   if (!post) return {};
+  const canonicalPath = `/${params.locale}/blog/${params.slug}`;
   return {
     title: post.title,
-    description: post.description
+    description: post.description,
+    alternates: {
+      canonical: canonicalPath,
+      languages: buildLanguageAlternates((locale) => `/${locale}/blog/${params.slug}`)
+    },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.description,
+      url: canonicalPath,
+      images: [{ url: "/og-default0.svg", width: 1200, height: 630, alt: "Default0 preview" }]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: ["/og-default0.svg"]
+    }
   };
 }
 

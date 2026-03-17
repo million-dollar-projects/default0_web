@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Noto_Sans_SC } from "next/font/google";
+import { buildLanguageAlternates, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -17,20 +18,27 @@ const notoSc = Noto_Sans_SC({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://default0.app"),
+  metadataBase: new URL(SITE_URL),
   manifest: "/site.webmanifest",
-  title: "Default0 | macOS 自动静音守护",
+  title: {
+    default: "Default0 | Automatic Mute Guard for macOS",
+    template: "%s | Default0"
+  },
   description:
-    "Default0 是一款 macOS 菜单栏自动静音工具，在解锁、设备切换、蓝牙断连、应用激活等关键时刻自动将音量拉到 0。",
-  keywords: ["Default0", "macOS", "自动静音", "菜单栏工具", "音量管理", "会议工具"],
-  alternates: { canonical: "/" },
+    "Default0 is a macOS menu bar utility that auto-mutes audio during high-risk moments such as unlock, output switching, and Bluetooth reconnects.",
+  keywords: ["Default0", "macOS", "auto mute", "menu bar app", "volume control", "meeting safety"],
+  alternates: {
+    canonical: "/",
+    languages: buildLanguageAlternates((locale) => `/${locale}`)
+  },
   openGraph: {
-    title: "Default0 | 自动静音，让突发外放不再让你尴尬",
-    description: "关键时刻自动静音，降低突发外放风险。",
-    url: "https://default0.app",
+    title: "Default0 | Automatic Mute Guard for macOS",
+    description: "Auto-mute at high-risk moments to reduce accidental speaker playback.",
+    url: SITE_URL,
     siteName: "Default0",
     type: "website",
-    locale: "zh_CN",
+    locale: "en_US",
+    alternateLocale: ["zh_CN", "ko_KR", "ja_JP", "de_DE", "es_ES"],
     images: [
       {
         url: "/og-default0.svg",
@@ -42,8 +50,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Default0 | 自动静音，让突发外放不再让你尴尬",
-    description: "macOS 菜单栏自动静音工具",
+    title: "Default0 | Automatic Mute Guard for macOS",
+    description: "Auto-mute to prevent accidental speaker playback on macOS.",
     images: ["/og-default0.svg"]
   },
   icons: {
