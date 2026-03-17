@@ -32,3 +32,4 @@ pnpm-debug.log*
 
 # local tooling
 /.codex
+/.baoyu-skills

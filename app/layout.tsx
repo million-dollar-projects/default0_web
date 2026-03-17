@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Noto_Sans_SC } from "next/font/google";
+import { Outfit, Noto_Sans_SC } from "next/font/google";
 import "./globals.css";
 
-const jakarta = Plus_Jakarta_Sans({
+const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-display",
-  display: "swap"
+  display: "swap",
+  weight: ["500", "600", "700", "800"]
 });
 
 const notoSc = Noto_Sans_SC({
   subsets: ["latin"],
   variable: "--font-body",
-  display: "swap"
+  display: "swap",
+  weight: ["400", "500", "600"]
 });
 
 export const metadata: Metadata = {
@@ -57,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
-      <body className={`${jakarta.variable} ${notoSc.variable} antialiased`}>{children}</body>
+      <body className={`${outfit.variable} ${notoSc.variable} antialiased`}>{children}</body>
     </html>
   );
 }

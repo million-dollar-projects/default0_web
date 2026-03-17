@@ -1,0 +1,95 @@
+---
+title: "Mac en silencio automático al cambiar salida de audio"
+description: "Aprende a activar Mute on Output Change en Default0 para evitar audio inesperado por altavoz al alternar entre auriculares y altavoz."
+date: "2026-03-17"
+slug: "mac-mute-on-output-change"
+locale: "es"
+keywords: ["mac silencio al cambiar salida", "evitar audio por altavoz mac", "default0 mute on output change"]
+tags: ["default0", "mac", "silencio automático"]
+draft: false
+---
+
+Puede que te haya pasado: se desconectan los auriculares, cambia la salida y el sonido sale de golpe por el altavoz del Mac.
+
+Para quienes tienen muchas reuniones, trabajan en espacios compartidos o cambian dispositivos Bluetooth con frecuencia, este es uno de los riesgos más comunes.
+
+## Por qué el cambio de salida es un punto crítico
+
+En macOS, cuando cambia la salida predeterminada, el audio se redirige al instante. El problema:
+
+- no llegas a silenciar manualmente a tiempo
+- el cambio ocurre muy rápido (sobre todo con Bluetooth inestable)
+- en reuniones o lugares públicos, el margen de error es mínimo
+
+Por eso una regla automática es más confiable que recordar revisar volumen cada vez.
+
+## Activar `Mute on Output Change` en Default0
+
+`Mute on Output Change` es una función base de Default0. Cuando cambia la salida, primero pone el volumen en 0.
+
+### Paso 1: Abrir Default0
+
+- Inicia Default0 y déjalo activo en la barra de menús
+- Verifica que esté funcionando
+
+### Paso 2: Activar la regla
+
+- Abre ajustes
+- Busca `Mute on Output Change`
+- Actívala
+
+### Paso 3: Hacer una prueba
+
+- Cambia manualmente entre auriculares y altavoz
+- O desconecta y reconecta auriculares Bluetooth
+- Comprueba si se silencia automáticamente al cambiar
+
+## Para más seguridad: añade dos reglas
+
+- `Mute on Bluetooth Disconnect`
+- `Mute on Unlock`
+
+Con estas tres reglas cubres la mayoría de casos de audio accidental.
+
+## Escenarios habituales
+
+### Escenario 1: Cambio rápido entre reuniones
+
+Al pasar de una llamada a otra, esta regla bloquea reproducciones accidentales de apps o pestañas.
+
+### Escenario 2: Batería baja o conexión inestable
+
+Si Bluetooth se corta y el audio vuelve al altavoz, el silencio previo evita la reproducción pública.
+
+### Escenario 3: Trabajo en espacios públicos
+
+En oficina abierta o biblioteca, las reglas automáticas son más fiables que los controles manuales.
+
+## FAQ
+
+### 1) ¿`Mute on Output Change` es gratis?
+
+Sí, pertenece a las funciones base de Default0.
+
+### 2) ¿Afecta mi escucha normal?
+
+No. Solo silencia en el momento del disparador. Puedes restaurar volumen cuando quieras.
+
+### 3) ¿También puedo silenciar al abrir apps de reuniones?
+
+Sí. Con Pro, usa `Mute When App Opens`.
+
+### 4) ¿Debo configurarlo cada vez?
+
+No. Una vez activado, permanece activo hasta que lo pauses o desactives.
+
+## CTA
+
+1. Descarga Default0 y activa `Mute on Output Change` para reducir el riesgo al cambiar dispositivos.
+2. Si tienes reuniones frecuentes, desbloquea Pro y añade `Mute When App Opens` para cobertura por aplicación.
+
+## Artículos relacionados
+
+- [Guía para silenciar Mac al desbloquear](/blog/mac-mute-on-unlock)
+- [Silencio automático al desconectar Bluetooth](/blog/mac-mute-on-bluetooth-disconnect)
+- [Silencio automático al abrir apps de reuniones: Default0 Pro](/blog/mac-mute-when-app-opens)
