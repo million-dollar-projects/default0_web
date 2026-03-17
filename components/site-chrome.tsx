@@ -28,21 +28,21 @@ function Header({ content, locale, sectionPrefix }: { content: SiteContent; loca
     <header className="sticky top-0 z-30 border-b border-transparent backdrop-blur supports-[backdrop-filter]:bg-bg/75">
       <div className="mx-auto flex w-container items-center justify-between py-5">
         <Link href={`/${locale}`} className="text-xl font-semibold tracking-tight">
-          <span className="text-[2rem] font-extrabold tracking-[-0.03em] text-transparent bg-gradient-to-r from-text via-brand-strong to-text bg-clip-text drop-shadow-[0_1px_0_rgba(255,255,255,0.25)] dark:drop-shadow-[0_1px_0_rgba(0,0,0,0.25)]">
+          <span className="brand-wink text-[2rem] font-extrabold tracking-[-0.03em] text-transparent bg-gradient-to-r from-text via-brand-strong to-text bg-clip-text drop-shadow-[0_1px_0_rgba(255,255,255,0.25)] dark:drop-shadow-[0_1px_0_rgba(0,0,0,0.25)]">
             {content.brand}
           </span>
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted md:flex">
-          <Link href={`${sectionPrefix}#features`} className="transition hover:text-text">
+          <Link href={`${sectionPrefix}#features`} className="nav-link transition hover:text-text">
             {content.nav.features}
           </Link>
-          <Link href={`${sectionPrefix}#scenarios`} className="transition hover:text-text">
+          <Link href={`${sectionPrefix}#scenarios`} className="nav-link transition hover:text-text">
             {content.nav.scenarios}
           </Link>
-          <Link href={`${sectionPrefix}#faq`} className="transition hover:text-text">
+          <Link href={`${sectionPrefix}#faq`} className="nav-link transition hover:text-text">
             {content.nav.faq}
           </Link>
-          <Link href={`/${locale}/blog`} className="transition hover:text-text">
+          <Link href={`/${locale}/blog`} className="nav-link transition hover:text-text">
             {content.labels.blog}
           </Link>
         </nav>
@@ -74,7 +74,7 @@ function Footer({ content, locale, sectionPrefix }: { content: SiteContent; loca
           <p className="mt-2 break-words text-sm text-muted [overflow-wrap:anywhere]">{content.footer.copyright}</p>
         </div>
         <div className="flex min-w-0 flex-wrap gap-4 text-sm text-muted">
-          <Link href={`/${locale}/blog`} className="break-words transition [overflow-wrap:anywhere] hover:text-text">
+          <Link href={`/${locale}/blog`} className="nav-link break-words transition [overflow-wrap:anywhere] hover:text-text">
             {content.labels.blog}
           </Link>
           {content.footer.links.map((link, index) => {
@@ -88,7 +88,7 @@ function Footer({ content, locale, sectionPrefix }: { content: SiteContent; loca
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="break-words transition [overflow-wrap:anywhere] hover:text-text"
+                  className="nav-link break-words transition [overflow-wrap:anywhere] hover:text-text"
                 >
                   {link}
                 </a>
@@ -96,7 +96,7 @@ function Footer({ content, locale, sectionPrefix }: { content: SiteContent; loca
             }
 
             return (
-              <Link key={link} href={href} className="break-words transition [overflow-wrap:anywhere] hover:text-text">
+              <Link key={link} href={href} className="nav-link break-words transition [overflow-wrap:anywhere] hover:text-text">
                 {link}
               </Link>
             );

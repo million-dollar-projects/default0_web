@@ -12,6 +12,9 @@
   --brand-soft: #89d1ff;
   --brand-strong: #0c4b9b;
   --accent: #86e2c4;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dark {
@@ -57,4 +60,174 @@ summary {
 ::selection {
   background: color-mix(in oklab, var(--brand) 30%, white);
   color: var(--text);
+}
+
+@keyframes aura-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(0, -8px, 0) scale(1.03);
+  }
+}
+
+@keyframes sheen-sweep {
+  0% {
+    transform: translateX(-130%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(190%) skewX(-18deg);
+  }
+}
+
+@keyframes success-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes wink-star {
+  0% {
+    opacity: 0;
+    transform: translate3d(-6px, 4px, 0) scale(0.7) rotate(-12deg);
+  }
+  70% {
+    opacity: 0.95;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(6px, -4px, 0) scale(0.8) rotate(12deg);
+  }
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.28rem;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: right;
+  background: color-mix(in oklab, var(--brand) 75%, var(--text));
+  transition: transform 220ms var(--ease-out-quint);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.hero-ambient {
+  animation: aura-drift 4.8s var(--ease-out-quart) infinite alternate;
+  will-change: transform;
+}
+
+.success-pop {
+  animation: success-pop 280ms var(--ease-out-expo) 1;
+}
+
+.brand-wink {
+  position: relative;
+}
+
+.brand-wink::after {
+  content: "✦";
+  position: absolute;
+  right: -0.72rem;
+  top: -0.25rem;
+  opacity: 0;
+  color: color-mix(in oklab, var(--brand) 72%, var(--text));
+  font-size: 0.7em;
+  pointer-events: none;
+}
+
+a:hover .brand-wink::after,
+a:focus-visible .brand-wink::after {
+  animation: wink-star 620ms var(--ease-out-expo) 1;
+}
+
+.surface-lift {
+  transition:
+    transform 240ms var(--ease-out-quint),
+    border-color 220ms var(--ease-out-quint),
+    box-shadow 240ms var(--ease-out-quint);
+}
+
+.surface-lift:hover,
+.surface-lift:focus-within {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--brand) 42%, var(--line));
+  box-shadow: 0 10px 24px color-mix(in oklab, var(--brand) 12%, transparent);
+}
+
+.ui-press {
+  transition:
+    transform 120ms var(--ease-out-expo),
+    box-shadow 220ms var(--ease-out-quint),
+    background-color 220ms var(--ease-out-quint),
+    border-color 220ms var(--ease-out-quint),
+    color 220ms var(--ease-out-quint);
+}
+
+.ui-press:active {
+  transform: scale(0.97);
+}
+
+.cta-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-sheen::before {
+  content: "";
+  position: absolute;
+  inset: -220% 0;
+  width: 42%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    color-mix(in oklab, white 68%, transparent) 48%,
+    transparent 100%
+  );
+  transform: translateX(-130%) skewX(-18deg);
+  pointer-events: none;
+}
+
+.cta-sheen:hover::before,
+.cta-sheen:focus-visible::before {
+  animation: sheen-sweep 560ms var(--ease-out-expo) 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ambient,
+  .cta-sheen::before,
+  .success-pop,
+  .brand-wink::after {
+    animation: none !important;
+  }
+
+  .surface-lift,
+  .ui-press,
+  .nav-link::after {
+    transition-duration: 0.01ms !important;
+  }
+
+  .surface-lift:hover,
+  .surface-lift:focus-within,
+  .ui-press:active {
+    transform: none !important;
+    box-shadow: none !important;
+  }
 }

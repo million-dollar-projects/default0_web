@@ -22,7 +22,7 @@ export const zhCN: SiteContent = {
   values: {
     title: "不是手动补救，而是自动预防",
     items: [
-      { title: "关键时刻自动静音", description: "解锁、输出设备变化、蓝牙断连、首次登录、应用激活时自动执行静音。" },
+      { title: "关键时刻自动静音", description: "解锁、输出设备变化、蓝牙断连、WiFi 变化（连接、断开、切换）、首次登录、应用激活时自动执行静音。" },
       { title: "把失误窗口压缩到 0", description: "还没来得及反应，Default0 已先完成静音，减少突发外放的空窗期。" },
       { title: "低打扰守护体验", description: "菜单栏一键管理，支持暂停守护。需要时开启，日常几乎无感。" }
     ]
@@ -32,6 +32,7 @@ export const zhCN: SiteContent = {
     { title: "解锁静音", description: "屏幕重新解锁后自动静音，防止回到电脑第一秒就意外外放。" },
     { title: "输出切换静音", description: "默认输出设备变化时立即静音，避免耳机与扬声器切换造成泄露。" },
     { title: "蓝牙断开静音", description: "蓝牙音频设备断开时先静音，避免声音回切到外放。" },
+    { title: "WiFi 变化静音", description: "WiFi 连接、断开或网络切换时触发静音，降低网络变化引发的突发外放风险。" },
     { title: "首次登录静音", description: "系统启动后首次登录阶段自动静音，降低开机误触风险。" },
     { title: "打开应用静音", description: "可设定会议、视频、社交、娱乐等高风险应用激活即静音。" },
     { title: "快速手动控制", description: "支持立即静音与取消静音，临时场景一键接管。" },

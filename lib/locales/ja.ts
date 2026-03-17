@@ -24,7 +24,7 @@ export const ja: SiteContent = {
     items: [
       {
         title: "重要な瞬間に自動ミュート",
-        description: "画面ロック解除、出力変更、Bluetooth 切断、初回ログイン、アプリ起動時に自動ミュートします。"
+        description: "画面ロック解除、出力変更、Bluetooth 切断、Wi-Fi 変化（接続・切断・ネットワーク切替）、初回ログイン、アプリ起動時に自動ミュートします。"
       },
       {
         title: "ミスの空白時間をほぼゼロに",
@@ -41,6 +41,7 @@ export const ja: SiteContent = {
     { title: "ロック解除時にミュート", description: "画面ロック解除直後に自動ミュートし、復帰直後の誤再生を防ぎます。" },
     { title: "出力切替時にミュート", description: "既定の音声出力が変わると即時ミュートし、イヤホンとスピーカー切替時の漏れを防ぎます。" },
     { title: "Bluetooth 切断時にミュート", description: "Bluetooth 音声機器が切断された際、スピーカーへ戻る前にミュートします。" },
+    { title: "Wi-Fi 変化時にミュート", description: "Wi-Fi の接続・切断・ネットワーク切替時にミュートを発動し、接続変化に伴う突然の外部再生を防ぎます。" },
     { title: "初回ログイン時にミュート", description: "起動後の初回ログイン段階で自動ミュートし、起動直後の誤操作リスクを減らします。" },
     { title: "アプリ起動時にミュート", description: "会議、動画、SNS、エンタメなど高リスクアプリを起動時に自動ミュートできます。" },
     { title: "素早い手動操作", description: "即時ミュートと解除に対応し、一時的な場面でもすばやく制御できます。" },
@@ -86,4 +87,3 @@ export const ja: SiteContent = {
     copyright: "© 2026 Default0. All rights reserved."
   }
 };
-

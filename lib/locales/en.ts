@@ -24,7 +24,7 @@ export const en: SiteContent = {
     items: [
       {
         title: "Auto-mute at critical moments",
-        description: "Unlock, output changes, Bluetooth disconnect, first login, and app activation can all trigger mute."
+        description: "Unlock, output changes, Bluetooth disconnect, Wi-Fi connect/disconnect/network changes, first login, and app activation can all trigger mute."
       },
       {
         title: "Shrink the risk window to zero",
@@ -49,6 +49,10 @@ export const en: SiteContent = {
     {
       title: "Mute on Bluetooth disconnect",
       description: "If a Bluetooth audio device disconnects, audio is muted before it falls back to speaker output."
+    },
+    {
+      title: "Mute on Wi-Fi change",
+      description: "When Wi-Fi connects, disconnects, or switches networks, Default0 can trigger mute to prevent connectivity-driven speaker surprises."
     },
     {
       title: "Mute on first login",

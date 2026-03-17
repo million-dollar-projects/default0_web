@@ -24,7 +24,7 @@ export const de: SiteContent = {
     items: [
       {
         title: "Automatisch stumm in kritischen Momenten",
-        description: "Beim Entsperren, beim Wechsel des Ausgabegeräts, bei Bluetooth-Abbruch, beim ersten Login und bei App-Aktivierung wird automatisch stumm geschaltet."
+        description: "Beim Entsperren, beim Wechsel des Ausgabegeräts, bei Bluetooth-Abbruch, bei WLAN-Änderung (Verbinden, Trennen, Wechsel), beim ersten Login und bei App-Aktivierung wird automatisch stumm geschaltet."
       },
       {
         title: "Das Fehlerfenster auf null verkleinern",
@@ -41,6 +41,7 @@ export const de: SiteContent = {
     { title: "Stumm beim Entsperren", description: "Nach dem Entsperren wird automatisch stumm geschaltet, damit der erste Klick nicht direkt hörbar ist." },
     { title: "Stumm bei Ausgabewechsel", description: "Wenn sich das Standard-Ausgabegerät ändert, wird sofort stumm geschaltet, um Leaks beim Wechsel zu vermeiden." },
     { title: "Stumm bei Bluetooth-Trennung", description: "Wenn ein Bluetooth-Audiogerät getrennt wird, schaltet Default0 stumm, bevor der Ton auf Lautsprecher zurückfällt." },
+    { title: "Stumm bei WLAN-Änderung", description: "Bei WLAN-Verbindung, -Trennung oder Netzwerkwechsel kann Default0 sofort stummschalten, um unerwartete Lautsprecher-Ausgabe zu vermeiden." },
     { title: "Stumm beim ersten Login", description: "Direkt nach dem Systemstart wird beim ersten Login automatisch stumm geschaltet, um frühe Fehlwiedergaben zu reduzieren." },
     { title: "Stumm beim App-Start", description: "Lege sensible Apps wie Meetings, Video, Social Media oder Entertainment fest und lasse sie bei Aktivierung automatisch stummschalten." },
     { title: "Schnelle manuelle Kontrolle", description: "Sofort stummschalten oder Ton wieder freigeben, wenn du kurzfristig selbst übernehmen möchtest." },
@@ -86,4 +87,3 @@ export const de: SiteContent = {
     copyright: "© 2026 Default0. All rights reserved."
   }
 };
-

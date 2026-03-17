@@ -24,7 +24,7 @@ export const ko: SiteContent = {
     items: [
       {
         title: "중요한 순간 자동 음소거",
-        description: "잠금 해제, 출력 장치 변경, 블루투스 해제, 첫 로그인, 앱 활성화 시 자동으로 음소거됩니다."
+        description: "잠금 해제, 출력 장치 변경, 블루투스 해제, Wi-Fi 변화(연결, 끊김, 네트워크 전환), 첫 로그인, 앱 활성화 시 자동으로 음소거됩니다."
       },
       {
         title: "실수 구간을 0에 가깝게",
@@ -41,6 +41,7 @@ export const ko: SiteContent = {
     { title: "잠금 해제 시 음소거", description: "화면 잠금 해제 직후 자동 음소거되어 복귀 직후의 실수 재생을 방지합니다." },
     { title: "출력 전환 시 음소거", description: "기본 오디오 출력이 바뀌면 즉시 음소거되어 이어폰-스피커 전환 누출을 막습니다." },
     { title: "블루투스 해제 시 음소거", description: "블루투스 오디오 장치가 끊기면 스피커로 전환되기 전에 먼저 음소거합니다." },
+    { title: "Wi-Fi 변경 시 음소거", description: "Wi-Fi가 연결되거나 끊기거나 네트워크가 전환될 때 음소거를 트리거해 돌발 외부 재생을 줄입니다." },
     { title: "첫 로그인 시 음소거", description: "부팅 후 첫 로그인 단계에서 자동 음소거되어 초기 오작동 위험을 줄입니다." },
     { title: "앱 실행 시 음소거", description: "회의, 영상, 소셜, 엔터테인먼트 등 고위험 앱 활성화 시 자동 음소거를 설정할 수 있습니다." },
     { title: "빠른 수동 제어", description: "즉시 음소거 또는 해제를 지원하여 임시 상황에서도 빠르게 제어할 수 있습니다." },
@@ -86,4 +87,3 @@ export const ko: SiteContent = {
     copyright: "© 2026 Default0. All rights reserved."
   }
 };
-

@@ -24,7 +24,7 @@ export const es: SiteContent = {
     items: [
       {
         title: "Silencio automático en momentos críticos",
-        description: "Al desbloquear, cambiar la salida de audio, desconectar Bluetooth, iniciar sesión por primera vez o activar apps, se aplica silencio automático."
+        description: "Al desbloquear, cambiar la salida de audio, desconectar Bluetooth, cambiar Wi-Fi (conexión, desconexión o cambio de red), iniciar sesión por primera vez o activar apps, se aplica silencio automático."
       },
       {
         title: "Reducir la ventana de error a cero",
@@ -41,6 +41,7 @@ export const es: SiteContent = {
     { title: "Silencio al desbloquear", description: "Tras desbloquear la pantalla, se aplica silencio automático para evitar reproducciones accidentales al volver al equipo." },
     { title: "Silencio al cambiar salida", description: "Cuando cambia la salida de audio predeterminada, se silencia al instante para evitar fugas entre auriculares y altavoz." },
     { title: "Silencio al desconectar Bluetooth", description: "Si un dispositivo Bluetooth se desconecta, se silencia antes de que el audio vuelva al altavoz." },
+    { title: "Silencio al cambiar Wi-Fi", description: "Cuando el Wi-Fi se conecta, desconecta o cambia de red, Default0 puede activar silencio para evitar reproducciones inesperadas por altavoz." },
     { title: "Silencio en primer inicio", description: "Durante la primera fase de inicio de sesión tras arrancar el sistema, se aplica silencio para reducir riesgos tempranos." },
     { title: "Silencio al abrir app", description: "Puedes definir apps de alto riesgo como reuniones, video, redes sociales o entretenimiento para silenciar al activarse." },
     { title: "Control manual rápido", description: "Silenciar y quitar silencio al instante para retomar el control en situaciones puntuales." },
@@ -86,4 +87,3 @@ export const es: SiteContent = {
     copyright: "© 2026 Default0. All rights reserved."
   }
 };
-

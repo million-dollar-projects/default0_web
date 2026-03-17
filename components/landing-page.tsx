@@ -48,13 +48,13 @@ function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">)
           <div className="mt-8 flex flex-wrap items-stretch gap-3 sm:items-center">
             <Link
               href={DOWNLOAD_URL}
-              className="inline-flex min-h-12 max-w-full items-center justify-center rounded-full bg-brand px-6 py-3 text-center text-sm font-semibold leading-tight text-white transition hover:bg-brand-strong"
+              className="ui-press cta-sheen inline-flex min-h-12 max-w-full items-center justify-center rounded-full bg-brand px-6 py-3 text-center text-sm font-semibold leading-tight text-white transition hover:bg-brand-strong"
             >
               {content.hero.primaryCta}
             </Link>
             <Link
               href="#features"
-              className="inline-flex min-h-12 max-w-full items-center justify-center rounded-full border border-line bg-surface px-6 py-3 text-center text-sm font-semibold leading-tight text-text transition hover:border-brand"
+              className="ui-press inline-flex min-h-12 max-w-full items-center justify-center rounded-full border border-line bg-surface px-6 py-3 text-center text-sm font-semibold leading-tight text-text transition hover:border-brand"
             >
               {content.hero.secondaryCta}
             </Link>
@@ -65,8 +65,8 @@ function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">)
 
         <Reveal>
           <div className="relative mx-auto w-full max-w-[760px]">
-            <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-brand/20 via-accent/25 to-brand-soft/30 blur-3xl" />
-            <div className="group rounded-[2rem] border border-line bg-surface p-3 shadow-glow">
+            <div className="hero-ambient absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-brand/20 via-accent/25 to-brand-soft/30 blur-3xl" />
+            <div className="group surface-lift rounded-[2rem] border border-line bg-surface p-3 shadow-glow">
               <div className="overflow-hidden rounded-[1.4rem] border border-line/70">
                 <div className="relative aspect-[16/10] w-full">
                   <Image
@@ -97,7 +97,7 @@ function CoreValues({ content }: Pick<LandingPageProps, "content">) {
         <div className="grid gap-5 md:grid-cols-3">
           {content.values.items.map((item, index) => (
             <Reveal key={item.title} delay={index * 0.06}>
-              <article className="h-full min-w-0 rounded-xxl border border-line bg-surface p-7 shadow-panel">
+              <article className="surface-lift h-full min-w-0 rounded-xxl border border-line bg-surface p-7 shadow-panel">
                 <h3 className="break-words text-xl font-semibold tracking-tight [overflow-wrap:anywhere]">{item.title}</h3>
                 <p className="mt-3 break-words leading-relaxed text-muted [overflow-wrap:anywhere]">{item.description}</p>
               </article>
@@ -119,7 +119,7 @@ function Features({ content }: Pick<LandingPageProps, "content">) {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {content.features.map((feature, index) => (
             <Reveal key={feature.title} delay={index * 0.035}>
-              <article className="h-full min-w-0 rounded-xl2 border border-line bg-bg/70 p-6">
+              <article className="surface-lift h-full min-w-0 rounded-xl2 border border-line bg-bg/70 p-6">
                 <h3 className="break-words font-semibold text-text [overflow-wrap:anywhere]">{feature.title}</h3>
                 <p className="mt-2 break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">{feature.description}</p>
               </article>
@@ -141,7 +141,7 @@ function Scenarios({ content }: Pick<LandingPageProps, "content">) {
         <div className="grid gap-4 md:grid-cols-2">
           {content.scenarios.map((scenario, index) => (
             <Reveal key={scenario.title} delay={index * 0.08}>
-              <article className="min-w-0 rounded-xl2 border border-line/70 bg-bg p-6">
+              <article className="surface-lift min-w-0 rounded-xl2 border border-line/70 bg-bg p-6">
                 <h3 className="break-words font-semibold [overflow-wrap:anywhere]">{scenario.title}</h3>
                 <p className="mt-2 break-words text-muted [overflow-wrap:anywhere]">{scenario.description}</p>
               </article>
@@ -188,7 +188,7 @@ function Testimonials({ content }: Pick<LandingPageProps, "content">) {
         <div className="grid gap-5 md:grid-cols-3">
           {content.testimonials.map((item, index) => (
             <Reveal key={item.name} delay={index * 0.08}>
-              <figure className="h-full min-w-0 rounded-xxl border border-line bg-surface p-7">
+              <figure className="surface-lift h-full min-w-0 rounded-xxl border border-line bg-surface p-7">
                 <blockquote className="break-words text-base leading-relaxed text-text [overflow-wrap:anywhere]">“{item.quote}”</blockquote>
                 <figcaption className="mt-5 text-sm text-muted">
                   <span className="break-words [overflow-wrap:anywhere]">{item.role}</span>
@@ -212,7 +212,7 @@ function FAQ({ content }: Pick<LandingPageProps, "content">) {
         <div className="grid gap-4 md:grid-cols-2">
           {content.faqs.map((faq, index) => (
             <Reveal key={faq.question} delay={index * 0.05}>
-              <details className="group min-w-0 rounded-xl2 border border-line bg-surface p-6 open:border-brand/45">
+              <details className="group surface-lift min-w-0 rounded-xl2 border border-line bg-surface p-6 open:border-brand/45">
                 <summary className="cursor-pointer list-none break-words font-semibold marker:hidden [overflow-wrap:anywhere]">{faq.question}</summary>
                 <p className="mt-3 break-words text-muted [overflow-wrap:anywhere]">{faq.answer}</p>
               </details>
@@ -235,7 +235,7 @@ function CTA({ content }: Pick<LandingPageProps, "content">) {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href={DOWNLOAD_URL}
-                className="inline-flex min-h-12 max-w-full items-center justify-center rounded-full bg-white px-6 py-3 text-center text-sm font-semibold leading-tight text-brand-strong transition hover:bg-white/90"
+                className="ui-press cta-sheen inline-flex min-h-12 max-w-full items-center justify-center rounded-full bg-white px-6 py-3 text-center text-sm font-semibold leading-tight text-brand-strong transition hover:bg-white/90"
               >
                 {content.cta.primary}
               </Link>
@@ -270,7 +270,7 @@ function Contact({ locale, title, feedbackLabel }: { locale: Locale; title: stri
             </a>
             <Link
               href={`/${locale}/feedback`}
-              className="ml-5 inline-flex min-h-10 max-w-full items-center justify-center rounded-full border border-line bg-bg/60 px-4 py-2 text-center text-sm font-medium leading-tight text-muted transition hover:border-brand hover:text-text"
+              className="ui-press ml-5 inline-flex min-h-10 max-w-full items-center justify-center rounded-full border border-line bg-bg/60 px-4 py-2 text-center text-sm font-medium leading-tight text-muted transition hover:border-brand hover:text-text"
             >
               {feedbackLabel}
             </Link>

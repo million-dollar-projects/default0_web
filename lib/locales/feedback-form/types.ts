@@ -1,0 +1,19 @@
+export type FeedbackFormCopy = {
+  typeLabel: string;
+  titleLabel: string;
+  detailsLabel: string;
+  stepsLabel: string;
+  contactLabel: string;
+  submit: string;
+  submitSending: string;
+  bugLabel: string;
+  featureLabel: string;
+  titlePlaceholder: string;
+  detailsPlaceholder: string;
+  stepsPlaceholder: string;
+  contactPlaceholder: string;
+  success: string;
+  errorFallback: string;
+  errorValidation: string;
+  errorServer: string;
+};
