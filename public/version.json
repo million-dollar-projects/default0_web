@@ -2,19 +2,27 @@
   "app": "default0",
   "channel": "stable",
   "latest": {
-    "version": "1.0.6",
-    "build": 13,
-    "releasedAt": "2026-03-17T04:44:04Z",
-    "downloadURL": "https://default0.com/",
-    "releaseNotes": "Release 1.0.6",
+    "version": "1.0.7",
+    "build": 18,
+    "releasedAt": "2026-03-19T03:10:16Z",
+    "downloadURL": "https://www.default0.com/",
+    "releaseNotes": "Release 1.0.7",
     "mandatory": false
   },
   "history": [
     {
+      "version": "1.0.7",
+      "build": 18,
+      "releasedAt": "2026-03-19T03:10:16Z",
+      "downloadURL": "https://www.default0.com/",
+      "releaseNotes": "Release 1.0.7",
+      "mandatory": false
+    },
+    {
       "version": "1.0.6",
       "build": 13,
       "releasedAt": "2026-03-17T04:44:04Z",
-      "downloadURL": "https://default0.com/",
+      "downloadURL": "https://www.default0.com/",
       "releaseNotes": "Release 1.0.6",
       "mandatory": false
     },
@@ -22,7 +30,7 @@
       "version": "1.0.5",
       "build": 10,
       "releasedAt": "2026-03-15T12:40:57Z",
-      "downloadURL": "https://default0.com/",
+      "downloadURL": "https://www.default0.com/",
       "releaseNotes": "Release 1.0.5",
       "mandatory": false
     },
@@ -30,7 +38,7 @@
       "version": "1.0.4",
       "build": 9,
       "releasedAt": "2026-03-15T04:05:09Z",
-      "downloadURL": "https://default0.com/",
+      "downloadURL": "https://www.default0.com/",
       "releaseNotes": "Release 1.0.4",
       "mandatory": false
     },
@@ -38,7 +46,7 @@
       "version": "1.0.3",
       "build": 7,
       "releasedAt": "2026-03-13T15:59:39Z",
-      "downloadURL": "https://default0.com/",
+      "downloadURL": "https://www.default0.com/",
       "releaseNotes": "Release 1.0.3",
       "mandatory": false
     },
@@ -46,7 +54,7 @@
       "version": "1.0.3",
       "build": 5,
       "releasedAt": "2026-03-13T15:51:59Z",
-      "downloadURL": "https://default0.com/",
+      "downloadURL": "https://www.default0.com/",
       "releaseNotes": "Release 1.0.3",
       "mandatory": false
     },
@@ -54,7 +62,7 @@
       "version": "1.0.2",
       "build": 4,
       "releasedAt": "2026-03-13T09:26:54Z",
-      "downloadURL": "https://default0.com/",
+      "downloadURL": "https://www.default0.com/",
       "releaseNotes": "Release 1.0.2",
       "mandatory": false
     },
@@ -62,7 +70,7 @@
       "version": "1.0.2",
       "build": 3,
       "releasedAt": "2026-03-13T09:21:08Z",
-      "downloadURL": "https://default0.com/",
+      "downloadURL": "https://www.default0.com/",
       "releaseNotes": "Release 1.0.2",
       "mandatory": false
     },
@@ -70,7 +78,7 @@
       "version": "1.0.0",
       "build": 1,
       "releasedAt": "2026-03-10T00:00:00Z",
-      "downloadURL": "https://default0.com/",
+      "downloadURL": "https://www.default0.com/",
       "releaseNotes": "Initial public release.",
       "mandatory": false
     }
