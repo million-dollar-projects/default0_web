@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
 import { getBlogPostBySlug } from "@/lib/blog";
 import SiteChrome from "@/components/site-chrome";
 import { Locale, getSiteContent, isLocale } from "@/lib/site-content";
@@ -38,11 +39,58 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-function renderLine(line: string, key: number) {
+function normalizeHref(href: string, locale: Locale): string {
+  if (href.startsWith("/blog/")) {
+    return `/${locale}${href}`;
+  }
+
+  return href;
+}
+
+function renderInlineContent(line: string, locale: Locale): ReactNode[] {
+  const pattern = /(\[[^\]]+\]\([^)]+\)|`[^`]+`)/g;
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+
+  for (const match of line.matchAll(pattern)) {
+    const token = match[0];
+    const index = match.index ?? 0;
+
+    if (index > lastIndex) {
+      nodes.push(line.slice(lastIndex, index));
+    }
+
+    const linkMatch = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (linkMatch) {
+      const [, label, href] = linkMatch;
+      nodes.push(
+        <Link key={`link-${index}`} href={normalizeHref(href, locale)} className="text-brand underline-offset-4 hover:underline">
+          {label}
+        </Link>
+      );
+    } else {
+      nodes.push(
+        <code key={`code-${index}`} className="rounded bg-page px-1.5 py-0.5 text-sm">
+          {token.slice(1, -1)}
+        </code>
+      );
+    }
+
+    lastIndex = index + token.length;
+  }
+
+  if (lastIndex < line.length) {
+    nodes.push(line.slice(lastIndex));
+  }
+
+  return nodes.length > 0 ? nodes : [line];
+}
+
+function renderLine(line: string, key: number, locale: Locale) {
   if (line.startsWith("### ")) {
     return (
       <h3 key={key} className="mt-6 text-xl font-semibold">
-        {line.replace(/^###\s+/, "")}
+        {renderInlineContent(line.replace(/^###\s+/, ""), locale)}
       </h3>
     );
   }
@@ -50,7 +98,7 @@ function renderLine(line: string, key: number) {
   if (line.startsWith("## ")) {
     return (
       <h2 key={key} className="mt-8 text-2xl font-semibold">
-        {line.replace(/^##\s+/, "")}
+        {renderInlineContent(line.replace(/^##\s+/, ""), locale)}
       </h2>
     );
   }
@@ -58,7 +106,7 @@ function renderLine(line: string, key: number) {
   if (line.startsWith("- ")) {
     return (
       <li key={key} className="ml-5 list-disc text-base leading-relaxed text-text">
-        {line.replace(/^- /, "")}
+        {renderInlineContent(line.replace(/^- /, ""), locale)}
       </li>
     );
   }
@@ -69,7 +117,7 @@ function renderLine(line: string, key: number) {
 
   return (
     <p key={key} className="text-base leading-relaxed text-text">
-      {line}
+      {renderInlineContent(line, locale)}
     </p>
   );
 }
@@ -101,7 +149,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
           <p className="text-sm text-muted">{post.date}</p>
           <h1 className="mt-2 break-words text-3xl font-semibold tracking-tight sm:text-4xl">{post.title}</h1>
           {post.description ? <p className="mt-4 text-muted">{post.description}</p> : null}
-          <div className="mt-8 space-y-2">{lines.map((line, index) => renderLine(line, index))}</div>
+          <div className="mt-8 space-y-2">{lines.map((line, index) => renderLine(line, index, locale))}</div>
         </article>
       </main>
     </SiteChrome>
