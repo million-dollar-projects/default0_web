@@ -4,7 +4,8 @@
 
 - 已写入文章: `content/blog/2026-03-20-mac-mute-when-app-opens.mdx`
 - 已写入文章: `content/blog/2026-03-21-mac-mute-on-bluetooth-disconnect.mdx`
-- 已发布功能覆盖: `Mute on Unlock`、`Mute on Output Change`、`Mute When App Opens`、`Mute on Bluetooth Disconnect`
+- 已写入文章: `content/blog/2026-03-22-mac-mute-on-wifi-change.mdx`
+- 已发布功能覆盖: `Mute on Unlock`、`Mute on Output Change`、`Mute When App Opens`、`Mute on Bluetooth Disconnect`、`Mute on Wi-Fi Change`
 
 ## 30 个转化优先选题
 
@@ -137,7 +138,7 @@
 
 ### Week 2
 
-- 2026-03-27: Mac 切换 Wi-Fi 后自动静音：从家里到办公室不怕突然出声
+- 2026-03-22: Mac 切换 Wi-Fi 后自动静音：从家里到办公室不怕突然出声
 - 2026-03-31: 开机登录后先静音：Mac 上班第一分钟别再突然出声
 
 ### Week 3
@@ -155,4 +156,5 @@
 - 全部选题都只围绕已支持功能展开，没有扩展到不存在的能力。
 - 已优先把高转化意图的 Pro 文章放在第一篇，方便先测试转化表现。
 - Week 1 的第二篇已提前在 2026-03-21 写入，当前排期按实际落地日期更新。
+- Week 2 的第一篇已提前在 2026-03-22 写入，当前排期按实际落地日期更新。
 - 内链建议统一使用 `/blog/<slug>` 形式，页面渲染层会自动补齐当前语言前缀。

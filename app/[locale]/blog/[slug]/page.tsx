@@ -87,6 +87,20 @@ function renderInlineContent(line: string, locale: Locale): ReactNode[] {
 }
 
 function renderLine(line: string, key: number, locale: Locale) {
+  const imageMatch = line.match(/^!\[([^\]]*)\]\((\S+?)(?:\s+"([^"]+)")?\)$/);
+  if (imageMatch) {
+    const [, alt, src, caption] = imageMatch;
+
+    return (
+      <figure key={key} className="my-8 overflow-hidden rounded-xl2 border border-line bg-page/40">
+        {/* External stock-image URLs are user/content-driven, so a plain img is more robust than Next Image domain allowlists here. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt} loading="lazy" className="h-auto w-full object-cover" referrerPolicy="no-referrer" />
+        {caption ? <figcaption className="border-t border-line px-4 py-3 text-sm text-muted">{caption}</figcaption> : null}
+      </figure>
+    );
+  }
+
   if (line.startsWith("### ")) {
     return (
       <h3 key={key} className="mt-6 text-xl font-semibold">
