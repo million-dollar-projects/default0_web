@@ -1,7 +1,7 @@
 import type { SiteContent } from "@/lib/locales/types";
 export const ko: SiteContent = {
   brand: "Default0",
-  nav: { features: "기능", scenarios: "사용 사례", faq: "FAQ" },
+  nav: { features: "기능", scenarios: "사용 사례", faq: "FAQ", download: "다운로드" },
   labels: {
     testimonials: "사용자 후기",
     faq: "FAQ",

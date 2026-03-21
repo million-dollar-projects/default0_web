@@ -41,7 +41,7 @@ body {
 
 body {
   min-height: 100dvh;
-  font-family: var(--font-body), "PingFang SC", "Hiragino Sans GB", "Hiragino Sans", "Microsoft YaHei", "Apple SD Gothic Neo", sans-serif;
+  font-family: var(--font-body-latin), "Avenir Next", "Segoe UI", sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,7 +54,48 @@ h4,
 h5,
 h6,
 summary {
-  font-family: var(--font-display), var(--font-body), sans-serif;
+  font-family: var(--font-display-latin), var(--font-body-latin), sans-serif;
+}
+
+.locale-shell {
+  font-family: var(--font-body-latin), "Avenir Next", "Segoe UI", sans-serif;
+}
+
+.locale-shell :where(h1, h2, h3, h4, h5, h6, summary) {
+  font-family: var(--font-display-latin), var(--font-body-latin), sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.locale-shell[data-locale="zh-CN"] {
+  font-family: var(--font-body-zh), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+.locale-shell[data-locale="ja"] {
+  font-family: var(--font-body-ja), "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+
+.locale-shell[data-locale="ko"] {
+  font-family: var(--font-body-ko), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+.locale-shell[data-locale="de"],
+.locale-shell[data-locale="en"],
+.locale-shell[data-locale="es"] {
+  font-family: var(--font-body-latin), "Avenir Next", "Segoe UI", sans-serif;
+}
+
+.locale-shell[data-locale="zh-CN"] :where(h1, h2, h3, h4, h5, h6, summary),
+.locale-shell[data-locale="ja"] :where(h1, h2, h3, h4, h5, h6, summary),
+.locale-shell[data-locale="ko"] :where(h1, h2, h3, h4, h5, h6, summary) {
+  font-family: inherit;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.locale-shell[data-locale="ja"] :where(p, li, blockquote, summary),
+.locale-shell[data-locale="ko"] :where(p, li, blockquote, summary),
+.locale-shell[data-locale="zh-CN"] :where(p, li, blockquote, summary) {
+  letter-spacing: -0.01em;
 }
 
 ::selection {

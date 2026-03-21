@@ -37,6 +37,7 @@ export type SiteContent = {
     features: string;
     scenarios: string;
     faq: string;
+    download: string;
   };
   labels: {
     testimonials: string;

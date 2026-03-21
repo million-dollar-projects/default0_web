@@ -1,7 +1,7 @@
 import type { SiteContent } from "@/lib/locales/types";
 export const ja: SiteContent = {
   brand: "Default0",
-  nav: { features: "機能", scenarios: "利用シーン", faq: "FAQ" },
+  nav: { features: "機能", scenarios: "利用シーン", faq: "FAQ", download: "ダウンロード" },
   labels: {
     testimonials: "ユーザーの声",
     faq: "FAQ",

@@ -42,6 +42,9 @@ function Header({ content, locale, sectionPrefix }: { content: SiteContent; loca
           <Link href={`${sectionPrefix}#faq`} className="nav-link transition hover:text-text">
             {content.nav.faq}
           </Link>
+          <Link href={`${sectionPrefix}#download`} className="nav-link transition hover:text-text">
+            {content.nav.download}
+          </Link>
           <Link href={`/${locale}/blog`} className="nav-link transition hover:text-text">
             {content.labels.blog}
           </Link>

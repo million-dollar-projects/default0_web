@@ -226,7 +226,7 @@ function FAQ({ content }: Pick<LandingPageProps, "content">) {
 
 function CTA({ content }: Pick<LandingPageProps, "content">) {
   return (
-    <section className="pb-section pt-8">
+    <section id="download" className="pb-section pt-8">
       <div className="mx-auto w-container">
         <Reveal>
           <div className="min-w-0 rounded-xxl border border-brand/20 bg-gradient-to-br from-[#4f89d9] via-[#5b93dd] to-[#4a84d3] p-9 text-white sm:p-12 dark:from-[#2d5f9f] dark:via-[#3569aa] dark:to-[#2b5b98]">

@@ -1,7 +1,7 @@
 import type { SiteContent } from "@/lib/locales/types";
 export const zhCN: SiteContent = {
   brand: "Default0",
-  nav: { features: "功能", scenarios: "场景", faq: "FAQ" },
+  nav: { features: "功能", scenarios: "场景", faq: "FAQ", download: "下载" },
   labels: {
     testimonials: "用户评价",
     faq: "FAQ",

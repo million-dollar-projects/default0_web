@@ -1,7 +1,7 @@
 import type { SiteContent } from "@/lib/locales/types";
 export const de: SiteContent = {
   brand: "Default0",
-  nav: { features: "Funktionen", scenarios: "Szenarien", faq: "FAQ" },
+  nav: { features: "Funktionen", scenarios: "Szenarien", faq: "FAQ", download: "Download" },
   labels: {
     testimonials: "Stimmen",
     faq: "FAQ",
