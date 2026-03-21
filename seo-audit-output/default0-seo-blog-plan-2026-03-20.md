@@ -3,7 +3,8 @@
 ## 已完成
 
 - 已写入文章: `content/blog/2026-03-20-mac-mute-when-app-opens.mdx`
-- 已发布功能覆盖: `Mute on Unlock`、`Mute on Output Change`、`Mute When App Opens`
+- 已写入文章: `content/blog/2026-03-21-mac-mute-on-bluetooth-disconnect.mdx`
+- 已发布功能覆盖: `Mute on Unlock`、`Mute on Output Change`、`Mute When App Opens`、`Mute on Bluetooth Disconnect`
 
 ## 30 个转化优先选题
 
@@ -132,7 +133,7 @@
 ### Week 1
 
 - 2026-03-20: 会议软件打开即静音：用 Default0 Pro 避免 Zoom 启动外放
-- 2026-03-24: 蓝牙耳机断开后 Mac 自动静音怎么做
+- 2026-03-21: 蓝牙耳机断开后 Mac 自动静音怎么做
 
 ### Week 2
 
@@ -153,4 +154,5 @@
 
 - 全部选题都只围绕已支持功能展开，没有扩展到不存在的能力。
 - 已优先把高转化意图的 Pro 文章放在第一篇，方便先测试转化表现。
+- Week 1 的第二篇已提前在 2026-03-21 写入，当前排期按实际落地日期更新。
 - 内链建议统一使用 `/blog/<slug>` 形式，页面渲染层会自动补齐当前语言前缀。
