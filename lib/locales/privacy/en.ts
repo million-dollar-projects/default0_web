@@ -9,7 +9,8 @@ export const enPrivacy: PrivacyContent = {
       paragraphs: [
         "default0 values your privacy. This Privacy Policy explains how we handle information.",
         "The core features of default0 run on your local device.",
-        "In your current version, we do not collect, store, or sell your personally identifiable information.",
+        "In your current version, core features do not collect, store, or sell your personally identifiable information.",
+        "If you voluntarily submit feedback through our feedback page, the content and contact info you provide may be sent to GitHub to create an issue and could be publicly visible.",
         "We do not upload the following local information to developer servers to identify you:"
       ],
       items: [
@@ -33,7 +34,7 @@ export const enPrivacy: PrivacyContent = {
     {
       heading: "3. App Store Purchases and Payments",
       paragraphs: [
-        "If you purchase Pro features in the App Store version, the transaction is processed by Apple via StoreKit.",
+        "If a future version offers Pro features in the App Store, the transaction will be processed by Apple via StoreKit.",
         "We do not directly obtain your full payment information (such as bank card numbers)."
       ]
     },
@@ -48,7 +49,8 @@ export const enPrivacy: PrivacyContent = {
       heading: "5. Third-Party Services and Links",
       paragraphs: [
         "The app may include links to external webpages (such as feedback pages or the official website).",
-        "Data handling by third-party websites is governed by their own privacy policies."
+        "Data handling by third-party websites is governed by their own privacy policies.",
+        "When you submit feedback, relevant data may be processed by GitHub as a third-party service."
       ]
     },
     {

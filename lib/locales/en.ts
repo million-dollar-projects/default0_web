@@ -161,7 +161,7 @@ export const en: SiteContent = {
   },
   footer: {
     tagline: "Default0, automatic mute protection.",
-    links: ["Features", "Feedback", "Changelog", "FAQ", "Privacy", "Contact"],
+    links: ["Features", "Feedback", "Changelog", "FAQ", "Privacy", "Terms", "Contact"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };

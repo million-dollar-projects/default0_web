@@ -5,12 +5,13 @@ import { getBlogPosts } from "@/lib/blog";
 import { locales } from "@/lib/site-content";
 import { SITE_URL } from "@/lib/seo";
 
-const STATIC_PATHS = ["", "/blog", "/feedback", "/privacy"] as const;
+const STATIC_PATHS = ["", "/blog", "/feedback", "/privacy", "/terms"] as const;
 const STATIC_ROUTE_FILES: Record<(typeof STATIC_PATHS)[number], string> = {
   "": "app/[locale]/page.tsx",
   "/blog": "app/[locale]/blog/page.tsx",
   "/feedback": "app/[locale]/feedback/page.tsx",
-  "/privacy": "app/[locale]/privacy/page.tsx"
+  "/privacy": "app/[locale]/privacy/page.tsx",
+  "/terms": "app/[locale]/terms/page.tsx"
 };
 
 function withBase(pathname: string): string {

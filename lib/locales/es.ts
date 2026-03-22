@@ -83,7 +83,7 @@ export const es: SiteContent = {
   },
   footer: {
     tagline: "Default0, protección automática de silencio.",
-    links: ["Funciones", "Feedback", "Registro de cambios", "FAQ", "Privacidad", "Contacto"],
+    links: ["Funciones", "Feedback", "Registro de cambios", "FAQ", "Privacidad", "Términos", "Contacto"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };

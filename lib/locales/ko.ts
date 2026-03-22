@@ -83,7 +83,7 @@ export const ko: SiteContent = {
   },
   footer: {
     tagline: "Default0, 자동 음소거 보호.",
-    links: ["기능", "피드백", "업데이트 내역", "FAQ", "개인정보", "문의"],
+    links: ["기능", "피드백", "업데이트 내역", "FAQ", "개인정보", "약관", "문의"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };

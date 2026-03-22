@@ -77,7 +77,7 @@ export default function FeedbackPage({ params }: PageProps) {
   const privacyLabel = content.footer.links[4];
 
   return (
-    <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`}>
+    <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`} showDownloadNav={false}>
       <main className="min-h-dvh">
         <section className="py-section">
           <div className="mx-auto w-container">

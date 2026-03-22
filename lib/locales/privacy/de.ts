@@ -9,7 +9,8 @@ export const dePrivacy: PrivacyContent = {
       paragraphs: [
         "default0 nimmt deine Privatsphäre ernst. Diese Datenschutzerklärung erläutert, wie wir Informationen verarbeiten.",
         "Die Kernfunktionen von default0 laufen auf deinem lokalen Gerät.",
-        "In der aktuell von dir verwendeten Version erheben, speichern oder verkaufen wir keine personenbezogenen Daten.",
+        "In der aktuell von dir verwendeten Version erheben, speichern oder verkaufen die Kernfunktionen keine personenbezogenen Daten.",
+        "Wenn du freiwillig Feedback über unsere Feedback-Seite sendest, können die von dir angegebenen Inhalte und Kontaktdaten an GitHub zur Issue-Erstellung übermittelt und öffentlich sichtbar werden.",
         "Wir laden die folgenden lokalen Informationen nicht auf Entwickler-Server hoch, um dich zu identifizieren:"
       ],
       items: [
@@ -33,7 +34,7 @@ export const dePrivacy: PrivacyContent = {
     {
       heading: "3. App-Store-Käufe und Zahlungen",
       paragraphs: [
-        "Wenn du in der App-Store-Version Pro-Funktionen kaufst, wird die Transaktion von Apple über StoreKit verarbeitet.",
+        "Wenn eine zukünftige App-Store-Version Pro-Funktionen anbietet, wird die Transaktion von Apple über StoreKit verarbeitet.",
         "Wir erhalten nicht direkt deine vollständigen Zahlungsinformationen (z. B. Kartennummern)."
       ]
     },
@@ -48,7 +49,8 @@ export const dePrivacy: PrivacyContent = {
       heading: "5. Dienste und Links Dritter",
       paragraphs: [
         "Die App kann Links zu externen Webseiten enthalten (z. B. Feedback-Seite oder offizielle Website).",
-        "Die Datenverarbeitung auf Drittseiten unterliegt deren eigenen Datenschutzrichtlinien."
+        "Die Datenverarbeitung auf Drittseiten unterliegt deren eigenen Datenschutzrichtlinien.",
+        "Wenn du Feedback sendest, können relevante Daten von GitHub als Drittanbieter verarbeitet werden."
       ]
     },
     {

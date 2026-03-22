@@ -15,6 +15,7 @@
 ## Docs and Pages
 - Blog: https://default0.com/en/blog
 - Privacy: https://default0.com/en/privacy
+- Terms: https://default0.com/en/terms
 - Feedback: https://default0.com/en/feedback
 
 ## Contact

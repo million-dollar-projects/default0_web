@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteChrome from "@/components/site-chrome";
-import { privacyContent } from "@/lib/locales/privacy";
+import { termsContent } from "@/lib/locales/terms";
 import { Locale, getSiteContent, isLocale, locales } from "@/lib/site-content";
 import { buildLanguageAlternates } from "@/lib/seo";
 
@@ -17,27 +17,27 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: PageProps): Metadata {
   if (!isLocale(params.locale)) return {};
 
-  const c = privacyContent[params.locale];
+  const c = termsContent[params.locale];
   const description = c.sections[0]?.paragraphs?.[0] ?? c.title;
 
   return {
     title: `${c.title} | Default0`,
     description,
     alternates: {
-      canonical: `/${params.locale}/privacy`,
-      languages: buildLanguageAlternates((locale) => `/${locale}/privacy`)
+      canonical: `/${params.locale}/terms`,
+      languages: buildLanguageAlternates((locale) => `/${locale}/terms`)
     }
   };
 }
 
-export default function PrivacyPage({ params }: PageProps) {
+export default function TermsPage({ params }: PageProps) {
   if (!isLocale(params.locale)) {
     notFound();
   }
 
   const locale = params.locale as Locale;
   const content = getSiteContent(locale);
-  const c = privacyContent[locale];
+  const c = termsContent[locale];
 
   return (
     <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`} showDownloadNav={false}>

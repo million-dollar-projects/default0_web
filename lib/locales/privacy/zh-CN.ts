@@ -9,7 +9,8 @@ export const zhCNPrivacy: PrivacyContent = {
       paragraphs: [
         "default0 重视你的隐私。本隐私政策说明我们如何处理信息。",
         "default0 的核心功能在本地设备运行。",
-        "在你当前使用的版本中，我们不会收集、存储或出售你的个人身份信息。",
+        "在你当前使用的版本中，核心功能不会收集、存储或出售你的个人身份信息。",
+        "如果你自愿通过反馈页提交反馈，你提供的内容和联系方式可能会发送到 GitHub 创建 issue，且可能公开可见。",
         "我们不会将你的以下本地信息上传到开发者服务器用于识别你个人："
       ],
       items: [
@@ -33,7 +34,7 @@ export const zhCNPrivacy: PrivacyContent = {
     {
       heading: "3. App Store 购买与支付",
       paragraphs: [
-        "若你在 App Store 版本中购买 Pro 功能，交易由 Apple 通过 StoreKit 处理。",
+        "若未来版本在 App Store 提供 Pro 功能，交易将由 Apple 通过 StoreKit 处理。",
         "我们不会直接获取你的完整支付信息（如银行卡号）。"
       ]
     },
@@ -48,7 +49,8 @@ export const zhCNPrivacy: PrivacyContent = {
       heading: "5. 第三方服务与链接",
       paragraphs: [
         "App 内可能包含跳转到外部网页（如反馈页、官网）的链接。",
-        "第三方网站的数据处理行为受其自身隐私政策约束。"
+        "第三方网站的数据处理行为受其自身隐私政策约束。",
+        "当你提交反馈时，相关数据可能由 GitHub 作为第三方服务进行处理。"
       ]
     },
     {

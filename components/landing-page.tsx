@@ -27,7 +27,7 @@ export default function LandingPage({ content, locale }: LandingPageProps) {
         <Testimonials content={content} />
         <FAQ content={content} />
         <CTA content={content} />
-        <Contact locale={locale} title={content.footer.links[5]} feedbackLabel={content.footer.links[1]} />
+        <Contact locale={locale} title={content.footer.links[6]} feedbackLabel={content.footer.links[1]} />
       </>
     </SiteChrome>
   );

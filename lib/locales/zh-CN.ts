@@ -74,7 +74,7 @@ export const zhCN: SiteContent = {
   },
   footer: {
     tagline: "Default0，自动静音守护。",
-    links: ["功能", "提交反馈", "更新日志", "常见问题", "隐私说明", "联系我们"],
+    links: ["功能", "提交反馈", "更新日志", "常见问题", "隐私说明", "服务条款", "联系我们"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };

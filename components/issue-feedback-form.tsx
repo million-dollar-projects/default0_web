@@ -122,7 +122,6 @@ export default function IssueFeedbackForm({ locale }: { locale: Locale }) {
         <label className="grid gap-2">
           <span className="text-sm font-medium text-muted">{copy.contactLabel}</span>
           <input
-            required
             type="email"
             value={contact}
             onChange={(e) => setContact(e.target.value)}
@@ -130,6 +129,8 @@ export default function IssueFeedbackForm({ locale }: { locale: Locale }) {
             className="h-11 rounded-xl border border-line bg-bg px-3 text-sm outline-none transition focus:border-brand"
           />
         </label>
+
+        <p className="text-xs leading-relaxed text-muted">{copy.privacyNotice}</p>
 
         <button
           type="submit"

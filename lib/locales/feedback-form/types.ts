@@ -4,6 +4,7 @@ export type FeedbackFormCopy = {
   detailsLabel: string;
   stepsLabel: string;
   contactLabel: string;
+  privacyNotice: string;
   submit: string;
   submitSending: string;
   bugLabel: string;

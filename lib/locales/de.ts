@@ -83,7 +83,7 @@ export const de: SiteContent = {
   },
   footer: {
     tagline: "Default0, automatischer Stummschutz.",
-    links: ["Funktionen", "Feedback", "Changelog", "FAQ", "Datenschutz", "Kontakt"],
+    links: ["Funktionen", "Feedback", "Changelog", "FAQ", "Datenschutz", "Nutzungsbedingungen", "Kontakt"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };

@@ -8,13 +8,14 @@ type SiteChromeProps = {
   locale: Locale;
   children: React.ReactNode;
   sectionPrefix?: string;
+  showDownloadNav?: boolean;
 };
 
-export default function SiteChrome({ content, locale, children, sectionPrefix = "" }: SiteChromeProps) {
+export default function SiteChrome({ content, locale, children, sectionPrefix = "", showDownloadNav = true }: SiteChromeProps) {
   return (
     <div className="relative isolate overflow-x-clip bg-bg text-text" lang={locale}>
       <BackgroundAura />
-      <Header content={content} locale={locale} sectionPrefix={sectionPrefix} />
+      <Header content={content} locale={locale} sectionPrefix={sectionPrefix} showDownloadNav={showDownloadNav} />
       <main className="relative z-10">{children}</main>
       <div className="relative z-10">
         <Footer content={content} locale={locale} sectionPrefix={sectionPrefix} />
@@ -23,7 +24,7 @@ export default function SiteChrome({ content, locale, children, sectionPrefix = 
   );
 }
 
-function Header({ content, locale, sectionPrefix }: { content: SiteContent; locale: Locale; sectionPrefix: string }) {
+function Header({ content, locale, sectionPrefix, showDownloadNav }: { content: SiteContent; locale: Locale; sectionPrefix: string; showDownloadNav: boolean }) {
   return (
     <header className="sticky top-0 z-30 border-b border-transparent backdrop-blur supports-[backdrop-filter]:bg-bg/75">
       <div className="mx-auto flex w-container items-center justify-between py-5">
@@ -42,9 +43,11 @@ function Header({ content, locale, sectionPrefix }: { content: SiteContent; loca
           <Link href={`${sectionPrefix}#faq`} className="nav-link transition hover:text-text">
             {content.nav.faq}
           </Link>
-          <Link href={`${sectionPrefix}#download`} className="nav-link transition hover:text-text">
-            {content.nav.download}
-          </Link>
+          {showDownloadNav ? (
+            <Link href={`${sectionPrefix}#download`} className="nav-link transition hover:text-text">
+              {content.nav.download}
+            </Link>
+          ) : null}
           <Link href={`/${locale}/blog`} className="nav-link transition hover:text-text">
             {content.labels.blog}
           </Link>
@@ -65,7 +68,8 @@ function Footer({ content, locale, sectionPrefix }: { content: SiteContent; loca
     if (index === 2) return "https://github.com/million-dollar-projects/default0_web/releases";
     if (index === 3) return `${sectionPrefix}#faq`;
     if (index === 4) return `/${locale}/privacy`;
-    if (index === 5) return `${sectionPrefix}#contact`;
+    if (index === 5) return `/${locale}/terms`;
+    if (index === 6) return `${sectionPrefix}#contact`;
     return "#";
   };
 
