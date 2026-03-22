@@ -83,7 +83,7 @@ export const ja: SiteContent = {
   },
   footer: {
     tagline: "Default0、自動ミュート保護。",
-    links: ["機能", "フィードバック", "更新履歴", "FAQ", "プライバシー", "利用規約", "お問い合わせ"],
+    links: ["機能", "フィードバック", "FAQ", "プライバシー", "利用規約", "お問い合わせ"],
     copyright: "© 2026 Default0. All rights reserved."
   }
 };

@@ -27,7 +27,7 @@ export default function LandingPage({ content, locale }: LandingPageProps) {
         <Testimonials content={content} />
         <FAQ content={content} />
         <CTA content={content} />
-        <Contact locale={locale} title={content.footer.links[6]} feedbackLabel={content.footer.links[1]} />
+        <Contact locale={locale} title={content.footer.links[5]} feedbackLabel={content.footer.links[1]} />
       </>
     </SiteChrome>
   );
@@ -265,7 +265,7 @@ function Contact({ locale, title, feedbackLabel }: { locale: Locale; title: stri
           <div className="min-w-0 rounded-xxl border border-line bg-surface p-8 sm:p-10">
             <h2 className="break-words text-2xl font-semibold tracking-tight [overflow-wrap:anywhere] sm:text-3xl">{title}</h2>
             <p className="mt-3 break-words text-muted [overflow-wrap:anywhere]">{descriptionByLocale[locale]}</p>
-            <a href="mailto:help@default0.com" className="mt-5 inline-flex break-all text-lg font-semibold text-brand transition hover:text-brand-strong">
+            <a id="contact-email" href="mailto:help@default0.com" className="mt-5 inline-flex break-all text-lg font-semibold text-brand transition hover:text-brand-strong">
               help@default0.com
             </a>
             <Link

@@ -65,11 +65,10 @@ function Footer({ content, locale, sectionPrefix }: { content: SiteContent; loca
   const getHref = (index: number): string => {
     if (index === 0) return `${sectionPrefix}#features`;
     if (index === 1) return `/${locale}/feedback`;
-    if (index === 2) return "https://github.com/million-dollar-projects/default0_web/releases";
-    if (index === 3) return `${sectionPrefix}#faq`;
-    if (index === 4) return `/${locale}/privacy`;
-    if (index === 5) return `/${locale}/terms`;
-    if (index === 6) return `${sectionPrefix}#contact`;
+    if (index === 2) return `${sectionPrefix}#faq`;
+    if (index === 3) return `/${locale}/privacy`;
+    if (index === 4) return `/${locale}/terms`;
+    if (index === 5) return `${sectionPrefix}#contact-email`;
     return "#";
   };
 

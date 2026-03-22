@@ -74,7 +74,7 @@ export default function FeedbackPage({ params }: PageProps) {
   const locale = params.locale as Locale;
   const c = copyByLocale[locale];
   const content = getSiteContent(locale);
-  const privacyLabel = content.footer.links[4];
+  const privacyLabel = content.footer.links[3];
 
   return (
     <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`} showDownloadNav={false}>
