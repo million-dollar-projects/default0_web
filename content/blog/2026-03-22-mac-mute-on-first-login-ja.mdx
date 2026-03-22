@@ -1,0 +1,97 @@
+---
+title: "Macの起動直後を自動ミュート：初回ログイン時の外部再生を防ぐ設定"
+description: "起動直後に音量チェックを忘れがちな人向けに、Default0 の `Mute on First Login` で最初の1分を安全化し、会議前や静かな場所での外部再生リスクを下げる方法を紹介します。"
+date: "2026-03-22"
+slug: "mac-mute-on-first-login"
+locale: "ja"
+keywords: ["mac 起動直後 自動ミュート", "初回ログイン 外部再生 防止", "default0 mute on first login"]
+tags: ["default0", "mac", "自動ミュート"]
+draft: false
+---
+
+意図しない外部再生は、再生ボタンを押した瞬間よりも「起動直後」に起きることがよくあります。
+
+Macを起動して、すぐにメッセージ返信や会議準備を始める。その間にシステムやアプリは状態を復元し、あなたの注意は音量から離れがちです。
+
+![朝のオフィスで複数人がノートPCで作業している様子](https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1800 "起動直後は音量確認を見落としやすい時間帯")
+
+## なぜ初回ログイン直後が危険なのか
+
+`Mute on First Login` は、起動後の最初の1分という失敗しやすい時間帯をカバーします。
+
+- システムとアプリが同時に状態復元している
+- 会議/連絡アプリを急いで開きやすい
+- 優先するのは作業開始で、音量確認が後回しになる
+- オフィスや図書館では一度の外部再生でも影響が大きい
+
+朝の立ち上がりでミスしやすいなら、このルールは効果が高いです。
+
+## Default0で `Mute on First Login` を有効化
+
+設定は1分程度で完了します。
+
+- メニューバーから Default0 を開く
+- `Mute on First Login` を探す
+- ルールをオンにする
+- 一度再起動して、初回ログイン時に先にミュートされるか確認する
+
+あわせて次のルールも有効です。
+
+- [Macの出力切替で自動ミュート](/blog/mac-mute-on-output-change)
+- [Bluetoothイヤホン切断時にMacを自動ミュートする方法：音がすぐスピーカーに戻るのを防ぐ](/blog/mac-mute-on-bluetooth-disconnect)
+- [Macのロック解除直後に自動ミュートする設定ガイド](/blog/mac-mute-on-unlock)
+
+## よくある利用シーン
+
+### 1）朝会直前に起動してすぐ作業に入る
+
+「まず音量チェック」ではなく、「まず安全にミュート」にできるので、立ち上がりが安定します。
+
+### 2）再起動後すぐ会議へ戻る
+
+再起動後にタブやアプリが復帰して、気づく前に音が出る失敗を防げます。
+
+### 3）Proと組み合わせて二重に対策
+
+`Mute on First Login` で起動直後を守り、会議アプリ起動時のリスクには [会議アプリ起動時に自動ミュート：Default0 ProでZoom起動時の外部再生を防ぐ](/blog/mac-mute-when-app-opens) を追加します。
+
+![会議室でノートPCを囲んで準備しているチーム](https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&w=1800 "会議前の慌ただしい時間ほど先にミュートが有効")
+
+## 有効化後の変化
+
+- 起動直後の操作が安定する
+- 静かな環境での外部再生リスクを下げられる
+- 毎回の音量確認をルールに任せられる
+
+機能追加というより、気まずい瞬間を減らすための設定です。
+
+## FAQ
+
+### 1）`Mute on First Login` をオンにすると、その後もずっと無音ですか？
+
+いいえ。起動後の初回ログインでのみ発動し、その後は好きなタイミングで音量を戻せます。
+
+### 2）`Mute on Unlock` との違いは？
+
+`Mute on First Login` は起動直後、`Mute on Unlock` は日常のロック解除直後をカバーします。対象の時間帯が異なります。
+
+### 3）Wi-Fi切替時ミュートを使っていれば十分ですか？
+
+用途が違います。Wi-Fi切替はネットワーク遷移、初回ログインは起動直後向けです。[MacでWi-Fi切替時に自動ミュート：自宅、オフィス、テザリングの切替でも突然の外部再生を防ぐ](/blog/mac-mute-on-wifi-change) も参照してください。
+
+### 4）これはPro機能ですか？
+
+いいえ。`Mute on First Login` は基本機能です。Proは主に `Mute When App Opens` などのアプリ起点ルール向けです。
+
+## 今すぐ始める
+
+1. まず Default0 を試して `Mute on First Login` をオン。  
+2. 会議が多い場合は Pro の `Mute When App Opens` も追加して、起動直後とアプリ起動時をまとめてカバー。
+
+![静かな共有スペースでMac作業に集中する人々](https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=1800 "静かな場所ほど起動直後の自動ミュートが効く")
+
+## 画像ソース
+
+- [Pexels: Office coworkers discussing morning work](https://www.pexels.com/photo/1181406/)
+- [Pexels: Team meeting around a laptop](https://www.pexels.com/photo/380769/)
+- [Pexels: Quiet shared workspace with laptops](https://www.pexels.com/photo/1595385/)
