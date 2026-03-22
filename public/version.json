@@ -2,14 +2,22 @@
   "app": "default0",
   "channel": "stable",
   "latest": {
-    "version": "1.0.9",
-    "build": 20,
-    "releasedAt": "2026-03-21T14:40:29Z",
+    "version": "1.1.0",
+    "build": 22,
+    "releasedAt": "2026-03-22T11:04:25Z",
     "downloadURL": "https://www.default0.com/",
-    "releaseNotes": "Release 1.0.9",
+    "releaseNotes": "Release 1.1.0",
     "mandatory": false
   },
   "history": [
+    {
+      "version": "1.1.0",
+      "build": 22,
+      "releasedAt": "2026-03-22T11:04:25Z",
+      "downloadURL": "https://www.default0.com/",
+      "releaseNotes": "Release 1.1.0",
+      "mandatory": false
+    },
     {
       "version": "1.0.9",
       "build": 20,
