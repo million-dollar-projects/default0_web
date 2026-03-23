@@ -5,6 +5,7 @@
 - 已写入文章: `content/blog/2026-03-20-mac-mute-when-app-opens.mdx`
 - 已写入文章: `content/blog/2026-03-21-mac-mute-on-bluetooth-disconnect.mdx`
 - 已写入文章: `content/blog/2026-03-22-mac-mute-on-wifi-change.mdx`
+- 已写入文章: `content/blog/2026-03-23-mac-3-auto-mute-rules-for-remote-meetings.mdx`
 - 已发布功能覆盖: `Mute on Unlock`、`Mute on Output Change`、`Mute When App Opens`、`Mute on Bluetooth Disconnect`、`Mute on Wi-Fi Change`
 
 ## 30 个转化优先选题
@@ -143,7 +144,7 @@
 
 ### Week 3
 
-- 2026-04-03: 远程会议多的人，Mac 至少该开哪 3 条自动静音规则
+- 2026-03-23: 远程会议多的人，Mac 至少该开哪 3 条自动静音规则
 - 2026-04-07: 外接显示器、耳机、扬声器混用时，Mac 如何先静音再切换
 
 ### Week 4
@@ -157,4 +158,5 @@
 - 已优先把高转化意图的 Pro 文章放在第一篇，方便先测试转化表现。
 - Week 1 的第二篇已提前在 2026-03-21 写入，当前排期按实际落地日期更新。
 - Week 2 的第一篇已提前在 2026-03-22 写入，当前排期按实际落地日期更新。
+- Week 3 的第一篇已提前在 2026-03-23 写入，当前排期按实际落地日期更新。
 - 内链建议统一使用 `/blog/<slug>` 形式，页面渲染层会自动补齐当前语言前缀。
