@@ -1,6 +1,6 @@
 ---
 title: "Mac 부팅 직후 자동 음소거: 첫 로그인 외부 출력 사고 줄이는 방법"
-description: "부팅 직후 볼륨 점검을 놓치기 쉬운 사용자를 위해 Default0의 `Mute on First Login` 설정법을 정리했습니다. 시작 1분 리스크를 줄여 회의 전과 조용한 공간에서 더 안전하게 사용할 수 있습니다."
+description: "부팅 직후 볼륨 점검을 놓치기 쉬운 사용자를 위해 Default0의 `첫 로그인 시 음소거` 설정법을 정리했습니다. 시작 1분 리스크를 줄여 회의 전과 조용한 공간에서 더 안전하게 사용할 수 있습니다."
 date: "2026-03-22"
 slug: "mac-mute-on-first-login"
 locale: "ko"
@@ -17,7 +17,7 @@ draft: false
 
 ## 왜 첫 로그인 구간이 위험한가
 
-`Mute on First Login`은 부팅 후 첫 1분의 실수 구간을 겨냥합니다.
+`첫 로그인 시 음소거`는 부팅 후 첫 1분의 실수 구간을 겨냥합니다.
 
 - 시스템과 앱이 동시에 복원되는 시점
 - 회의/메신저 앱을 급하게 여는 상황
@@ -26,12 +26,12 @@ draft: false
 
 부팅 직후 실수가 반복된다면 이 규칙이 가장 빠른 해결책입니다.
 
-## Default0에서 `Mute on First Login` 켜기
+## Default0에서 `첫 로그인 시 음소거` 켜기
 
 1분이면 완료됩니다.
 
 - 메뉴 막대에서 Default0 실행
-- `Mute on First Login` 찾기
+- `첫 로그인 시 음소거` 찾기
 - 규칙 활성화
 - 재부팅 후 첫 로그인에서 자동 음소거 동작 확인
 
@@ -53,7 +53,7 @@ draft: false
 
 ### 3) Pro와 조합해 이중 보호
 
-부팅 직후는 `Mute on First Login`으로 막고, 회의 앱 실행 순간 리스크는 [회의 앱 실행 시 자동 음소거: Default0 Pro로 Zoom 외부 출력 방지](/blog/mac-mute-when-app-opens)로 보완합니다.
+부팅 직후는 `첫 로그인 시 음소거`로 막고, 회의 앱 실행 순간 리스크는 [회의 앱 실행 시 자동 음소거: Default0 Pro로 Zoom 외부 출력 방지](/blog/mac-mute-when-app-opens)로 보완합니다.
 
 ![회의실에서 노트북을 중심으로 회의 준비를 하는 팀](https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&w=1800 "회의 직전 바쁜 구간일수록 선제 음소거가 유효")
 
@@ -67,13 +67,13 @@ draft: false
 
 ## FAQ
 
-### 1) `Mute on First Login`을 켜면 이후에도 계속 무음인가요?
+### 1) `첫 로그인 시 음소거`를 켜면 이후에도 계속 무음인가요?
 
 아닙니다. 부팅 후 첫 로그인 구간에서만 동작하며, 이후에는 원하는 시점에 소리를 복원하면 됩니다.
 
-### 2) `Mute on Unlock`과 차이는 무엇인가요?
+### 2) `잠금 해제 시 음소거`와 차이는 무엇인가요?
 
-`Mute on First Login`은 부팅 직후, `Mute on Unlock`은 일상 잠금 해제 직후를 다룹니다. 커버하는 구간이 다릅니다.
+`첫 로그인 시 음소거`는 부팅 직후, `잠금 해제 시 음소거`는 일상 잠금 해제 직후를 다룹니다. 커버하는 구간이 다릅니다.
 
 ### 3) 이미 Wi-Fi 변경 음소거를 쓰는데도 필요할까요?
 
@@ -81,12 +81,12 @@ draft: false
 
 ### 4) Pro 기능인가요?
 
-아닙니다. `Mute on First Login`은 기본 자동 음소거 기능입니다. Pro는 `Mute When App Opens` 같은 앱 기반 트리거에 해당합니다.
+아닙니다. `첫 로그인 시 음소거`는 기본 자동 음소거 기능입니다. Pro는 `앱 실행 시 음소거` 같은 앱 기반 트리거에 해당합니다.
 
 ## 지금 바로 적용하기
 
-1. 먼저 Default0를 설치하고 `Mute on First Login`을 활성화하세요.  
-2. 회의 앱 사용 빈도가 높다면 Pro의 `Mute When App Opens`를 추가해 부팅 직후와 앱 실행 순간을 함께 보호하세요.
+1. 먼저 Default0를 설치하고 `첫 로그인 시 음소거`를 활성화하세요.  
+2. 회의 앱 사용 빈도가 높다면 Pro의 `앱 실행 시 음소거`를 추가해 부팅 직후와 앱 실행 순간을 함께 보호하세요.
 
 ![조용한 공유 오피스에서 Mac으로 집중 업무하는 모습](https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=1800 "조용한 환경일수록 부팅 직후 자동 음소거의 체감 효과가 큼")
 
