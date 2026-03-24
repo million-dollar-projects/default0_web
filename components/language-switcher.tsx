@@ -8,9 +8,10 @@ import { Locale, localeNames, locales } from "@/lib/site-content";
 type LanguageSwitcherProps = {
   currentLocale: Locale;
   label: string;
+  hrefMap?: Partial<Record<Locale, string>>;
 };
 
-export default function LanguageSwitcher({ currentLocale, label }: LanguageSwitcherProps) {
+export default function LanguageSwitcher({ currentLocale, label, hrefMap }: LanguageSwitcherProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -68,7 +69,7 @@ export default function LanguageSwitcher({ currentLocale, label }: LanguageSwitc
           {locales.map((locale) => (
             <Link
               key={locale}
-              href={`/${locale}${restPath ? `/${restPath}` : ""}`}
+              href={hrefMap?.[locale] ?? `/${locale}${restPath ? `/${restPath}` : ""}`}
               onClick={() => setOpen(false)}
               className={`block truncate px-3 py-2 text-base leading-tight text-text transition hover:bg-bg ${
                 locale === currentLocale ? "bg-bg font-semibold" : "font-medium"

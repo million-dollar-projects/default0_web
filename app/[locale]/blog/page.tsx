@@ -10,6 +10,68 @@ type PageProps = {
   params: { locale: string };
 };
 
+const featuredGuideByLocale: Partial<
+  Record<
+    string,
+    {
+      badge: string;
+      title: string;
+      description: string;
+      href: string;
+      cta: string;
+    }
+  >
+> = {
+  en: {
+    badge: "Featured guide",
+    title: "Mac auto mute setup for Default0",
+    description:
+      "Start with the main guide if you want one page that explains automatic mute for Mac, the core trigger rules, and how to prevent accidental speaker playback in real workflows.",
+    href: "/en/mac-auto-mute",
+    cta: "Open the Mac auto mute pillar page"
+  },
+  ja: {
+    badge: "Featured guide",
+    title: "Mac 自動ミュートの総合ガイド",
+    description:
+      "ロック解除、出力切替、Bluetooth 切断、Wi‑Fi 変化、会議アプリ起動まで、Default0 で Mac の自動ミュートをどう組み立てるかを1ページで確認できます。",
+    href: "/ja/mac-auto-mute",
+    cta: "総合ガイドを見る"
+  },
+  "zh-CN": {
+    badge: "Featured guide",
+    title: "Mac 自动静音专题页",
+    description:
+      "如果你想先看完整的自动静音思路，这里会把解锁、输出切换、蓝牙断开、Wi‑Fi 变化和应用启动这几类高风险场景串起来。",
+    href: "/zh-CN/mac-auto-mute",
+    cta: "查看专题页"
+  },
+  ko: {
+    badge: "Featured guide",
+    title: "Mac 자동 음소거 핵심 가이드",
+    description:
+      "잠금 해제, 출력 변경, Bluetooth 해제, Wi‑Fi 변경, 앱 실행 같은 순간을 어떻게 먼저 음소거할지 한 페이지로 정리한 안내입니다.",
+    href: "/ko/mac-auto-mute",
+    cta: "가이드 보기"
+  },
+  de: {
+    badge: "Featured guide",
+    title: "Mac Auto-Mute Leitfaden",
+    description:
+      "Eine zentrale Übersicht für Entsperren, Ausgabewechsel, Bluetooth-Abbruch, WLAN-Wechsel und App-Start, damit Lautsprecherwiedergabe nicht überraschend nach außen geht.",
+    href: "/de/mac-auto-mute",
+    cta: "Leitfaden öffnen"
+  },
+  es: {
+    badge: "Featured guide",
+    title: "Guía de silencio automático en Mac",
+    description:
+      "Una guía central para desbloqueo, cambio de salida, desconexión Bluetooth, cambios de Wi‑Fi y apertura de apps, pensada para reducir audio inesperado por altavoz.",
+    href: "/es/mac-auto-mute",
+    cta: "Abrir guía"
+  }
+};
+
 export function generateMetadata({ params }: PageProps): Metadata {
   if (!isLocale(params.locale)) return {};
   const content = getSiteContent(params.locale);
@@ -44,6 +106,7 @@ export default async function BlogPage({ params }: PageProps) {
   const locale = params.locale;
   const content = getSiteContent(locale);
   const posts = await getBlogPosts(locale);
+  const featuredGuide = featuredGuideByLocale[locale];
 
   return (
     <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`}>
@@ -52,16 +115,13 @@ export default async function BlogPage({ params }: PageProps) {
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{content.labels.blog}</h1>
         </div>
 
-        {locale === "en" ? (
+        {featuredGuide ? (
           <div className="mb-8 rounded-xxl border border-line bg-gradient-to-br from-brand-soft/20 via-surface to-accent/20 p-6 sm:p-8">
-            <p className="text-sm font-medium text-brand">Featured guide</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight">Mac auto mute setup for Default0</h2>
-            <p className="mt-3 max-w-3xl text-muted">
-              Start with the main guide if you want one page that explains automatic mute for Mac, the core trigger rules, and how to
-              prevent accidental speaker playback in real workflows.
-            </p>
-            <Link href="/en/mac-auto-mute" className="mt-4 inline-flex text-sm font-semibold text-brand underline-offset-4 hover:underline">
-              Open the Mac auto mute pillar page
+            <p className="text-sm font-medium text-brand">{featuredGuide.badge}</p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight">{featuredGuide.title}</h2>
+            <p className="mt-3 max-w-3xl text-muted">{featuredGuide.description}</p>
+            <Link href={featuredGuide.href} className="mt-4 inline-flex text-sm font-semibold text-brand underline-offset-4 hover:underline">
+              {featuredGuide.cta}
             </Link>
           </div>
         ) : null}

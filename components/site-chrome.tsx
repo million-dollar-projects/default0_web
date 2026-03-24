@@ -9,13 +9,21 @@ type SiteChromeProps = {
   children: React.ReactNode;
   sectionPrefix?: string;
   showDownloadNav?: boolean;
+  languageHrefMap?: Partial<Record<Locale, string>>;
 };
 
-export default function SiteChrome({ content, locale, children, sectionPrefix = "", showDownloadNav = true }: SiteChromeProps) {
+export default function SiteChrome({
+  content,
+  locale,
+  children,
+  sectionPrefix = "",
+  showDownloadNav = true,
+  languageHrefMap
+}: SiteChromeProps) {
   return (
     <div className="relative isolate overflow-x-clip bg-bg text-text" lang={locale}>
       <BackgroundAura />
-      <Header content={content} locale={locale} sectionPrefix={sectionPrefix} showDownloadNav={showDownloadNav} />
+      <Header content={content} locale={locale} sectionPrefix={sectionPrefix} showDownloadNav={showDownloadNav} languageHrefMap={languageHrefMap} />
       <main className="relative z-10">{children}</main>
       <div className="relative z-10">
         <Footer content={content} locale={locale} sectionPrefix={sectionPrefix} />
@@ -24,7 +32,19 @@ export default function SiteChrome({ content, locale, children, sectionPrefix = 
   );
 }
 
-function Header({ content, locale, sectionPrefix, showDownloadNav }: { content: SiteContent; locale: Locale; sectionPrefix: string; showDownloadNav: boolean }) {
+function Header({
+  content,
+  locale,
+  sectionPrefix,
+  showDownloadNav,
+  languageHrefMap
+}: {
+  content: SiteContent;
+  locale: Locale;
+  sectionPrefix: string;
+  showDownloadNav: boolean;
+  languageHrefMap?: Partial<Record<Locale, string>>;
+}) {
   return (
     <header className="sticky top-0 z-30 border-b border-transparent backdrop-blur supports-[backdrop-filter]:bg-bg/75">
       <div className="mx-auto flex w-container items-center justify-between py-5">
@@ -53,7 +73,7 @@ function Header({ content, locale, sectionPrefix, showDownloadNav }: { content: 
           </Link>
         </nav>
         <div className="flex items-center gap-2">
-          <LanguageSwitcher currentLocale={locale} label={content.labels.language} />
+          <LanguageSwitcher currentLocale={locale} label={content.labels.language} hrefMap={languageHrefMap} />
           <ThemeToggle locale={locale} />
         </div>
       </div>

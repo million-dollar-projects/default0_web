@@ -4,11 +4,64 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { getBlogPostBySlug, getBlogPostLocalesBySlug } from "@/lib/blog";
 import SiteChrome from "@/components/site-chrome";
-import { Locale, getSiteContent, isLocale } from "@/lib/site-content";
+import { Locale, getSiteContent, isLocale, locales } from "@/lib/site-content";
 import { absoluteUrl, buildAvailableLanguageAlternates, buildBreadcrumbList } from "@/lib/seo";
 
 type PageProps = {
   params: { locale: string; slug: string };
+};
+
+const pillarClusterSlugs = new Set([
+  "mac-mute-on-unlock",
+  "mac-mute-on-output-change",
+  "mac-mute-on-bluetooth-disconnect",
+  "mac-mute-on-wifi-change",
+  "mac-mute-when-app-opens",
+  "mac-mute-on-first-login",
+  "mac-3-auto-mute-rules-for-remote-meetings"
+]);
+
+const pillarGuideCopyByLocale: Partial<
+  Record<
+    Locale,
+    {
+      badge: string;
+      title: string;
+      description: string;
+      cta: string;
+    }
+  >
+> = {
+  "zh-CN": {
+    badge: "专题总览",
+    title: "回到 Mac 自动静音专题页",
+    description: "如果你想把这篇文章放回整套规则里看，可以回到专题页统一查看解锁、输出切换、蓝牙断开、Wi‑Fi 变化和应用启动这几类高风险触发器。",
+    cta: "查看 Mac 自动静音专题页"
+  },
+  ko: {
+    badge: "핵심 가이드",
+    title: "Mac 자동 음소거 전체 가이드로 돌아가기",
+    description: "이 글을 전체 규칙 흐름 안에서 다시 보고 싶다면, 잠금 해제, 출력 변경, Bluetooth 해제, Wi‑Fi 변경, 앱 실행을 한 번에 정리한 메인 페이지를 확인하세요.",
+    cta: "Mac 자동 음소거 가이드 보기"
+  },
+  ja: {
+    badge: "総合ガイド",
+    title: "Mac 自動ミュートの全体ページへ戻る",
+    description: "この設定を単体ではなく全体のルール設計として見たいなら、ロック解除、出力切替、Bluetooth 切断、Wi‑Fi 変化、アプリ起動をまとめた総合ガイドに戻ってください。",
+    cta: "Mac 自動ミュート総合ガイドを見る"
+  },
+  de: {
+    badge: "Zentraler Guide",
+    title: "Zurück zur Mac Auto-Mute Übersicht",
+    description: "Wenn du diesen Artikel im Zusammenhang mit dem gesamten Regel-Setup sehen willst, öffne die zentrale Übersicht für Entsperren, Ausgabewechsel, Bluetooth-Abbruch, WLAN-Wechsel und App-Start.",
+    cta: "Mac Auto-Mute Leitfaden öffnen"
+  },
+  es: {
+    badge: "Guía central",
+    title: "Volver a la guía principal de silencio automático en Mac",
+    description: "Si quieres ver este artículo dentro del conjunto completo de reglas, vuelve a la guía central con desbloqueo, cambio de salida, desconexión Bluetooth, cambios de Wi‑Fi y apertura de apps.",
+    cta: "Abrir la guía principal"
+  }
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -156,9 +209,17 @@ export default async function BlogDetailPage({ params }: PageProps) {
   if (!post) {
     notFound();
   }
+  const availableLocales = await getBlogPostLocalesBySlug(post.slug);
+  const languageHrefMap = Object.fromEntries(
+    locales.map((targetLocale) => [
+      targetLocale,
+      availableLocales.includes(targetLocale) ? `/${targetLocale}/blog/${post.slug}` : `/${targetLocale}/blog`
+    ])
+  ) as Partial<Record<Locale, string>>;
 
   const lines = post.body.split("\n");
   const canonicalPath = `/${locale}/blog/${post.slug}`;
+  const pillarGuide = pillarClusterSlugs.has(post.slug) ? pillarGuideCopyByLocale[locale] : null;
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -184,7 +245,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
   ];
 
   return (
-    <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`}>
+    <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`} languageHrefMap={languageHrefMap}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="mx-auto w-container py-16 sm:py-20">
         <div className="mb-8">
@@ -197,6 +258,16 @@ export default async function BlogDetailPage({ params }: PageProps) {
           <p className="text-sm text-muted">{post.date}</p>
           <h1 className="mt-2 break-words text-3xl font-semibold tracking-tight sm:text-4xl">{post.title}</h1>
           {post.description ? <p className="mt-4 text-muted">{post.description}</p> : null}
+          {pillarGuide ? (
+            <div className="mt-6 rounded-xl2 border border-line bg-page/60 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">{pillarGuide.badge}</p>
+              <h2 className="mt-2 text-xl font-semibold tracking-tight">{pillarGuide.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{pillarGuide.description}</p>
+              <Link href={`/${locale}/mac-auto-mute`} className="mt-4 inline-flex text-sm font-semibold text-brand underline-offset-4 hover:underline">
+                {pillarGuide.cta}
+              </Link>
+            </div>
+          ) : null}
           <div className="mt-8 space-y-2">{lines.map((line, index) => renderLine(line, index, locale))}</div>
         </article>
       </main>

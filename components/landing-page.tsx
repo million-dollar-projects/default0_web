@@ -37,8 +37,8 @@ function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">)
   const heroImageSrc = heroImageByLocale[locale] ?? heroImageByLocale.en;
   const heroImageAlt = heroImageAltByLocale[locale] ?? heroImageAltByLocale.en;
   const compatibilityNote = compatibilityNoteByLocale[locale] ?? compatibilityNoteByLocale.en;
-  const macAutoMuteGuide =
-    locale === "en" ? (
+  const macAutoMuteGuideByLocale: Partial<Record<Locale, React.ReactNode>> = {
+    en: (
       <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
         Looking for a dedicated <span className="font-medium text-text">Mac auto mute</span> setup guide?{" "}
         <Link href="/en/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
@@ -46,7 +46,54 @@ function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">)
         </Link>{" "}
         for unlocks, output changes, Bluetooth disconnects, Wi-Fi changes, and meeting apps.
       </p>
-    ) : null;
+    ),
+    "zh-CN": (
+      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
+        想先看完整的 <span className="font-medium text-text">Mac 自动静音</span> 设置思路？{" "}
+        <Link href="/zh-CN/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
+          查看 Default0 的 Mac 自动静音专题页
+        </Link>
+        ，了解解锁、输出切换、蓝牙断开、Wi-Fi 变化和应用启动时如何先静音。
+      </p>
+    ),
+    ko: (
+      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
+        <span className="font-medium text-text">Mac 자동 음소거</span> 전체 구성을 먼저 보고 싶다면{" "}
+        <Link href="/ko/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
+          Default0 전용 가이드
+        </Link>
+        에서 잠금 해제, 출력 변경, Bluetooth 해제, Wi-Fi 변경, 앱 실행 규칙을 한 번에 확인할 수 있습니다.
+      </p>
+    ),
+    de: (
+      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
+        Du willst erst den gesamten <span className="font-medium text-text">Mac Auto-Mute</span> Ablauf sehen?{" "}
+        <Link href="/de/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
+          Öffne den Default0-Leitfaden
+        </Link>
+        {" "}für Entsperren, Ausgabewechsel, Bluetooth-Abbruch, WLAN-Wechsel und App-Start.
+      </p>
+    ),
+    es: (
+      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
+        Si quieres ver primero la configuración completa de <span className="font-medium text-text">silencio automático en Mac</span>,{" "}
+        <Link href="/es/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
+          abre la guía de Default0
+        </Link>
+        {" "}para desbloqueo, cambio de salida, desconexión Bluetooth, cambios de Wi‑Fi y apertura de apps.
+      </p>
+    ),
+    ja: (
+      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
+        まず <span className="font-medium text-text">Mac 自動ミュート</span> の全体像を見たいなら、{" "}
+        <Link href="/ja/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
+          Default0 の専用ガイド
+        </Link>
+        でロック解除、出力切替、Bluetooth 切断、Wi‑Fi 変化、アプリ起動時の考え方をまとめて確認できます。
+      </p>
+    )
+  };
+  const macAutoMuteGuide = macAutoMuteGuideByLocale[locale] ?? null;
 
   return (
     <section className="relative pt-16 sm:pt-24">
@@ -220,7 +267,7 @@ function FAQ({ content }: Pick<LandingPageProps, "content">) {
         <Reveal>
           <h2 className={sectionTitle}>{content.labels.faq}</h2>
         </Reveal>
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid items-start gap-4 md:grid-cols-2">
           {content.faqs.map((faq, index) => (
             <Reveal key={faq.question} delay={index * 0.05}>
               <details className="group surface-lift min-w-0 rounded-xl2 border border-line bg-surface p-6 open:border-brand/45">
