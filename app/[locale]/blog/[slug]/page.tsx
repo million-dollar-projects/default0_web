@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import { getBlogPostBySlug } from "@/lib/blog";
+import { getBlogPostBySlug, getBlogPostLocalesBySlug } from "@/lib/blog";
 import SiteChrome from "@/components/site-chrome";
 import { Locale, getSiteContent, isLocale } from "@/lib/site-content";
-import { buildLanguageAlternates } from "@/lib/seo";
+import { absoluteUrl, buildAvailableLanguageAlternates, buildBreadcrumbList } from "@/lib/seo";
 
 type PageProps = {
   params: { locale: string; slug: string };
@@ -15,19 +15,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!isLocale(params.locale)) return {};
   const post = await getBlogPostBySlug(params.locale, params.slug);
   if (!post) return {};
+  const availableLocales = await getBlogPostLocalesBySlug(params.slug);
   const canonicalPath = `/${params.locale}/blog/${params.slug}`;
   return {
     title: post.title,
     description: post.description,
     alternates: {
       canonical: canonicalPath,
-      languages: buildLanguageAlternates((locale) => `/${locale}/blog/${params.slug}`)
+      languages: buildAvailableLanguageAlternates(availableLocales, (locale) => `/${locale}/blog/${params.slug}`)
     },
     openGraph: {
       type: "article",
       title: post.title,
       description: post.description,
       url: canonicalPath,
+      publishedTime: post.date,
+      modifiedTime: post.lastModified,
       images: [{ url: "/og-default0.svg", width: 1200, height: 630, alt: "Default0 preview" }]
     },
     twitter: {
@@ -155,9 +158,34 @@ export default async function BlogDetailPage({ params }: PageProps) {
   }
 
   const lines = post.body.split("\n");
+  const canonicalPath = `/${locale}/blog/${post.slug}`;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      datePublished: post.date,
+      dateModified: post.lastModified,
+      inLanguage: locale,
+      mainEntityOfPage: absoluteUrl(canonicalPath),
+      url: absoluteUrl(canonicalPath),
+      image: absoluteUrl("/og-default0.svg"),
+      publisher: {
+        "@type": "Organization",
+        name: content.brand
+      }
+    },
+    buildBreadcrumbList([
+      { name: content.brand, path: `/${locale}` },
+      { name: content.labels.blog, path: `/${locale}/blog` },
+      { name: post.title, path: canonicalPath }
+    ])
+  ];
 
   return (
     <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="mx-auto w-container py-16 sm:py-20">
         <div className="mb-8">
           <Link href={`/${locale}/blog`} className="inline-flex min-h-11 items-center rounded-full border border-line bg-surface px-5 py-2 text-sm font-medium transition hover:border-brand">

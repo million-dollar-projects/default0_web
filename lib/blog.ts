@@ -102,3 +102,8 @@ export async function getBlogPostBySlug(locale: Locale, slug: string): Promise<B
     body: getBody(source)
   };
 }
+
+export async function getBlogPostLocalesBySlug(slug: string): Promise<Locale[]> {
+  const posts = await getAllBlogPosts();
+  return posts.filter((post) => post.slug === slug).map((post) => post.locale);
+}

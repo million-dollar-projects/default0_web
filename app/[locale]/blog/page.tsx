@@ -52,6 +52,20 @@ export default async function BlogPage({ params }: PageProps) {
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{content.labels.blog}</h1>
         </div>
 
+        {locale === "en" ? (
+          <div className="mb-8 rounded-xxl border border-line bg-gradient-to-br from-brand-soft/20 via-surface to-accent/20 p-6 sm:p-8">
+            <p className="text-sm font-medium text-brand">Featured guide</p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight">Mac auto mute setup for Default0</h2>
+            <p className="mt-3 max-w-3xl text-muted">
+              Start with the main guide if you want one page that explains automatic mute for Mac, the core trigger rules, and how to
+              prevent accidental speaker playback in real workflows.
+            </p>
+            <Link href="/en/mac-auto-mute" className="mt-4 inline-flex text-sm font-semibold text-brand underline-offset-4 hover:underline">
+              Open the Mac auto mute pillar page
+            </Link>
+          </div>
+        ) : null}
+
         {posts.length === 0 ? (
           <p className="text-muted">{content.labels.blogEmpty}</p>
         ) : (

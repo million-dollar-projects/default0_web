@@ -37,6 +37,16 @@ function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">)
   const heroImageSrc = heroImageByLocale[locale] ?? heroImageByLocale.en;
   const heroImageAlt = heroImageAltByLocale[locale] ?? heroImageAltByLocale.en;
   const compatibilityNote = compatibilityNoteByLocale[locale] ?? compatibilityNoteByLocale.en;
+  const macAutoMuteGuide =
+    locale === "en" ? (
+      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
+        Looking for a dedicated <span className="font-medium text-text">Mac auto mute</span> setup guide?{" "}
+        <Link href="/en/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
+          See how Default0 works as a Mac auto mute utility
+        </Link>{" "}
+        for unlocks, output changes, Bluetooth disconnects, Wi-Fi changes, and meeting apps.
+      </p>
+    ) : null;
 
   return (
     <section className="relative pt-16 sm:pt-24">
@@ -60,6 +70,7 @@ function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">)
             </Link>
           </div>
           <p className="mt-4 break-words text-sm text-muted [overflow-wrap:anywhere]">{content.hero.helper}</p>
+          {macAutoMuteGuide}
           <p className="mt-2 break-words text-xs leading-relaxed text-muted/90 [overflow-wrap:anywhere]">{compatibilityNote}</p>
         </FloatIn>
 
