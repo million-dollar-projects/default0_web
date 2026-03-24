@@ -11,11 +11,11 @@ export const en: SiteContent = {
     backToBlog: "Back to Blog"
   },
   hero: {
-    badge: "macOS menu bar auto-mute utility",
-    title: "Auto-mute, so sudden speaker playback never catches you off guard.",
+    badge: "macOS menu bar app for Mac auto mute",
+    title: "Default0 is the Mac auto mute app for preventing accidental speaker playback.",
     description:
-      "Default0 automatically sets your system volume to zero in high-risk moments, so meetings, offices, libraries, and late nights stay interruption-free.",
-    helper: "Lightweight menu bar app | Auto launch | Local runtime",
+      "Default0 automatically sets your Mac volume to zero during unlocks, output changes, Bluetooth disconnects, Wi-Fi changes, and meeting app launches, so sound does not suddenly play through speakers in meetings, offices, libraries, or shared spaces.",
+    helper: "Lightweight macOS menu bar app | Auto launch | Local runtime",
     primaryCta: "Free Download (macOS)",
     secondaryCta: "View Trigger Rules"
   },

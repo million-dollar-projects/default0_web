@@ -42,19 +42,27 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   manifest: "/site.webmanifest",
   title: {
-    default: "Default0 | Automatic Mute Guard for macOS",
+    default: "Default0 | Mac Auto Mute App for Preventing Accidental Speaker Playback",
     template: "%s | Default0"
   },
   description:
-    "Default0 is a macOS menu bar utility that auto-mutes audio during high-risk moments such as unlock, output switching, and Bluetooth reconnects.",
-  keywords: ["Default0", "macOS", "auto mute", "menu bar app", "volume control", "meeting safety"],
+    "Default0 is a macOS menu bar app that auto-mutes your Mac during unlocks, output changes, Bluetooth disconnects, Wi-Fi changes, and meeting app launches to prevent accidental speaker playback.",
+  keywords: [
+    "Default0",
+    "macOS",
+    "mac auto mute",
+    "auto mute app",
+    "menu bar app",
+    "prevent accidental speaker playback",
+    "meeting safety"
+  ],
   alternates: {
     canonical: "/",
     languages: buildLanguageAlternates((locale) => `/${locale}`)
   },
   openGraph: {
-    title: "Default0 | Automatic Mute Guard for macOS",
-    description: "Auto-mute at high-risk moments to reduce accidental speaker playback.",
+    title: "Default0 | Mac Auto Mute App for Preventing Accidental Speaker Playback",
+    description: "Auto-mute your Mac at high-risk moments to reduce accidental speaker playback in meetings and shared spaces.",
     url: SITE_URL,
     siteName: "Default0",
     type: "website",
@@ -71,8 +79,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Default0 | Automatic Mute Guard for macOS",
-    description: "Auto-mute to prevent accidental speaker playback on macOS.",
+    title: "Default0 | Mac Auto Mute App for Preventing Accidental Speaker Playback",
+    description: "Auto-mute your Mac to prevent accidental speaker playback on macOS.",
     images: ["/og-default0.svg"]
   },
   icons: {
