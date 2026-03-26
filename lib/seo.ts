@@ -1,13 +1,17 @@
 import { Locale, locales } from "@/lib/site-content";
 
-export const SITE_URL = "https://default0.com";
+export const SITE_URL = "https://www.default0.com";
 const X_DEFAULT_LOCALE: Locale = "en";
+
+export function localeToHrefLang(locale: Locale): string {
+  return locale;
+}
 
 export function buildLanguageAlternates(pathForLocale: (locale: Locale) => string): Record<string, string> {
   const languages: Record<string, string> = {};
 
   for (const locale of locales) {
-    languages[locale] = pathForLocale(locale);
+    languages[localeToHrefLang(locale)] = pathForLocale(locale);
   }
 
   languages["x-default"] = pathForLocale(X_DEFAULT_LOCALE);
@@ -21,7 +25,7 @@ export function buildAvailableLanguageAlternates(
   const languages: Record<string, string> = {};
 
   for (const locale of availableLocales) {
-    languages[locale] = pathForLocale(locale);
+    languages[localeToHrefLang(locale)] = pathForLocale(locale);
   }
 
   const xDefaultLocale = availableLocales.includes(X_DEFAULT_LOCALE) ? X_DEFAULT_LOCALE : availableLocales[0];
@@ -38,6 +42,19 @@ export function absoluteUrl(pathname: string): string {
   }
 
   return `${SITE_URL}${pathname}`;
+}
+
+export function buildAbsoluteLanguageAlternates(pathForLocale: (locale: Locale) => string): Record<string, string> {
+  const languages = buildLanguageAlternates(pathForLocale);
+  return Object.fromEntries(Object.entries(languages).map(([lang, pathname]) => [lang, absoluteUrl(pathname)]));
+}
+
+export function buildAbsoluteAvailableLanguageAlternates(
+  availableLocales: readonly Locale[],
+  pathForLocale: (locale: Locale) => string
+): Record<string, string> {
+  const languages = buildAvailableLanguageAlternates(availableLocales, pathForLocale);
+  return Object.fromEntries(Object.entries(languages).map(([lang, pathname]) => [lang, absoluteUrl(pathname)]));
 }
 
 type BreadcrumbItem = {

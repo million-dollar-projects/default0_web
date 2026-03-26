@@ -1,9 +1,9 @@
 import { promises as fs } from "fs";
 import path from "path";
 import type { MetadataRoute } from "next";
-import { getBlogPosts } from "@/lib/blog";
+import { getBlogPostLocalesBySlug, getBlogPosts } from "@/lib/blog";
 import { Locale, locales } from "@/lib/site-content";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, buildAbsoluteAvailableLanguageAlternates } from "@/lib/seo";
 
 const STATIC_ROUTES: ReadonlyArray<{
   path: string;
@@ -37,7 +37,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.flatMap((route) =>
     route.locales.map((locale) => ({
       url: withBase(`/${locale}${route.path}`),
-      lastModified: staticLastModifiedMap.get(route.path)
+      lastModified: staticLastModifiedMap.get(route.path),
+      alternates: {
+        languages: buildAbsoluteAvailableLanguageAlternates(route.locales, (targetLocale) => `/${targetLocale}${route.path}`)
+      }
     }))
   );
 
@@ -45,10 +48,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     await Promise.all(
       locales.map(async (locale) => {
         const posts = await getBlogPosts(locale);
-        return posts.map((post) => ({
-          url: withBase(`/${locale}/blog/${post.slug}`),
-          lastModified: post.lastModified ? new Date(post.lastModified) : new Date(post.date)
-        }));
+        return Promise.all(
+          posts.map(async (post) => {
+            const availableLocales = await getBlogPostLocalesBySlug(post.slug);
+            return {
+              url: withBase(`/${locale}/blog/${post.slug}`),
+              lastModified: post.lastModified ? new Date(post.lastModified) : new Date(post.date),
+              alternates: {
+                languages: buildAbsoluteAvailableLanguageAlternates(availableLocales, (targetLocale) => `/${targetLocale}/blog/${post.slug}`)
+              }
+            };
+          })
+        );
       })
     )
   ).flat();
