@@ -6,6 +6,7 @@
 - 已写入文章: `content/blog/2026-03-21-mac-mute-on-bluetooth-disconnect.mdx`
 - 已写入文章: `content/blog/2026-03-22-mac-mute-on-wifi-change.mdx`
 - 已写入文章: `content/blog/2026-03-23-mac-3-auto-mute-rules-for-remote-meetings.mdx`
+- 已写入文章: `content/blog/2026-03-29-mac-auto-mute-unlock-before-meeting.mdx`
 - 已发布功能覆盖: `Mute on Unlock`、`Mute on Output Change`、`Mute When App Opens`、`Mute on Bluetooth Disconnect`、`Mute on Wi-Fi Change`
 
 ## 30 个转化优先选题
@@ -159,4 +160,5 @@
 - Week 1 的第二篇已提前在 2026-03-21 写入，当前排期按实际落地日期更新。
 - Week 2 的第一篇已提前在 2026-03-22 写入，当前排期按实际落地日期更新。
 - Week 3 的第一篇已提前在 2026-03-23 写入，当前排期按实际落地日期更新。
+- Week 4 的第一篇已提前在 2026-03-29 写入，当前排期按实际落地日期更新。
 - 内链建议统一使用 `/blog/<slug>` 形式，页面渲染层会自动补齐当前语言前缀。
