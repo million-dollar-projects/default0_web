@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import { getBlogPostBySlug, getBlogPostLocalesBySlug } from "@/lib/blog";
+import { getBlogPostBySlug, getBlogPostLocalesBySlug, getBlogPosts } from "@/lib/blog";
 import SiteChrome from "@/components/site-chrome";
 import { Locale, getSiteContent, isLocale, locales } from "@/lib/site-content";
 import { absoluteUrl, buildAvailableLanguageAlternates, buildBreadcrumbList } from "@/lib/seo";
@@ -93,6 +93,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: ["/og-default0.svg"]
     }
   };
+}
+
+export async function generateStaticParams() {
+  const params = await Promise.all(
+    locales.map(async (locale) => {
+      const posts = await getBlogPosts(locale);
+      return posts.map((post) => ({ locale, slug: post.slug }));
+    })
+  );
+
+  return params.flat();
 }
 
 function normalizeHref(href: string, locale: Locale): string {

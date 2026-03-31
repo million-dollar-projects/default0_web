@@ -6,6 +6,7 @@ export type BlogPostMeta = {
   title: string;
   description: string;
   date: string;
+  updated: string;
   slug: string;
   locale: Locale;
   lastModified: string;
@@ -57,20 +58,22 @@ async function getAllBlogPosts(): Promise<(BlogPostMeta & { fileName: string })[
       .filter((file) => file.endsWith(".mdx"))
       .map(async (file) => {
         const fullPath = path.join(BLOG_DIR, file);
-        const stats = await fs.stat(fullPath);
         const source = await fs.readFile(fullPath, "utf8");
         const frontmatter = getFrontmatter(source);
         const slugFromFile = file.replace(/^\d{4}-\d{2}-\d{2}-/, "").replace(/\.mdx$/, "");
         const localeRaw = getStringField(frontmatter, "locale");
         const locale: Locale = isLocale(localeRaw) ? localeRaw : "zh-CN";
+        const date = getStringField(frontmatter, "date");
+        const updated = getStringField(frontmatter, "updated") || date;
 
         return {
           title: getStringField(frontmatter, "title") || slugFromFile,
           description: getStringField(frontmatter, "description"),
-          date: getStringField(frontmatter, "date"),
+          date,
+          updated,
           slug: getStringField(frontmatter, "slug") || slugFromFile,
           locale,
-          lastModified: stats.mtime.toISOString(),
+          lastModified: updated,
           draft: getBooleanField(frontmatter, "draft", false),
           fileName: file
         };

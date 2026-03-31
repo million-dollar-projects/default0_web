@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogPosts } from "@/lib/blog";
-import { getSiteContent, isLocale } from "@/lib/site-content";
+import { getSiteContent, isLocale, locales } from "@/lib/site-content";
 import SiteChrome from "@/components/site-chrome";
 import { buildLanguageAlternates } from "@/lib/seo";
 
 type PageProps = {
   params: { locale: string };
 };
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 const featuredGuideByLocale: Partial<
   Record<

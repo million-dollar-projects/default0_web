@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, Noto_Sans_JP, Noto_Sans_KR, Noto_Sans_SC, Sora } from "next/font/google";
-import { buildLanguageAlternates, SITE_URL } from "@/lib/seo";
-import "./globals.css";
+import { SITE_URL } from "@/lib/seo";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -38,7 +37,7 @@ const notoSansKr = Noto_Sans_KR({
   weight: ["400", "500", "700"]
 });
 
-export const metadata: Metadata = {
+export const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   manifest: "/site.webmanifest",
   title: {
@@ -56,10 +55,6 @@ export const metadata: Metadata = {
     "prevent accidental speaker playback",
     "meeting safety"
   ],
-  alternates: {
-    canonical: "/",
-    languages: buildLanguageAlternates((locale) => `/${locale}`)
-  },
   openGraph: {
     title: "Default0 | Mac Auto Mute App for Preventing Accidental Speaker Playback",
     description: "Auto-mute your Mac at high-risk moments to reduce accidental speaker playback in meetings and shared spaces.",
@@ -89,13 +84,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
-  children
+export function RootDocument({
+  children,
+  lang
 }: Readonly<{
   children: React.ReactNode;
+  lang: string;
 }>) {
   return (
-    <html lang="zh-CN" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={`${sora.variable} ${ibmPlexSans.variable} ${notoSansSc.variable} ${notoSansJp.variable} ${notoSansKr.variable} antialiased`}
       >
