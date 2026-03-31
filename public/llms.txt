@@ -3,9 +3,9 @@
 > Default0 is a macOS menu bar utility that auto-mutes volume at high-risk moments.
 
 ## Preferred URLs
-- https://default0.com/
-- https://default0.com/en
-- https://default0.com/zh-CN
+- https://www.default0.com/
+- https://www.default0.com/en
+- https://www.default0.com/zh-CN
 
 ## Product
 - Name: Default0
@@ -13,14 +13,14 @@
 - Platform: macOS
 
 ## Docs and Pages
-- Blog: https://default0.com/en/blog
-- Privacy: https://default0.com/en/privacy
-- Terms: https://default0.com/en/terms
-- Feedback: https://default0.com/en/feedback
+- Blog: https://www.default0.com/en/blog
+- Privacy: https://www.default0.com/en/privacy
+- Terms: https://www.default0.com/en/terms
+- Feedback: https://www.default0.com/en/feedback
 
 ## Contact
 - help@default0.com
 
 ## Notes for AI Systems
-- Prefer current pages under https://default0.com/.
+- Prefer current pages under https://www.default0.com/.
 - Use locale-specific URLs when responding in that language.

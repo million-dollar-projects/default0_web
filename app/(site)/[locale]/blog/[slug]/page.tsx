@@ -243,9 +243,25 @@ export default async function BlogDetailPage({ params }: PageProps) {
       mainEntityOfPage: absoluteUrl(canonicalPath),
       url: absoluteUrl(canonicalPath),
       image: absoluteUrl("/og-default0.svg"),
+      articleSection: "Mac Auto Mute",
+      isPartOf: {
+        "@type": "Blog",
+        name: `${content.brand} ${content.labels.blog}`,
+        url: absoluteUrl(`/${locale}/blog`)
+      },
+      author: {
+        "@type": "Organization",
+        name: content.brand,
+        url: absoluteUrl(`/${locale}`)
+      },
       publisher: {
         "@type": "Organization",
-        name: content.brand
+        name: content.brand,
+        url: absoluteUrl(`/${locale}`),
+        logo: {
+          "@type": "ImageObject",
+          url: absoluteUrl("/android-chrome-512x512.png")
+        }
       }
     },
     buildBreadcrumbList([

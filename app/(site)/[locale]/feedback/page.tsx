@@ -59,6 +59,14 @@ export function generateMetadata({ params }: PageProps): Metadata {
   return {
     title: `${c.title} | Default0`,
     description: c.description || c.title,
+    robots: {
+      index: false,
+      follow: false,
+      googleBot: {
+        index: false,
+        follow: false
+      }
+    },
     alternates: {
       canonical: `/${params.locale}/feedback`,
       languages: buildLanguageAlternates((locale) => `/${locale}/feedback`)

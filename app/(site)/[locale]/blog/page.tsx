@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getBlogPosts } from "@/lib/blog";
 import { getSiteContent, isLocale, locales } from "@/lib/site-content";
 import SiteChrome from "@/components/site-chrome";
-import { buildLanguageAlternates } from "@/lib/seo";
+import { absoluteUrl, buildBreadcrumbList, buildLanguageAlternates } from "@/lib/seo";
 
 type PageProps = {
   params: { locale: string };
@@ -111,9 +111,62 @@ export default async function BlogPage({ params }: PageProps) {
   const content = getSiteContent(locale);
   const posts = await getBlogPosts(locale);
   const featuredGuide = featuredGuideByLocale[locale];
+  const canonicalPath = `/${locale}/blog`;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: `${content.brand} ${content.labels.blog}`,
+      description: content.hero.description,
+      inLanguage: locale,
+      url: absoluteUrl(canonicalPath),
+      isPartOf: {
+        "@type": "WebSite",
+        name: content.brand,
+        url: absoluteUrl(`/${locale}`)
+      },
+      about: {
+        "@type": "SoftwareApplication",
+        name: content.brand,
+        operatingSystem: "macOS",
+        applicationCategory: "UtilitiesApplication"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      name: `${content.brand} ${content.labels.blog}`,
+      description: content.hero.description,
+      inLanguage: locale,
+      url: absoluteUrl(canonicalPath),
+      publisher: {
+        "@type": "Organization",
+        name: content.brand,
+        url: absoluteUrl(`/${locale}`),
+        logo: {
+          "@type": "ImageObject",
+          url: absoluteUrl("/android-chrome-512x512.png")
+        }
+      },
+      blogPost: posts.map((post) => ({
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.description,
+        datePublished: post.date,
+        dateModified: post.lastModified,
+        inLanguage: locale,
+        url: absoluteUrl(`/${locale}/blog/${post.slug}`)
+      }))
+    },
+    buildBreadcrumbList([
+      { name: content.brand, path: `/${locale}` },
+      { name: content.labels.blog, path: canonicalPath }
+    ])
+  ];
 
   return (
     <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="mx-auto w-container py-16 sm:py-20">
         <div className="mb-8">
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{content.labels.blog}</h1>
