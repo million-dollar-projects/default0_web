@@ -12,8 +12,6 @@ const STATIC_ROUTES: ReadonlyArray<{
 }> = [
   { path: "", file: "app/(site)/[locale]/page.tsx", locales },
   { path: "/blog", file: "app/(site)/[locale]/blog/page.tsx", locales },
-  { path: "/privacy", file: "app/(site)/[locale]/privacy/page.tsx", locales },
-  { path: "/terms", file: "app/(site)/[locale]/terms/page.tsx", locales },
   { path: "/mac-auto-mute", file: "app/(site)/[locale]/mac-auto-mute/page.tsx", locales: ["en", "zh-CN", "ko", "ja", "de", "es"] }
 ] as const;
 
