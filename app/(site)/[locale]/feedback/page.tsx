@@ -85,22 +85,22 @@ export default function FeedbackPage({ params }: PageProps) {
   const privacyLabel = content.footer.links[3];
 
   return (
-    <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`} showDownloadNav={false}>
+    <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`} showDownloadNav={false} minimal>
       <main className="min-h-dvh">
         <section className="py-section">
           <div className="mx-auto w-container">
-            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{c.title}</h1>
-            {c.description ? <p className="mt-4 max-w-3xl text-muted">{c.description}</p> : null}
+            <h1 className="text-[clamp(2.2rem,4.8vw,4.2rem)] font-semibold tracking-[-0.03em] text-[#13130f]">{c.title}</h1>
+            {c.description ? <p className="mt-4 max-w-3xl text-[#4d4d46]">{c.description}</p> : null}
 
             <div className="mt-8">
               <IssueFeedbackForm locale={locale} />
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-4 text-sm">
-              <Link href={`/${locale}`} className="inline-flex font-medium text-brand transition hover:text-brand-strong">
+              <Link href={`/${locale}`} className="inline-flex font-medium text-[#11110f] underline decoration-[#11110f]/30 underline-offset-4">
                 {c.back}
               </Link>
-              <Link href={`/${locale}/privacy`} className="inline-flex text-muted transition hover:text-text">
+              <Link href={`/${locale}/privacy`} className="inline-flex text-[#55554f] transition hover:text-[#11110f]">
                 {privacyLabel}
               </Link>
             </div>

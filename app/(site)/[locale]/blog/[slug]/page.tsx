@@ -131,13 +131,13 @@ function renderInlineContent(line: string, locale: Locale): ReactNode[] {
     if (linkMatch) {
       const [, label, href] = linkMatch;
       nodes.push(
-        <Link key={`link-${index}`} href={normalizeHref(href, locale)} className="text-brand underline-offset-4 hover:underline">
+        <Link key={`link-${index}`} href={normalizeHref(href, locale)} className="text-[#11110f] underline decoration-[#11110f]/35 underline-offset-4">
           {label}
         </Link>
       );
     } else {
       nodes.push(
-        <code key={`code-${index}`} className="rounded bg-page px-1.5 py-0.5 text-sm">
+        <code key={`code-${index}`} className="bg-[#efece2] px-1.5 py-0.5 text-sm text-[#1d1d18]">
           {token.slice(1, -1)}
         </code>
       );
@@ -159,7 +159,7 @@ function renderLine(line: string, key: number, locale: Locale) {
     const [, alt, src, caption] = imageMatch;
 
     return (
-      <figure key={key} className="my-8 overflow-hidden rounded-xl2 border border-line bg-page/40">
+      <figure key={key} className="my-8 overflow-hidden border border-[#1d1d18]/18 bg-[#f1ede2]">
         {/* External stock-image URLs are user/content-driven, so a plain img is more robust than Next Image domain allowlists here. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -169,7 +169,7 @@ function renderLine(line: string, key: number, locale: Locale) {
           className="h-[clamp(220px,38vw,420px)] w-full object-cover"
           referrerPolicy="no-referrer"
         />
-        {caption ? <figcaption className="border-t border-line px-4 py-3 text-sm text-muted">{caption}</figcaption> : null}
+        {caption ? <figcaption className="border-t border-[#1d1d18]/18 px-4 py-3 text-sm text-[#5b5b54]">{caption}</figcaption> : null}
       </figure>
     );
   }
@@ -272,25 +272,25 @@ export default async function BlogDetailPage({ params }: PageProps) {
   ];
 
   return (
-    <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`} languageHrefMap={languageHrefMap}>
+    <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`} languageHrefMap={languageHrefMap} minimal>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="mx-auto w-container py-16 sm:py-20">
         <div className="mb-8">
-          <Link href={`/${locale}/blog`} className="inline-flex min-h-11 items-center rounded-full border border-line bg-surface px-5 py-2 text-sm font-medium transition hover:border-brand">
+          <Link href={`/${locale}/blog`} className="inline-flex min-h-11 items-center border border-[#1d1d18]/20 bg-white px-5 py-2 text-sm font-medium text-[#151512] transition hover:border-[#1d1d18]/45">
             {content.labels.backToBlog}
           </Link>
         </div>
 
-        <article className="rounded-xxl border border-line bg-surface p-6 sm:p-10">
-          <p className="text-sm text-muted">{post.date}</p>
-          <h1 className="mt-2 break-words text-3xl font-semibold tracking-tight sm:text-4xl">{post.title}</h1>
-          {post.description ? <p className="mt-4 text-muted">{post.description}</p> : null}
+        <article className="border border-[#1d1d18]/16 bg-white p-6 sm:p-10">
+          <p className="text-sm text-[#5a5a53]">{post.date}</p>
+          <h1 className="mt-2 break-words text-[clamp(2rem,4.6vw,3.6rem)] font-semibold tracking-[-0.025em] text-[#12120f]">{post.title}</h1>
+          {post.description ? <p className="mt-4 text-[#4e4e47]">{post.description}</p> : null}
           {pillarGuide ? (
-            <div className="mt-6 rounded-xl2 border border-line bg-page/60 p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">{pillarGuide.badge}</p>
-              <h2 className="mt-2 text-xl font-semibold tracking-tight">{pillarGuide.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{pillarGuide.description}</p>
-              <Link href={`/${locale}/mac-auto-mute`} className="mt-4 inline-flex text-sm font-semibold text-brand underline-offset-4 hover:underline">
+            <div className="mt-6 border border-[#1b1b17]/16 bg-[#eee9de] p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#56564f]">{pillarGuide.badge}</p>
+              <h2 className="mt-2 text-xl font-semibold tracking-tight text-[#151512]">{pillarGuide.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-[#4f4f48]">{pillarGuide.description}</p>
+              <Link href={`/${locale}/mac-auto-mute`} className="mt-4 inline-flex text-sm font-semibold text-[#12120f] underline decoration-[#12120f]/30 underline-offset-4">
                 {pillarGuide.cta}
               </Link>
             </div>

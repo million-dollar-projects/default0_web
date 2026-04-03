@@ -71,14 +71,14 @@ export default function IssueFeedbackForm({ locale }: { locale: Locale }) {
   };
 
   return (
-    <form onSubmit={onSubmit} className="rounded-xxl border border-line bg-surface p-7 sm:p-9">
+    <form onSubmit={onSubmit} className="border border-[#1c1c17]/16 bg-white p-7 sm:p-9">
       <div className="grid gap-5">
         <label className="grid gap-2">
-          <span className="text-sm font-medium text-muted">{copy.typeLabel}</span>
+          <span className="text-sm font-medium text-[#55554f]">{copy.typeLabel}</span>
           <select
             value={type}
             onChange={(e) => setType(e.target.value as IssueType)}
-            className="h-11 rounded-xl border border-line bg-bg px-3 text-sm outline-none transition focus:border-brand"
+            className="h-11 border border-[#1d1d18]/20 bg-[#f6f3eb] px-3 text-sm text-[#171713] outline-none transition focus:border-[#171713]"
           >
             <option value="bug">{copy.bugLabel}</option>
             <option value="feature">{copy.featureLabel}</option>
@@ -86,56 +86,56 @@ export default function IssueFeedbackForm({ locale }: { locale: Locale }) {
         </label>
 
         <label className="grid gap-2">
-          <span className="text-sm font-medium text-muted">{copy.titleLabel}</span>
+          <span className="text-sm font-medium text-[#55554f]">{copy.titleLabel}</span>
           <input
             required
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder={copy.titlePlaceholder}
-            className="h-11 rounded-xl border border-line bg-bg px-3 text-sm outline-none transition focus:border-brand"
+            className="h-11 border border-[#1d1d18]/20 bg-[#f6f3eb] px-3 text-sm text-[#171713] outline-none transition focus:border-[#171713]"
           />
         </label>
 
         <label className="grid gap-2">
-          <span className="text-sm font-medium text-muted">{copy.detailsLabel}</span>
+          <span className="text-sm font-medium text-[#55554f]">{copy.detailsLabel}</span>
           <textarea
             required
             value={details}
             onChange={(e) => setDetails(e.target.value)}
             placeholder={copy.detailsPlaceholder}
             rows={6}
-            className="rounded-xl border border-line bg-bg px-3 py-2 text-sm outline-none transition focus:border-brand"
+            className="border border-[#1d1d18]/20 bg-[#f6f3eb] px-3 py-2 text-sm text-[#171713] outline-none transition focus:border-[#171713]"
           />
         </label>
 
         <label className="grid gap-2">
-          <span className="text-sm font-medium text-muted">{copy.stepsLabel}</span>
+          <span className="text-sm font-medium text-[#55554f]">{copy.stepsLabel}</span>
           <textarea
             value={steps}
             onChange={(e) => setSteps(e.target.value)}
             placeholder={copy.stepsPlaceholder}
             rows={4}
-            className="rounded-xl border border-line bg-bg px-3 py-2 text-sm outline-none transition focus:border-brand"
+            className="border border-[#1d1d18]/20 bg-[#f6f3eb] px-3 py-2 text-sm text-[#171713] outline-none transition focus:border-[#171713]"
           />
         </label>
 
         <label className="grid gap-2">
-          <span className="text-sm font-medium text-muted">{copy.contactLabel}</span>
+          <span className="text-sm font-medium text-[#55554f]">{copy.contactLabel}</span>
           <input
             type="email"
             value={contact}
             onChange={(e) => setContact(e.target.value)}
             placeholder={copy.contactPlaceholder}
-            className="h-11 rounded-xl border border-line bg-bg px-3 text-sm outline-none transition focus:border-brand"
+            className="h-11 border border-[#1d1d18]/20 bg-[#f6f3eb] px-3 text-sm text-[#171713] outline-none transition focus:border-[#171713]"
           />
         </label>
 
-        <p className="text-xs leading-relaxed text-muted">{copy.privacyNotice}</p>
+        <p className="text-xs leading-relaxed text-[#5d5d56]">{copy.privacyNotice}</p>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="ui-press cta-sheen inline-flex h-11 items-center justify-center gap-2 rounded-full bg-brand px-6 text-sm font-semibold text-white transition hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-70"
+          className="ui-press inline-flex h-11 items-center justify-center gap-2 border border-[#141410] bg-[#141410] px-6 text-sm font-semibold text-[#f7f5ed] transition hover:bg-black disabled:cursor-not-allowed disabled:opacity-70"
         >
           {isSubmitting ? (
             <>

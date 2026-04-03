@@ -165,37 +165,37 @@ export default async function BlogPage({ params }: PageProps) {
   ];
 
   return (
-    <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`}>
+    <SiteChrome content={content} locale={locale} sectionPrefix={`/${locale}`} minimal>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="mx-auto w-container py-16 sm:py-20">
         <div className="mb-8">
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{content.labels.blog}</h1>
+          <h1 className="text-[clamp(2.2rem,5vw,4.2rem)] font-semibold tracking-[-0.03em] text-[#141410]">{content.labels.blog}</h1>
         </div>
 
         {featuredGuide ? (
-          <div className="mb-8 rounded-xxl border border-line bg-gradient-to-br from-brand-soft/20 via-surface to-accent/20 p-6 sm:p-8">
-            <p className="text-sm font-medium text-brand">{featuredGuide.badge}</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight">{featuredGuide.title}</h2>
-            <p className="mt-3 max-w-3xl text-muted">{featuredGuide.description}</p>
-            <Link href={featuredGuide.href} className="mt-4 inline-flex text-sm font-semibold text-brand underline-offset-4 hover:underline">
+          <div className="mb-8 border border-[#1b1b16]/16 bg-[#efeadf] p-6 sm:p-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#55554f]">{featuredGuide.badge}</p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#151512]">{featuredGuide.title}</h2>
+            <p className="mt-3 max-w-3xl text-[#4a4a44]">{featuredGuide.description}</p>
+            <Link href={featuredGuide.href} className="mt-4 inline-flex text-sm font-semibold text-[#11110f] underline decoration-[#11110f]/35 underline-offset-4">
               {featuredGuide.cta}
             </Link>
           </div>
         ) : null}
 
         {posts.length === 0 ? (
-          <p className="text-muted">{content.labels.blogEmpty}</p>
+          <p className="text-[#4b4b45]">{content.labels.blogEmpty}</p>
         ) : (
           <ul className="grid gap-4">
             {posts.map((post) => (
-              <li key={post.slug} className="rounded-xl2 border border-line bg-surface p-6">
-                <p className="text-sm text-muted">{post.date}</p>
-                <h2 className="mt-2 text-xl font-semibold">
-                  <Link href={`/${locale}/blog/${post.slug}`} className="transition hover:text-brand">
+              <li key={post.slug} className="border border-[#1d1d18]/16 bg-white p-6">
+                <p className="text-sm text-[#5f5f59]">{post.date}</p>
+                <h2 className="mt-2 text-xl font-semibold text-[#151512]">
+                  <Link href={`/${locale}/blog/${post.slug}`} className="transition hover:text-black">
                     {post.title}
                   </Link>
                 </h2>
-                {post.description ? <p className="mt-2 text-muted">{post.description}</p> : null}
+                {post.description ? <p className="mt-2 text-[#4c4c45]">{post.description}</p> : null}
               </li>
             ))}
           </ul>

@@ -6,7 +6,6 @@ import { compatibilityNoteByLocale, heroImageAltByLocale, heroImageByLocale } fr
 import versionData from "@/public/version.json";
 import SiteChrome from "@/components/site-chrome";
 
-const sectionTitle = "mb-10 break-words text-3xl font-semibold tracking-tight text-text [overflow-wrap:anywhere] sm:text-4xl";
 const latestVersion = String(versionData.latest.version).replace(/^v/, "");
 const DOWNLOAD_URL = `https://github.com/million-dollar-projects/default0_web/releases/download/v${latestVersion}/default0-v${latestVersion}.dmg`;
 
@@ -17,18 +16,16 @@ type LandingPageProps = {
 
 export default function LandingPage({ content, locale }: LandingPageProps) {
   return (
-    <SiteChrome content={content} locale={locale}>
-      <>
+    <SiteChrome content={content} locale={locale} minimal>
+      <div className="home-editorial">
         <Hero content={content} locale={locale} />
-        <CoreValues content={content} />
-        <Features content={content} />
-        <Scenarios content={content} />
-        <Comparison content={content} />
-        <Testimonials content={content} />
+        <SignalStrip content={content} />
+        <TriggerAtlas content={content} />
+        <ScenarioBoard content={content} />
         <FAQ content={content} />
-        <CTA content={content} />
+        <FinalCTA content={content} />
         <Contact locale={locale} title={content.footer.links[5]} feedbackLabel={content.footer.links[1]} />
-      </>
+      </div>
     </SiteChrome>
   );
 }
@@ -37,127 +34,115 @@ function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">)
   const heroImageSrc = heroImageByLocale[locale] ?? heroImageByLocale.en;
   const heroImageAlt = heroImageAltByLocale[locale] ?? heroImageAltByLocale.en;
   const compatibilityNote = compatibilityNoteByLocale[locale] ?? compatibilityNoteByLocale.en;
-  const macAutoMuteGuideByLocale: Partial<Record<Locale, React.ReactNode>> = {
-    en: (
-      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
-        Looking for a dedicated <span className="font-medium text-text">Mac auto mute</span> setup guide?{" "}
-        <Link href="/en/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
-          See how Default0 works as a Mac auto mute utility
-        </Link>{" "}
-        for unlocks, output changes, Bluetooth disconnects, Wi-Fi changes, and meeting apps.
-      </p>
-    ),
-    "zh-CN": (
-      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
-        想先看完整的 <span className="font-medium text-text">Mac 自动静音</span> 设置思路？{" "}
-        <Link href="/zh-CN/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
-          查看 Default0 的 Mac 自动静音专题页
-        </Link>
-        ，了解解锁、输出切换、蓝牙断开、Wi-Fi 变化和应用启动时如何先静音。
-      </p>
-    ),
-    ko: (
-      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
-        <span className="font-medium text-text">Mac 자동 음소거</span> 전체 구성을 먼저 보고 싶다면{" "}
-        <Link href="/ko/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
-          Default0 전용 가이드
-        </Link>
-        에서 잠금 해제, 출력 변경, Bluetooth 해제, Wi-Fi 변경, 앱 실행 규칙을 한 번에 확인할 수 있습니다.
-      </p>
-    ),
-    de: (
-      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
-        Du willst erst den gesamten <span className="font-medium text-text">Mac Auto-Mute</span> Ablauf sehen?{" "}
-        <Link href="/de/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
-          Öffne den Default0-Leitfaden
-        </Link>
-        {" "}für Entsperren, Ausgabewechsel, Bluetooth-Abbruch, WLAN-Wechsel und App-Start.
-      </p>
-    ),
-    es: (
-      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
-        Si quieres ver primero la configuración completa de <span className="font-medium text-text">silencio automático en Mac</span>,{" "}
-        <Link href="/es/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
-          abre la guía de Default0
-        </Link>
-        {" "}para desbloqueo, cambio de salida, desconexión Bluetooth, cambios de Wi‑Fi y apertura de apps.
-      </p>
-    ),
-    ja: (
-      <p className="mt-4 max-w-2xl break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
-        まず <span className="font-medium text-text">Mac 自動ミュート</span> の全体像を見たいなら、{" "}
-        <Link href="/ja/mac-auto-mute" className="text-brand underline-offset-4 hover:underline">
-          Default0 の専用ガイド
-        </Link>
-        でロック解除、出力切替、Bluetooth 切断、Wi‑Fi 変化、アプリ起動時の考え方をまとめて確認できます。
-      </p>
-    )
-  };
-  const macAutoMuteGuide = macAutoMuteGuideByLocale[locale] ?? null;
+  const isLongLatinTitle = locale !== "zh-CN" && content.hero.title.length > 78;
+  const heroTitleClass =
+    locale === "zh-CN"
+      ? "mt-6 max-w-3xl text-[clamp(2.4rem,5.6vw,5.2rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-[#12120f]"
+      : locale === "en"
+        ? "mt-6 max-w-[19ch] text-balance text-[clamp(1.9rem,3.8vw,3.8rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-[#12120f]"
+      : locale === "de" || isLongLatinTitle
+        ? "mt-6 max-w-3xl text-[clamp(1.7rem,3.3vw,3.2rem)] font-semibold leading-[1.12] tracking-[-0.016em] text-[#12120f]"
+        : "mt-6 max-w-3xl text-[clamp(2rem,4.2vw,4.2rem)] font-semibold leading-[1.08] tracking-[-0.024em] text-[#12120f]";
 
   return (
-    <section className="relative pt-16 sm:pt-24">
-      <div className="mx-auto grid w-container gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+    <section className="relative overflow-hidden border-b border-[#1f1f1f]/12 bg-[#f4f1ea] px-0 pb-12 pt-16 sm:pt-20">
+      <div className="mx-auto grid w-container gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
         <FloatIn className="min-w-0">
-          <p className="mb-5 inline-flex max-w-full break-words rounded-full border border-line bg-surface px-4 py-2 text-xs text-muted [overflow-wrap:anywhere]">{content.hero.badge}</p>
-          <h1 className="max-w-2xl break-words text-4xl font-semibold leading-tight tracking-tight [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl">{content.hero.title}</h1>
-          <p className="mt-6 max-w-xl break-words text-base leading-relaxed text-muted [overflow-wrap:anywhere] sm:text-lg">{content.hero.description}</p>
-          <div className="mt-8 flex flex-wrap items-stretch gap-3 sm:items-center">
+          <p className="inline-flex min-h-10 items-center rounded-none border border-[#1f1f1f]/20 bg-white/70 px-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3a3a36]">
+            {content.hero.badge}
+          </p>
+          <h1 className={heroTitleClass}>
+            {content.hero.title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#3f3f3a] sm:text-lg">{content.hero.description}</p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href={DOWNLOAD_URL}
-              className="ui-press cta-sheen inline-flex min-h-12 max-w-full items-center justify-center rounded-full bg-brand px-6 py-3 text-center text-sm font-semibold leading-tight text-white transition hover:bg-brand-strong"
+              className="ui-press inline-flex min-h-12 items-center justify-center border border-[#141411] bg-[#141411] px-6 py-3 text-sm font-semibold text-[#f8f6ef] transition hover:bg-black"
             >
               {content.hero.primaryCta}
             </Link>
             <Link
               href="#features"
-              className="ui-press inline-flex min-h-12 max-w-full items-center justify-center rounded-full border border-line bg-surface px-6 py-3 text-center text-sm font-semibold leading-tight text-text transition hover:border-brand"
+              className="ui-press inline-flex min-h-12 items-center justify-center border border-[#141411]/35 bg-transparent px-6 py-3 text-sm font-semibold text-[#141411] transition hover:border-[#141411]"
             >
               {content.hero.secondaryCta}
             </Link>
           </div>
-          <p className="mt-4 break-words text-sm text-muted [overflow-wrap:anywhere]">{content.hero.helper}</p>
-          {macAutoMuteGuide}
-          <p className="mt-2 break-words text-xs leading-relaxed text-muted/90 [overflow-wrap:anywhere]">{compatibilityNote}</p>
+
+          <div className="mt-8 grid max-w-2xl gap-3 border-l border-[#141411]/20 pl-4 text-sm text-[#4a4a44] sm:grid-cols-2 sm:pl-6">
+            <p>{content.hero.helper}</p>
+            <p>{compatibilityNote}</p>
+          </div>
         </FloatIn>
 
         <Reveal>
-          <div className="relative mx-auto w-full max-w-[760px]">
-            <div className="hero-ambient absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-brand/20 via-accent/25 to-brand-soft/30 blur-3xl" />
-            <div className="group surface-lift rounded-[2rem] border border-line bg-surface p-3 shadow-glow">
-              <div className="overflow-hidden rounded-[1.4rem] border border-line/70">
-                <div className="relative aspect-[16/10] w-full">
-                  <Image
-                    src={heroImageSrc}
-                    alt={heroImageAlt}
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 92vw, 760px"
-                    className="origin-top object-cover object-center transition-transform duration-500 ease-out will-change-transform group-hover:scale-[1.82] group-hover:-translate-x-[24%] group-hover:translate-y-[2%]"
-                  />
-                </div>
-              </div>
+          <figure className="group relative shadow-[0_26px_60px_-42px_rgba(0,0,0,0.7)]">
+            <div className="relative aspect-[5/4] overflow-hidden">
+              <Image
+                src={heroImageSrc}
+                alt={heroImageAlt}
+                fill
+                priority
+                sizes="(max-width: 1024px) 92vw, 640px"
+                className="object-contain origin-top-right transition-transform duration-500 ease-out group-hover:scale-[1.42]"
+              />
             </div>
+          </figure>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function SignalStrip({ content }: Pick<LandingPageProps, "content">) {
+  const stats = [
+    { label: content.nav.features, value: content.features.length, href: "#features" },
+    { label: content.nav.scenarios, value: content.scenarios.length, href: "#scenarios" },
+    { label: content.labels.faq, value: content.faqs.length, href: "#faq" }
+  ];
+
+  return (
+    <section className="border-b border-[#1f1f1f]/10 bg-[#ece8dd] py-10">
+      <div className="mx-auto grid w-container gap-4 sm:grid-cols-3">
+        {stats.map((item, index) => (
+          <Reveal key={item.label} delay={index * 0.05}>
+            <Link
+              href={item.href}
+              className="ui-press block min-h-14 border border-[#1b1b17]/15 bg-[#f8f6ef] px-5 py-5 transition hover:border-[#1b1b17]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#12120f]/35"
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#55554f]">{item.label}</p>
+              <p className="mt-2 text-4xl font-semibold tracking-[-0.02em] text-[#141411]">{item.value}</p>
+            </Link>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function TriggerAtlas({ content }: Pick<LandingPageProps, "content">) {
+  const major = content.features.slice(0, 6);
+
+  return (
+    <section id="features" className="bg-[#f8f6ef] py-section">
+      <div className="mx-auto w-container">
+        <Reveal>
+          <div className="grid gap-6 border-b border-[#181814]/14 pb-7 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+            <h2 className="text-[clamp(2rem,4.6vw,3.7rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-[#12120f]">{content.featureTitle}</h2>
+            <p className="max-w-xl text-sm leading-relaxed text-[#54544e]">A trigger-first system for high-risk transitions on macOS. Each rule can be enabled independently.</p>
           </div>
         </Reveal>
-      </div>
-    </section>
-  );
-}
 
-function CoreValues({ content }: Pick<LandingPageProps, "content">) {
-  return (
-    <section className="py-section">
-      <div className="mx-auto w-container">
-        <Reveal>
-          <h2 className={sectionTitle}>{content.values.title}</h2>
-        </Reveal>
-        <div className="grid gap-5 md:grid-cols-3">
-          {content.values.items.map((item, index) => (
-            <Reveal key={item.title} delay={index * 0.06}>
-              <article className="surface-lift h-full min-w-0 rounded-xxl border border-line bg-surface p-7 shadow-panel">
-                <h3 className="break-words text-xl font-semibold tracking-tight [overflow-wrap:anywhere]">{item.title}</h3>
-                <p className="mt-3 break-words leading-relaxed text-muted [overflow-wrap:anywhere]">{item.description}</p>
+        <div className="mt-8 grid gap-4 lg:grid-cols-2">
+          {major.map((item, index) => (
+            <Reveal key={item.title} delay={index * 0.04}>
+              <article className="group relative border border-[#1b1b17]/16 bg-white px-6 pb-7 pt-6 transition hover:-translate-y-0.5 hover:border-[#1b1b17]/35">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#717069]">{String(index + 1).padStart(2, "0")}</span>
+                <h3 className="mt-3 text-xl font-semibold tracking-tight text-[#161612]">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#4b4b45]">{item.description}</p>
+                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#191915] transition-all duration-300 group-hover:w-full" aria-hidden />
               </article>
             </Reveal>
           ))}
@@ -167,91 +152,21 @@ function CoreValues({ content }: Pick<LandingPageProps, "content">) {
   );
 }
 
-function Features({ content }: Pick<LandingPageProps, "content">) {
+function ScenarioBoard({ content }: Pick<LandingPageProps, "content">) {
   return (
-    <section id="features" className="py-section">
+    <section id="scenarios" className="border-y border-[#1f1f1f]/10 bg-[#161512] py-section text-[#f6f4ed]">
       <div className="mx-auto w-container">
         <Reveal>
-          <h2 className={sectionTitle}>{content.featureTitle}</h2>
+          <h2 className="text-[clamp(1.9rem,4.2vw,3.4rem)] font-semibold leading-[1.06] tracking-[-0.025em]">{content.scenariosTitle}</h2>
         </Reveal>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {content.features.map((feature, index) => (
-            <Reveal key={feature.title} delay={index * 0.035}>
-              <article className="surface-lift h-full min-w-0 rounded-xl2 border border-line bg-bg/70 p-6">
-                <h3 className="break-words font-semibold text-text [overflow-wrap:anywhere]">{feature.title}</h3>
-                <p className="mt-2 break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">{feature.description}</p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
-function Scenarios({ content }: Pick<LandingPageProps, "content">) {
-  return (
-    <section id="scenarios" className="py-section">
-      <div className="mx-auto w-container rounded-xxl border border-line bg-surface p-8 sm:p-12">
-        <Reveal>
-          <h2 className={sectionTitle}>{content.scenariosTitle}</h2>
-        </Reveal>
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="mt-8 grid gap-3 md:grid-cols-2">
           {content.scenarios.map((scenario, index) => (
-            <Reveal key={scenario.title} delay={index * 0.08}>
-              <article className="surface-lift min-w-0 rounded-xl2 border border-line/70 bg-bg p-6">
-                <h3 className="break-words font-semibold [overflow-wrap:anywhere]">{scenario.title}</h3>
-                <p className="mt-2 break-words text-muted [overflow-wrap:anywhere]">{scenario.description}</p>
+            <Reveal key={scenario.title} delay={index * 0.05}>
+              <article className="border border-white/22 bg-white/[0.03] px-6 py-6">
+                <h3 className="text-base font-semibold tracking-tight">{scenario.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#d2cec1]">{scenario.description}</p>
               </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Comparison({ content }: Pick<LandingPageProps, "content">) {
-  return (
-    <section className="py-section">
-      <div className="mx-auto w-container">
-        <Reveal>
-          <h2 className={sectionTitle}>{content.comparison.title}</h2>
-        </Reveal>
-        <Reveal>
-          <div className="rounded-xxl border border-line bg-gradient-to-br from-brand-soft/20 via-surface to-accent/20 p-8 sm:p-10">
-            <ul className="space-y-4 text-base leading-relaxed sm:text-lg">
-              {content.comparison.items.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span className="mt-1 inline-block size-2 shrink-0 rounded-full bg-brand" aria-hidden />
-                  <span className="break-words [overflow-wrap:anywhere]">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-8 break-words border-t border-line pt-6 text-lg font-semibold [overflow-wrap:anywhere] sm:text-xl">{content.comparison.conclusion}</p>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function Testimonials({ content }: Pick<LandingPageProps, "content">) {
-  return (
-    <section className="py-section">
-      <div className="mx-auto w-container">
-        <Reveal>
-          <h2 className={sectionTitle}>{content.labels.testimonials}</h2>
-        </Reveal>
-        <div className="grid gap-5 md:grid-cols-3">
-          {content.testimonials.map((item, index) => (
-            <Reveal key={item.name} delay={index * 0.08}>
-              <figure className="surface-lift h-full min-w-0 rounded-xxl border border-line bg-surface p-7">
-                <blockquote className="break-words text-base leading-relaxed text-text [overflow-wrap:anywhere]">“{item.quote}”</blockquote>
-                <figcaption className="mt-5 text-sm text-muted">
-                  <span className="break-words [overflow-wrap:anywhere]">{item.role}</span>
-                </figcaption>
-              </figure>
             </Reveal>
           ))}
         </div>
@@ -261,18 +176,21 @@ function Testimonials({ content }: Pick<LandingPageProps, "content">) {
 }
 
 function FAQ({ content }: Pick<LandingPageProps, "content">) {
+  const faqs = content.faqs.slice(0, 6);
+
   return (
-    <section id="faq" className="py-section">
+    <section id="faq" className="bg-[#f4f1e8] py-section">
       <div className="mx-auto w-container">
         <Reveal>
-          <h2 className={sectionTitle}>{content.labels.faq}</h2>
+          <h2 className="text-[clamp(2rem,4vw,3.3rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#151511]">{content.labels.faq}</h2>
         </Reveal>
-        <div className="grid items-start gap-4 md:grid-cols-2">
-          {content.faqs.map((faq, index) => (
-            <Reveal key={faq.question} delay={index * 0.05}>
-              <details className="group surface-lift min-w-0 rounded-xl2 border border-line bg-surface p-6 open:border-brand/45">
-                <summary className="cursor-pointer list-none break-words font-semibold marker:hidden [overflow-wrap:anywhere]">{faq.question}</summary>
-                <p className="mt-3 break-words text-muted [overflow-wrap:anywhere]">{faq.answer}</p>
+
+        <div className="mt-8 grid gap-3 md:grid-cols-2">
+          {faqs.map((faq, index) => (
+            <Reveal key={faq.question} delay={index * 0.04}>
+              <details className="group border border-[#1d1d18]/16 bg-white px-5 py-5 open:border-[#1d1d18]/35">
+                <summary className="cursor-pointer list-none pr-6 text-sm font-semibold text-[#191915] marker:hidden">{faq.question}</summary>
+                <p className="mt-3 text-sm leading-relaxed text-[#52524d]">{faq.answer}</p>
               </details>
             </Reveal>
           ))}
@@ -282,23 +200,25 @@ function FAQ({ content }: Pick<LandingPageProps, "content">) {
   );
 }
 
-function CTA({ content }: Pick<LandingPageProps, "content">) {
+function FinalCTA({ content }: Pick<LandingPageProps, "content">) {
   return (
-    <section id="download" className="pb-section pt-8">
+    <section id="download" className="border-y border-[#1f1f1f]/10 bg-[#e8e3d8] pb-section pt-14">
       <div className="mx-auto w-container">
         <Reveal>
-          <div className="min-w-0 rounded-xxl border border-brand/20 bg-gradient-to-br from-[#4f89d9] via-[#5b93dd] to-[#4a84d3] p-9 text-white sm:p-12 dark:from-[#2d5f9f] dark:via-[#3569aa] dark:to-[#2b5b98]">
-            <h2 className="break-words text-3xl font-semibold tracking-tight [overflow-wrap:anywhere] sm:text-4xl">{content.cta.title}</h2>
-            <p className="mt-4 max-w-2xl break-words text-white/85 [overflow-wrap:anywhere]">{content.cta.description}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
+          <div className="grid gap-8 border border-[#141410]/20 bg-[#121210] px-8 py-10 text-[#f8f6ef] md:grid-cols-[1.1fr_0.9fr] md:items-end md:px-10">
+            <div>
+              <h2 className="text-[clamp(2.2rem,5vw,4rem)] font-semibold leading-[1.02] tracking-[-0.03em]">{content.cta.title}</h2>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#d2cec2] sm:text-base">{content.cta.description}</p>
+            </div>
+            <div className="md:justify-self-end">
               <Link
                 href={DOWNLOAD_URL}
-                className="ui-press cta-sheen inline-flex min-h-12 max-w-full items-center justify-center rounded-full bg-white px-6 py-3 text-center text-sm font-semibold leading-tight text-brand-strong transition hover:bg-white/90"
+                className="ui-press inline-flex min-h-12 items-center justify-center border border-[#f1eee4] bg-[#f1eee4] px-6 py-3 text-sm font-semibold text-[#11110f] transition hover:bg-white"
               >
                 {content.cta.primary}
               </Link>
+              <p className="mt-3 text-xs text-[#bbb7ac]">{content.cta.helper}</p>
             </div>
-            <p className="mt-4 break-words text-sm text-white/75 [overflow-wrap:anywhere]">{content.cta.helper}</p>
           </div>
         </Reveal>
       </div>
@@ -317,21 +237,25 @@ function Contact({ locale, title, feedbackLabel }: { locale: Locale; title: stri
   };
 
   return (
-    <section id="contact" className="pb-section pt-4">
+    <section id="contact" className="bg-[#f8f6ef] pb-section pt-10">
       <div className="mx-auto w-container">
         <Reveal>
-          <div className="min-w-0 rounded-xxl border border-line bg-surface p-8 sm:p-10">
-            <h2 className="break-words text-2xl font-semibold tracking-tight [overflow-wrap:anywhere] sm:text-3xl">{title}</h2>
-            <p className="mt-3 break-words text-muted [overflow-wrap:anywhere]">{descriptionByLocale[locale]}</p>
-            <a id="contact-email" href="mailto:help@default0.com" className="mt-5 inline-flex break-all text-lg font-semibold text-brand transition hover:text-brand-strong">
-              help@default0.com
-            </a>
-            <Link
-              href={`/${locale}/feedback`}
-              className="ui-press ml-5 inline-flex min-h-10 max-w-full items-center justify-center rounded-full border border-line bg-bg/60 px-4 py-2 text-center text-sm font-medium leading-tight text-muted transition hover:border-brand hover:text-text"
-            >
-              {feedbackLabel}
-            </Link>
+          <div className="grid gap-4 border border-[#1d1d18]/16 bg-white px-6 py-7 sm:grid-cols-[1fr_auto] sm:items-center">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight text-[#151511]">{title}</h2>
+              <p className="mt-2 text-sm text-[#53534d]">{descriptionByLocale[locale]}</p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <a id="contact-email" href="mailto:help@default0.com" className="text-sm font-semibold text-[#11110f] underline decoration-[#11110f]/35 underline-offset-4">
+                help@default0.com
+              </a>
+              <Link
+                href={`/${locale}/feedback`}
+                className="ui-press inline-flex min-h-10 items-center justify-center border border-[#11110f]/25 px-4 py-2 text-sm font-medium text-[#11110f] transition hover:border-[#11110f]"
+              >
+                {feedbackLabel}
+              </Link>
+            </div>
           </div>
         </Reveal>
       </div>
