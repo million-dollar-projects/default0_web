@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { fontClassName, fontStyle } from "@font-config";
 import { SITE_URL } from "@/lib/seo";
+import Script from "next/script";
 
 export const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -49,6 +50,29 @@ export const baseMetadata: Metadata = {
   }
 };
 
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Default0",
+  "description": "A macOS menu bar app that auto-mutes your Mac during unlocks, output changes, Bluetooth disconnects, Wi-Fi changes, and meeting app launches to prevent accidental speaker playback.",
+  "url": SITE_URL,
+  "applicationCategory": "Utilities",
+  "operatingSystem": "macOS",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Default0",
+    "url": SITE_URL
+  },
+  "softwareVersion": "1.1.2",
+  "fileSize": "MB",
+  "requirements": "macOS 13 or later"
+};
+
 export function RootDocument({
   children,
   lang
@@ -62,6 +86,11 @@ export function RootDocument({
         className={`${fontClassName} antialiased`.trim()}
         style={fontStyle}
       >
+        <Script
+          id="software-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+        />
         {children}
       </body>
     </html>
