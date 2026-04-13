@@ -8,7 +8,7 @@ import SiteChrome from "@/components/site-chrome";
 
 const latestVersion = String(versionData.latest.version).replace(/^v/, "");
 const DOWNLOAD_URL = `https://github.com/million-dollar-projects/default0_web/releases/download/v${latestVersion}/default0-v${latestVersion}.dmg`;
-const APP_STORE_URL = "https://apps.apple.com/cn/app/default0/id6760808539?mt=12";
+const APP_STORE_URL = "https://apps.apple.com/app/default0/id6760808539?mt=12";
 
 type LandingPageProps = {
   content: SiteContent;
@@ -50,9 +50,9 @@ function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">)
       ? "mt-6 max-w-3xl text-[clamp(2.4rem,5.6vw,5.2rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-[#12120f]"
       : locale === "en"
         ? "mt-6 max-w-[19ch] text-balance text-[clamp(1.9rem,3.8vw,3.8rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-[#12120f]"
-      : locale === "de" || isLongLatinTitle
-        ? "mt-6 max-w-3xl text-[clamp(1.7rem,3.3vw,3.2rem)] font-semibold leading-[1.12] tracking-[-0.016em] text-[#12120f]"
-        : "mt-6 max-w-3xl text-[clamp(2rem,4.2vw,4.2rem)] font-semibold leading-[1.08] tracking-[-0.024em] text-[#12120f]";
+        : locale === "de" || isLongLatinTitle
+          ? "mt-6 max-w-3xl text-[clamp(1.7rem,3.3vw,3.2rem)] font-semibold leading-[1.12] tracking-[-0.016em] text-[#12120f]"
+          : "mt-6 max-w-3xl text-[clamp(2rem,4.2vw,4.2rem)] font-semibold leading-[1.08] tracking-[-0.024em] text-[#12120f]";
 
   return (
     <section className="relative overflow-hidden border-b border-[#1f1f1f]/12 bg-[#f4f1ea] px-0 pb-12 pt-16 sm:pt-20">
