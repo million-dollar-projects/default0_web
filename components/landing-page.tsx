@@ -8,10 +8,20 @@ import SiteChrome from "@/components/site-chrome";
 
 const latestVersion = String(versionData.latest.version).replace(/^v/, "");
 const DOWNLOAD_URL = `https://github.com/million-dollar-projects/default0_web/releases/download/v${latestVersion}/default0-v${latestVersion}.dmg`;
+const APP_STORE_URL = "https://apps.apple.com/cn/app/default0/id6760808539?mt=12";
 
 type LandingPageProps = {
   content: SiteContent;
   locale: Locale;
+};
+
+const appStoreLabelByLocale: Record<Locale, string> = {
+  en: "Download on App Store",
+  "zh-CN": "App Store 下载",
+  ja: "App Store でダウンロード",
+  ko: "App Store에서 다운로드",
+  de: "Im App Store laden",
+  es: "Descargar en App Store"
 };
 
 export default function LandingPage({ content, locale }: LandingPageProps) {
@@ -23,7 +33,7 @@ export default function LandingPage({ content, locale }: LandingPageProps) {
         <TriggerAtlas content={content} />
         <ScenarioBoard content={content} />
         <FAQ content={content} />
-        <FinalCTA content={content} />
+        <FinalCTA content={content} locale={locale} />
         <Contact locale={locale} title={content.footer.links[5]} feedbackLabel={content.footer.links[1]} />
       </div>
     </SiteChrome>
@@ -62,6 +72,12 @@ function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">)
               className="ui-press inline-flex min-h-12 items-center justify-center border border-[#141411] bg-[#141411] px-6 py-3 text-sm font-semibold text-[#f8f6ef] transition hover:bg-black"
             >
               {content.hero.primaryCta}
+            </Link>
+            <Link
+              href={APP_STORE_URL}
+              className="ui-press inline-flex min-h-12 items-center justify-center border border-[#141411]/35 bg-white px-6 py-3 text-sm font-semibold text-[#141411] transition hover:border-[#141411]"
+            >
+              {appStoreLabelByLocale[locale]}
             </Link>
             <Link
               href="#features"
@@ -200,7 +216,7 @@ function FAQ({ content }: Pick<LandingPageProps, "content">) {
   );
 }
 
-function FinalCTA({ content }: Pick<LandingPageProps, "content">) {
+function FinalCTA({ content, locale }: Pick<LandingPageProps, "content" | "locale">) {
   return (
     <section id="download" className="border-y border-[#1f1f1f]/10 bg-[#e8e3d8] pb-section pt-14">
       <div className="mx-auto w-container">
@@ -216,6 +232,12 @@ function FinalCTA({ content }: Pick<LandingPageProps, "content">) {
                 className="ui-press inline-flex min-h-12 items-center justify-center border border-[#f1eee4] bg-[#f1eee4] px-6 py-3 text-sm font-semibold text-[#11110f] transition hover:bg-white"
               >
                 {content.cta.primary}
+              </Link>
+              <Link
+                href={APP_STORE_URL}
+                className="ui-press ml-3 inline-flex min-h-12 items-center justify-center border border-[#f1eee4]/80 px-6 py-3 text-sm font-semibold text-[#f1eee4] transition hover:border-[#f1eee4] hover:bg-white/10"
+              >
+                {appStoreLabelByLocale[locale]}
               </Link>
               <p className="mt-3 text-xs text-[#bbb7ac]">{content.cta.helper}</p>
             </div>
