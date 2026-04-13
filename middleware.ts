@@ -3,9 +3,17 @@ import { detectLocaleFromHeader } from "@/lib/locale-detect";
 import { locales } from "@/lib/site-content";
 
 const PUBLIC_FILE = /\.(.*)$/;
+const WWW_PREFIX = "www.";
 
 export function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+  const { pathname, hostname } = req.nextUrl;
+
+  const isLocalhost = hostname.startsWith("localhost") || hostname === "127.0.0.1";
+  if (hostname.startsWith(WWW_PREFIX) === false && !isLocalhost) {
+    const url = req.nextUrl.clone();
+    url.hostname = `${WWW_PREFIX}${hostname}`;
+    return NextResponse.redirect(url);
+  }
 
   if (
     pathname.startsWith("/_next") ||
