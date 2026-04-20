@@ -12,7 +12,22 @@ const STATIC_ROUTES: ReadonlyArray<{
 }> = [
   { path: "", file: "app/(site)/[locale]/page.tsx", locales },
   { path: "/blog", file: "app/(site)/[locale]/blog/page.tsx", locales },
-  { path: "/mac-auto-mute", file: "app/(site)/[locale]/mac-auto-mute/page.tsx", locales: ["en", "zh-CN", "ko", "ja", "de", "es"] }
+  { path: "/mac-auto-mute", file: "app/(site)/[locale]/mac-auto-mute/page.tsx", locales: ["en", "zh-CN", "ko", "ja", "de", "es"] },
+  {
+    path: "/prevent-accidental-speaker-playback-mac",
+    file: "app/(site)/[locale]/prevent-accidental-speaker-playback-mac/page.tsx",
+    locales: ["en"]
+  },
+  {
+    path: "/mute-mac-on-bluetooth-disconnect",
+    file: "app/(site)/[locale]/mute-mac-on-bluetooth-disconnect/page.tsx",
+    locales: ["en"]
+  },
+  {
+    path: "/auto-mute-when-meeting-app-opens-mac",
+    file: "app/(site)/[locale]/auto-mute-when-meeting-app-opens-mac/page.tsx",
+    locales: ["en"]
+  }
 ] as const;
 
 function withBase(pathname: string): string {

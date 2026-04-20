@@ -31,12 +31,62 @@ export default function LandingPage({ content, locale }: LandingPageProps) {
         <Hero content={content} locale={locale} />
         <SignalStrip content={content} />
         <TriggerAtlas content={content} />
+        {locale === "en" ? <SeoEntrypoints /> : null}
         <ScenarioBoard content={content} />
         <FAQ content={content} />
         <FinalCTA content={content} locale={locale} />
         <Contact locale={locale} title={content.footer.links[5]} feedbackLabel={content.footer.links[1]} />
       </div>
     </SiteChrome>
+  );
+}
+
+function SeoEntrypoints() {
+  const pages = [
+    {
+      title: "Prevent Accidental Speaker Playback on Mac",
+      description: "Problem-first page focused on avoiding sudden speaker leaks in meetings and shared spaces.",
+      href: "/en/prevent-accidental-speaker-playback-mac"
+    },
+    {
+      title: "Auto Mute Mac on Bluetooth Disconnect",
+      description: "Scenario page for headphone dropouts and instant fallback-to-speaker protection.",
+      href: "/en/mute-mac-on-bluetooth-disconnect"
+    },
+    {
+      title: "Auto Mute When Meeting App Opens",
+      description: "Workflow page for Zoom, Teams, and Google Meet launch-time mute coverage.",
+      href: "/en/auto-mute-when-meeting-app-opens-mac"
+    }
+  ];
+
+  return (
+    <section className="bg-[#f6f2e8] py-section">
+      <div className="mx-auto w-container">
+        <Reveal>
+          <div className="grid gap-4 border-b border-[#181814]/14 pb-7 md:grid-cols-[0.9fr_1.1fr] md:items-end">
+            <h2 className="text-[clamp(1.9rem,4vw,3.2rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#12120f]">Popular Mac Auto-Mute Guides</h2>
+            <p className="max-w-xl text-sm leading-relaxed text-[#54544e]">
+              Start from your highest-risk scenario and use the matching setup page.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          {pages.map((page, index) => (
+            <Reveal key={page.href} delay={index * 0.05}>
+              <article className="border border-[#1d1d18]/16 bg-white p-6 transition hover:-translate-y-0.5 hover:border-[#1d1d18]/34">
+                <h3 className="text-xl font-semibold tracking-tight text-[#161612]">{page.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#4f4f48]">{page.description}</p>
+                <Link href={page.href} className="mt-4 inline-flex text-sm font-semibold text-[#11110f] underline decoration-[#11110f]/35 underline-offset-4">
+                  Open guide
+                </Link>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 

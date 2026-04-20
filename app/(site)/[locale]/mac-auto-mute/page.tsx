@@ -621,6 +621,26 @@ export default function MacAutoMutePage({ params }: PageProps) {
   const copy = pageCopyByLocale[locale];
   const nextStepCopy = nextStepCopyByLocale[locale];
   const canonical = pagePath(locale);
+  const seoEntrypoints =
+    locale === "en"
+      ? [
+          {
+            title: "Prevent Accidental Speaker Playback on Mac",
+            body: "Start with the pain-point page focused on accidental external audio leaks.",
+            href: "/en/prevent-accidental-speaker-playback-mac"
+          },
+          {
+            title: "Auto Mute Mac on Bluetooth Disconnect",
+            body: "Use this setup page if your headset disconnects and sound falls back to speakers.",
+            href: "/en/mute-mac-on-bluetooth-disconnect"
+          },
+          {
+            title: "Auto Mute When Meeting App Opens",
+            body: "Use this workflow page for Zoom, Teams, and Google Meet launch-time coverage.",
+            href: "/en/auto-mute-when-meeting-app-opens-mac"
+          }
+        ]
+      : [];
   const languageHrefMap = Object.fromEntries(
     locales.map((targetLocale) => [
       targetLocale,
@@ -722,6 +742,30 @@ export default function MacAutoMutePage({ params }: PageProps) {
             ))}
           </div>
         </section>
+
+        {seoEntrypoints.length > 0 ? (
+          <section className="py-12">
+            <div className="border border-[#1d1d18]/16 bg-[#f2eee3] p-8 sm:p-10">
+              <div className="max-w-3xl">
+                <h2 className="text-3xl font-semibold tracking-tight text-[#141410]">Scenario Pages Worth Opening Next</h2>
+                <p className="mt-4 text-[#4d4d47]">
+                  These dedicated pages map directly to the three highest-intent search scenarios and include implementation-focused guidance.
+                </p>
+              </div>
+              <div className="mt-8 grid gap-4 lg:grid-cols-3">
+                {seoEntrypoints.map((item) => (
+                  <article key={item.href} className="border border-[#1d1d18]/16 bg-white p-6">
+                    <h3 className="text-xl font-semibold text-[#161612]">{item.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-[#4f4f48]">{item.body}</p>
+                    <Link href={item.href} className="mt-4 inline-flex text-sm font-semibold text-[#11110f] underline decoration-[#11110f]/35 underline-offset-4">
+                      Open guide
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <section className="py-12">
           <div className="border border-[#1d1d18]/16 bg-white p-8 sm:p-10">
