@@ -8,7 +8,14 @@ import SiteChrome from "@/components/site-chrome";
 
 const latestVersion = String(versionData.latest.version).replace(/^v/, "");
 const DOWNLOAD_URL = `https://github.com/million-dollar-projects/default0_web/releases/download/v${latestVersion}/default0-v${latestVersion}.dmg`;
-const APP_STORE_URL = "https://apps.apple.com/app/default0/id6760808539?mt=12";
+const appStoreCountryByLocale: Record<Locale, string> = {
+  en: "us",
+  "zh-CN": "cn",
+  ja: "jp",
+  ko: "kr",
+  de: "de",
+  es: "es"
+};
 
 type LandingPageProps = {
   content: SiteContent;
@@ -25,16 +32,18 @@ const appStoreLabelByLocale: Record<Locale, string> = {
 };
 
 export default function LandingPage({ content, locale }: LandingPageProps) {
+  const appStoreUrl = `https://apps.apple.com/${appStoreCountryByLocale[locale]}/app/default0/id6760808539?mt=12`;
+
   return (
     <SiteChrome content={content} locale={locale} minimal>
       <div className="home-editorial">
-        <Hero content={content} locale={locale} />
+        <Hero content={content} locale={locale} appStoreUrl={appStoreUrl} />
         <SignalStrip content={content} />
         <TriggerAtlas content={content} />
         {locale === "en" ? <SeoEntrypoints /> : null}
         <ScenarioBoard content={content} />
         <FAQ content={content} />
-        <FinalCTA content={content} locale={locale} />
+        <FinalCTA content={content} locale={locale} appStoreUrl={appStoreUrl} />
         <Contact locale={locale} title={content.footer.links[5]} feedbackLabel={content.footer.links[1]} />
       </div>
     </SiteChrome>
@@ -90,7 +99,7 @@ function SeoEntrypoints() {
   );
 }
 
-function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">) {
+function Hero({ content, locale, appStoreUrl }: Pick<LandingPageProps, "content" | "locale"> & { appStoreUrl: string }) {
   const heroImageSrc = heroImageByLocale[locale] ?? heroImageByLocale.en;
   const heroImageAlt = heroImageAltByLocale[locale] ?? heroImageAltByLocale.en;
   const compatibilityNote = compatibilityNoteByLocale[locale] ?? compatibilityNoteByLocale.en;
@@ -124,7 +133,7 @@ function Hero({ content, locale }: Pick<LandingPageProps, "content" | "locale">)
               {content.hero.primaryCta}
             </Link>
             <Link
-              href={APP_STORE_URL}
+              href={appStoreUrl}
               className="ui-press inline-flex min-h-12 items-center justify-center border border-[#141411]/35 bg-white px-6 py-3 text-sm font-semibold text-[#141411] transition hover:border-[#141411]"
             >
               {appStoreLabelByLocale[locale]}
@@ -266,7 +275,7 @@ function FAQ({ content }: Pick<LandingPageProps, "content">) {
   );
 }
 
-function FinalCTA({ content, locale }: Pick<LandingPageProps, "content" | "locale">) {
+function FinalCTA({ content, locale, appStoreUrl }: Pick<LandingPageProps, "content" | "locale"> & { appStoreUrl: string }) {
   return (
     <section id="download" className="border-y border-[#1f1f1f]/10 bg-[#e8e3d8] pb-section pt-14">
       <div className="mx-auto w-container">
@@ -284,7 +293,7 @@ function FinalCTA({ content, locale }: Pick<LandingPageProps, "content" | "local
                 {content.cta.primary}
               </Link>
               <Link
-                href={APP_STORE_URL}
+                href={appStoreUrl}
                 className="ui-press ml-3 inline-flex min-h-12 items-center justify-center border border-[#f1eee4]/80 px-6 py-3 text-sm font-semibold text-[#f1eee4] transition hover:border-[#f1eee4] hover:bg-white/10"
               >
                 {appStoreLabelByLocale[locale]}
